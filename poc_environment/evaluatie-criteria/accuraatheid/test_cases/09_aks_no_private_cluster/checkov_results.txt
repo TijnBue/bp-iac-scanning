@@ -1,0 +1,396 @@
+[34mterraform scan results:
+[0m[36m
+Passed checks: 5, Failed checks: 15, Skipped checks: 0
+
+[0m[97mCheck: CKV_AZURE_115: "Ensure that AKS enables private clusters"
+[0m[31m	FAILED for resource: azurerm_kubernetes_cluster.example
+[0m[35m	File: /main.tf:19-38
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-kubernetes-policies/ensure-that-aks-enables-private-clusters
+[0m[0m
+		[37m19 | [33mresource "azurerm_kubernetes_cluster" "example" {
+		[37m20 | [33m  name                = "example-aks1"
+		[37m21 | [33m  location            = azurerm_resource_group.example.location
+		[37m22 | [33m  resource_group_name = azurerm_resource_group.example.name
+		[37m23 | [33m  dns_prefix          = "exampleaks1"
+		[37m24 | [33m
+		[37m25 | [33m  default_node_pool {
+		[37m26 | [33m    name       = "default"
+		[37m27 | [33m    node_count = 1
+		[37m28 | [33m    vm_size    = "Standard_D2_v2"
+		[37m29 | [33m  }
+		[37m30 | [33m
+		[37m31 | [33m  identity {
+		[37m32 | [33m    type = "SystemAssigned"
+		[37m33 | [33m  }
+		[37m34 | [33m
+		[37m35 | [33m  tags = {
+		[37m36 | [33m    Environment = "Production"
+		[37m37 | [33m  }
+		[37m38 | [33m}
+
+[97mCheck: CKV_AZURE_141: "Ensure AKS local admin account is disabled"
+[0m[31m	FAILED for resource: azurerm_kubernetes_cluster.example
+[0m[35m	File: /main.tf:19-38
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-iam-policies/ensure-azure-kubernetes-service-aks-local-admin-account-is-disabled
+[0m[0m
+		[37m19 | [33mresource "azurerm_kubernetes_cluster" "example" {
+		[37m20 | [33m  name                = "example-aks1"
+		[37m21 | [33m  location            = azurerm_resource_group.example.location
+		[37m22 | [33m  resource_group_name = azurerm_resource_group.example.name
+		[37m23 | [33m  dns_prefix          = "exampleaks1"
+		[37m24 | [33m
+		[37m25 | [33m  default_node_pool {
+		[37m26 | [33m    name       = "default"
+		[37m27 | [33m    node_count = 1
+		[37m28 | [33m    vm_size    = "Standard_D2_v2"
+		[37m29 | [33m  }
+		[37m30 | [33m
+		[37m31 | [33m  identity {
+		[37m32 | [33m    type = "SystemAssigned"
+		[37m33 | [33m  }
+		[37m34 | [33m
+		[37m35 | [33m  tags = {
+		[37m36 | [33m    Environment = "Production"
+		[37m37 | [33m  }
+		[37m38 | [33m}
+
+[97mCheck: CKV_AZURE_7: "Ensure AKS cluster has Network Policy configured"
+[0m[31m	FAILED for resource: azurerm_kubernetes_cluster.example
+[0m[35m	File: /main.tf:19-38
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-kubernetes-policies/bc-azr-kubernetes-4
+[0m[0m
+		[37m19 | [33mresource "azurerm_kubernetes_cluster" "example" {
+		[37m20 | [33m  name                = "example-aks1"
+		[37m21 | [33m  location            = azurerm_resource_group.example.location
+		[37m22 | [33m  resource_group_name = azurerm_resource_group.example.name
+		[37m23 | [33m  dns_prefix          = "exampleaks1"
+		[37m24 | [33m
+		[37m25 | [33m  default_node_pool {
+		[37m26 | [33m    name       = "default"
+		[37m27 | [33m    node_count = 1
+		[37m28 | [33m    vm_size    = "Standard_D2_v2"
+		[37m29 | [33m  }
+		[37m30 | [33m
+		[37m31 | [33m  identity {
+		[37m32 | [33m    type = "SystemAssigned"
+		[37m33 | [33m  }
+		[37m34 | [33m
+		[37m35 | [33m  tags = {
+		[37m36 | [33m    Environment = "Production"
+		[37m37 | [33m  }
+		[37m38 | [33m}
+
+[97mCheck: CKV_AZURE_232: "Ensure that only critical system pods run on system nodes"
+[0m[31m	FAILED for resource: azurerm_kubernetes_cluster.example
+[0m[35m	File: /main.tf:19-38
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-kubernetes-policies/bc-azure-232
+[0m[0m
+		[37m19 | [33mresource "azurerm_kubernetes_cluster" "example" {
+		[37m20 | [33m  name                = "example-aks1"
+		[37m21 | [33m  location            = azurerm_resource_group.example.location
+		[37m22 | [33m  resource_group_name = azurerm_resource_group.example.name
+		[37m23 | [33m  dns_prefix          = "exampleaks1"
+		[37m24 | [33m
+		[37m25 | [33m  default_node_pool {
+		[37m26 | [33m    name       = "default"
+		[37m27 | [33m    node_count = 1
+		[37m28 | [33m    vm_size    = "Standard_D2_v2"
+		[37m29 | [33m  }
+		[37m30 | [33m
+		[37m31 | [33m  identity {
+		[37m32 | [33m    type = "SystemAssigned"
+		[37m33 | [33m  }
+		[37m34 | [33m
+		[37m35 | [33m  tags = {
+		[37m36 | [33m    Environment = "Production"
+		[37m37 | [33m  }
+		[37m38 | [33m}
+
+[97mCheck: CKV_AZURE_168: "Ensure Azure Kubernetes Cluster (AKS) nodes should use a minimum number of 50 pods."
+[0m[31m	FAILED for resource: azurerm_kubernetes_cluster.example
+[0m[35m	File: /main.tf:19-38
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-kubernetes-policies/azr-kubernetes-168
+[0m[0m
+		[37m19 | [33mresource "azurerm_kubernetes_cluster" "example" {
+		[37m20 | [33m  name                = "example-aks1"
+		[37m21 | [33m  location            = azurerm_resource_group.example.location
+		[37m22 | [33m  resource_group_name = azurerm_resource_group.example.name
+		[37m23 | [33m  dns_prefix          = "exampleaks1"
+		[37m24 | [33m
+		[37m25 | [33m  default_node_pool {
+		[37m26 | [33m    name       = "default"
+		[37m27 | [33m    node_count = 1
+		[37m28 | [33m    vm_size    = "Standard_D2_v2"
+		[37m29 | [33m  }
+		[37m30 | [33m
+		[37m31 | [33m  identity {
+		[37m32 | [33m    type = "SystemAssigned"
+		[37m33 | [33m  }
+		[37m34 | [33m
+		[37m35 | [33m  tags = {
+		[37m36 | [33m    Environment = "Production"
+		[37m37 | [33m  }
+		[37m38 | [33m}
+
+[97mCheck: CKV_AZURE_116: "Ensure that AKS uses Azure Policies Add-on"
+[0m[31m	FAILED for resource: azurerm_kubernetes_cluster.example
+[0m[35m	File: /main.tf:19-38
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-kubernetes-policies/ensure-that-aks-uses-azure-policies-add-on
+[0m[0m
+		[37m19 | [33mresource "azurerm_kubernetes_cluster" "example" {
+		[37m20 | [33m  name                = "example-aks1"
+		[37m21 | [33m  location            = azurerm_resource_group.example.location
+		[37m22 | [33m  resource_group_name = azurerm_resource_group.example.name
+		[37m23 | [33m  dns_prefix          = "exampleaks1"
+		[37m24 | [33m
+		[37m25 | [33m  default_node_pool {
+		[37m26 | [33m    name       = "default"
+		[37m27 | [33m    node_count = 1
+		[37m28 | [33m    vm_size    = "Standard_D2_v2"
+		[37m29 | [33m  }
+		[37m30 | [33m
+		[37m31 | [33m  identity {
+		[37m32 | [33m    type = "SystemAssigned"
+		[37m33 | [33m  }
+		[37m34 | [33m
+		[37m35 | [33m  tags = {
+		[37m36 | [33m    Environment = "Production"
+		[37m37 | [33m  }
+		[37m38 | [33m}
+
+[97mCheck: CKV_AZURE_226: "Ensure ephemeral disks are used for OS disks"
+[0m[31m	FAILED for resource: azurerm_kubernetes_cluster.example
+[0m[35m	File: /main.tf:19-38
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-kubernetes-policies/bc-azure-226
+[0m[0m
+		[37m19 | [33mresource "azurerm_kubernetes_cluster" "example" {
+		[37m20 | [33m  name                = "example-aks1"
+		[37m21 | [33m  location            = azurerm_resource_group.example.location
+		[37m22 | [33m  resource_group_name = azurerm_resource_group.example.name
+		[37m23 | [33m  dns_prefix          = "exampleaks1"
+		[37m24 | [33m
+		[37m25 | [33m  default_node_pool {
+		[37m26 | [33m    name       = "default"
+		[37m27 | [33m    node_count = 1
+		[37m28 | [33m    vm_size    = "Standard_D2_v2"
+		[37m29 | [33m  }
+		[37m30 | [33m
+		[37m31 | [33m  identity {
+		[37m32 | [33m    type = "SystemAssigned"
+		[37m33 | [33m  }
+		[37m34 | [33m
+		[37m35 | [33m  tags = {
+		[37m36 | [33m    Environment = "Production"
+		[37m37 | [33m  }
+		[37m38 | [33m}
+
+[97mCheck: CKV_AZURE_227: "Ensure that the AKS cluster encrypt temp disks, caches, and data flows between Compute and Storage resources"
+[0m[31m	FAILED for resource: azurerm_kubernetes_cluster.example
+[0m[35m	File: /main.tf:19-38
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-kubernetes-policies/bc-azure-227
+[0m[0m
+		[37m19 | [33mresource "azurerm_kubernetes_cluster" "example" {
+		[37m20 | [33m  name                = "example-aks1"
+		[37m21 | [33m  location            = azurerm_resource_group.example.location
+		[37m22 | [33m  resource_group_name = azurerm_resource_group.example.name
+		[37m23 | [33m  dns_prefix          = "exampleaks1"
+		[37m24 | [33m
+		[37m25 | [33m  default_node_pool {
+		[37m26 | [33m    name       = "default"
+		[37m27 | [33m    node_count = 1
+		[37m28 | [33m    vm_size    = "Standard_D2_v2"
+		[37m29 | [33m  }
+		[37m30 | [33m
+		[37m31 | [33m  identity {
+		[37m32 | [33m    type = "SystemAssigned"
+		[37m33 | [33m  }
+		[37m34 | [33m
+		[37m35 | [33m  tags = {
+		[37m36 | [33m    Environment = "Production"
+		[37m37 | [33m  }
+		[37m38 | [33m}
+
+[97mCheck: CKV_AZURE_170: "Ensure that AKS use the Paid Sku for its SLA"
+[0m[31m	FAILED for resource: azurerm_kubernetes_cluster.example
+[0m[35m	File: /main.tf:19-38
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/azr-general-170
+[0m[0m
+		[37m19 | [33mresource "azurerm_kubernetes_cluster" "example" {
+		[37m20 | [33m  name                = "example-aks1"
+		[37m21 | [33m  location            = azurerm_resource_group.example.location
+		[37m22 | [33m  resource_group_name = azurerm_resource_group.example.name
+		[37m23 | [33m  dns_prefix          = "exampleaks1"
+		[37m24 | [33m
+		[37m25 | [33m  default_node_pool {
+		[37m26 | [33m    name       = "default"
+		[37m27 | [33m    node_count = 1
+		[37m28 | [33m    vm_size    = "Standard_D2_v2"
+		[37m29 | [33m  }
+		[37m30 | [33m
+		[37m31 | [33m  identity {
+		[37m32 | [33m    type = "SystemAssigned"
+		[37m33 | [33m  }
+		[37m34 | [33m
+		[37m35 | [33m  tags = {
+		[37m36 | [33m    Environment = "Production"
+		[37m37 | [33m  }
+		[37m38 | [33m}
+
+[97mCheck: CKV_AZURE_171: "Ensure AKS cluster upgrade channel is chosen"
+[0m[31m	FAILED for resource: azurerm_kubernetes_cluster.example
+[0m[35m	File: /main.tf:19-38
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/azr-networking-171
+[0m[0m
+		[37m19 | [33mresource "azurerm_kubernetes_cluster" "example" {
+		[37m20 | [33m  name                = "example-aks1"
+		[37m21 | [33m  location            = azurerm_resource_group.example.location
+		[37m22 | [33m  resource_group_name = azurerm_resource_group.example.name
+		[37m23 | [33m  dns_prefix          = "exampleaks1"
+		[37m24 | [33m
+		[37m25 | [33m  default_node_pool {
+		[37m26 | [33m    name       = "default"
+		[37m27 | [33m    node_count = 1
+		[37m28 | [33m    vm_size    = "Standard_D2_v2"
+		[37m29 | [33m  }
+		[37m30 | [33m
+		[37m31 | [33m  identity {
+		[37m32 | [33m    type = "SystemAssigned"
+		[37m33 | [33m  }
+		[37m34 | [33m
+		[37m35 | [33m  tags = {
+		[37m36 | [33m    Environment = "Production"
+		[37m37 | [33m  }
+		[37m38 | [33m}
+
+[97mCheck: CKV_AZURE_6: "Ensure AKS has an API Server Authorized IP Ranges enabled"
+[0m[31m	FAILED for resource: azurerm_kubernetes_cluster.example
+[0m[35m	File: /main.tf:19-38
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-kubernetes-policies/bc-azr-kubernetes-3
+[0m[0m
+		[37m19 | [33mresource "azurerm_kubernetes_cluster" "example" {
+		[37m20 | [33m  name                = "example-aks1"
+		[37m21 | [33m  location            = azurerm_resource_group.example.location
+		[37m22 | [33m  resource_group_name = azurerm_resource_group.example.name
+		[37m23 | [33m  dns_prefix          = "exampleaks1"
+		[37m24 | [33m
+		[37m25 | [33m  default_node_pool {
+		[37m26 | [33m    name       = "default"
+		[37m27 | [33m    node_count = 1
+		[37m28 | [33m    vm_size    = "Standard_D2_v2"
+		[37m29 | [33m  }
+		[37m30 | [33m
+		[37m31 | [33m  identity {
+		[37m32 | [33m    type = "SystemAssigned"
+		[37m33 | [33m  }
+		[37m34 | [33m
+		[37m35 | [33m  tags = {
+		[37m36 | [33m    Environment = "Production"
+		[37m37 | [33m  }
+		[37m38 | [33m}
+
+[97mCheck: CKV_AZURE_4: "Ensure AKS logging to Azure Monitoring is Configured"
+[0m[31m	FAILED for resource: azurerm_kubernetes_cluster.example
+[0m[35m	File: /main.tf:19-38
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-kubernetes-policies/bc-azr-kubernetes-1
+[0m[0m
+		[37m19 | [33mresource "azurerm_kubernetes_cluster" "example" {
+		[37m20 | [33m  name                = "example-aks1"
+		[37m21 | [33m  location            = azurerm_resource_group.example.location
+		[37m22 | [33m  resource_group_name = azurerm_resource_group.example.name
+		[37m23 | [33m  dns_prefix          = "exampleaks1"
+		[37m24 | [33m
+		[37m25 | [33m  default_node_pool {
+		[37m26 | [33m    name       = "default"
+		[37m27 | [33m    node_count = 1
+		[37m28 | [33m    vm_size    = "Standard_D2_v2"
+		[37m29 | [33m  }
+		[37m30 | [33m
+		[37m31 | [33m  identity {
+		[37m32 | [33m    type = "SystemAssigned"
+		[37m33 | [33m  }
+		[37m34 | [33m
+		[37m35 | [33m  tags = {
+		[37m36 | [33m    Environment = "Production"
+		[37m37 | [33m  }
+		[37m38 | [33m}
+
+[97mCheck: CKV_AZURE_117: "Ensure that AKS uses disk encryption set"
+[0m[31m	FAILED for resource: azurerm_kubernetes_cluster.example
+[0m[35m	File: /main.tf:19-38
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-kubernetes-policies/ensure-that-aks-uses-disk-encryption-set
+[0m[0m
+		[37m19 | [33mresource "azurerm_kubernetes_cluster" "example" {
+		[37m20 | [33m  name                = "example-aks1"
+		[37m21 | [33m  location            = azurerm_resource_group.example.location
+		[37m22 | [33m  resource_group_name = azurerm_resource_group.example.name
+		[37m23 | [33m  dns_prefix          = "exampleaks1"
+		[37m24 | [33m
+		[37m25 | [33m  default_node_pool {
+		[37m26 | [33m    name       = "default"
+		[37m27 | [33m    node_count = 1
+		[37m28 | [33m    vm_size    = "Standard_D2_v2"
+		[37m29 | [33m  }
+		[37m30 | [33m
+		[37m31 | [33m  identity {
+		[37m32 | [33m    type = "SystemAssigned"
+		[37m33 | [33m  }
+		[37m34 | [33m
+		[37m35 | [33m  tags = {
+		[37m36 | [33m    Environment = "Production"
+		[37m37 | [33m  }
+		[37m38 | [33m}
+
+[97mCheck: CKV_AZURE_172: "Ensure autorotation of Secrets Store CSI Driver secrets for AKS clusters"
+[0m[31m	FAILED for resource: azurerm_kubernetes_cluster.example
+[0m[35m	File: /main.tf:19-38
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/azr-general-172
+[0m[0m
+		[37m19 | [33mresource "azurerm_kubernetes_cluster" "example" {
+		[37m20 | [33m  name                = "example-aks1"
+		[37m21 | [33m  location            = azurerm_resource_group.example.location
+		[37m22 | [33m  resource_group_name = azurerm_resource_group.example.name
+		[37m23 | [33m  dns_prefix          = "exampleaks1"
+		[37m24 | [33m
+		[37m25 | [33m  default_node_pool {
+		[37m26 | [33m    name       = "default"
+		[37m27 | [33m    node_count = 1
+		[37m28 | [33m    vm_size    = "Standard_D2_v2"
+		[37m29 | [33m  }
+		[37m30 | [33m
+		[37m31 | [33m  identity {
+		[37m32 | [33m    type = "SystemAssigned"
+		[37m33 | [33m  }
+		[37m34 | [33m
+		[37m35 | [33m  tags = {
+		[37m36 | [33m    Environment = "Production"
+		[37m37 | [33m  }
+		[37m38 | [33m}
+
+[97mCheck: CKV2_AZURE_29: "Ensure AKS cluster has Azure CNI networking enabled"
+[0m[31m	FAILED for resource: azurerm_kubernetes_cluster.example
+[0m[35m	File: /main.tf:19-38
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-2-29
+[0m[0m
+		[37m19 | [33mresource "azurerm_kubernetes_cluster" "example" {
+		[37m20 | [33m  name                = "example-aks1"
+		[37m21 | [33m  location            = azurerm_resource_group.example.location
+		[37m22 | [33m  resource_group_name = azurerm_resource_group.example.name
+		[37m23 | [33m  dns_prefix          = "exampleaks1"
+		[37m24 | [33m
+		[37m25 | [33m  default_node_pool {
+		[37m26 | [33m    name       = "default"
+		[37m27 | [33m    node_count = 1
+		[37m28 | [33m    vm_size    = "Standard_D2_v2"
+		[37m29 | [33m  }
+		[37m30 | [33m
+		[37m31 | [33m  identity {
+		[37m32 | [33m    type = "SystemAssigned"
+		[37m33 | [33m  }
+		[37m34 | [33m
+		[37m35 | [33m  tags = {
+		[37m36 | [33m    Environment = "Production"
+		[37m37 | [33m  }
+		[37m38 | [33m}
+
+[0m[0m[0m
+[0m[0m[0m[0m[0m

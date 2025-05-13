@@ -1,0 +1,111 @@
+2025-05-11T20:41:16Z	[94mINFO[0m	[misconfig] Misconfiguration scanning is enabled
+2025-05-11T20:41:16Z	[94mINFO[0m	[misconfig] Need to update the checks bundle
+2025-05-11T20:41:16Z	[94mINFO[0m	[misconfig] Downloading the checks bundle...
+
+2025-05-11T20:41:18Z	[94mINFO[0m	[terraform scanner] Scanning root module	file_path="."
+2025-05-11T20:41:18Z	[94mINFO[0m	Detected config files	num=2
+[0m
+[4m[4m[1mReport Summary[0m[4m[0m
+
+[0m[2m┌─────────┬───────────┬───────────────────┐[0m
+[2m│[0m [1mTarget [0m [2m│[0m [1m  Type   [0m [2m│[0m [1mMisconfigurations[0m [2m│[0m
+[2m├─────────┼───────────┼───────────────────┤[0m
+[2m│[0m .       [2m│[0m terraform [2m│[0m         0         [2m│[0m
+[2m├─────────┼───────────┼───────────────────┤[0m
+[2m│[0m main.tf [2m│[0m terraform [2m│[0m         [91m4[0m         [2m│[0m
+[2m└─────────┴───────────┴───────────────────┘[0m
+[0mLegend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+[0m[0m
+[4m[1m[4mmain.tf (terraform)[0m[4m[0m
+
+[0m[0mTests: 4 (SUCCESSES: 0, FAILURES: 4)
+[0m[0mFailures: 4 (UNKNOWN: 0, LOW: 0, MEDIUM: 4, HIGH: 0, CRITICAL: 0)
+
+[0m[0mAVD-AZU-0019 [33m(MEDIUM): [0m[0mDatabase server is not configured to log connections.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mPostgresql can generate logs for successful connections to improve visibility for audit and configuration issue resolution.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0019
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmain.tf[0m[0m[2m:[0m[34m19[0m[34m-38[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m  19 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_postgresql_server"[0m [38;5;37m"example"[0m {
+[0m[0m[31m  20 [0m[0m[31m│ [0m[0m  [38;5;245mname[0m                = [38;5;37m"example-psqlserver"
+[0m[0m[31m  21 [0m[0m[31m│ [0m[0m[0m  [38;5;245mlocation[0m            = azurerm_resource_group.example.location
+[0m[0m[31m  22 [0m[0m[31m│ [0m[0m  [38;5;245mresource_group_name[0m = azurerm_resource_group.example.name
+[0m[0m[31m  23 [0m[0m[31m│ [0m[0m
+[0m[0m[31m  24 [0m[0m[31m│ [0m[0m  [38;5;245madministrator_login[0m          = [38;5;37m"psqladmin"
+[0m[0m[31m  25 [0m[0m[31m│ [0m[0m[0m  [38;5;245madministrator_login_password[0m = [38;5;37m"H@Sh1CoR3!"
+[0m[0m[31m  26 [0m[0m[31m│ [0m[0m[0m
+[0m[0m[31m  27 [0m[0m[31m└ [0m[0m  [38;5;245msku_name[0m   = [38;5;37m"GP_Gen5_4"
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0020 [33m(MEDIUM): [0m[0mDatabase server does not have enforce SSL.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mSSL connections should be enforced were available to ensure secure transfer and reduce the risk of compromising data in flight.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0020
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmain.tf[0m[2m:[0m[34m36[0m
+[0m[0m   [2mvia [0m[3mmain.tf[2m[3m:19-38 (azurerm_postgresql_server.example)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[2m  19   [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_postgresql_server"[0m [38;5;37m"example"[0m {
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[31m  36 [0m[0m[31m[ [0m[0m[0m  [38;5;245mssl_enforcement_enabled[0m          = [38;5;166mfalse
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m  38   [0m[0m[0m}
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0021 [33m(MEDIUM): [0m[0mDatabase server is not configured to throttle connections.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mPostgresql can generate logs for connection throttling to improve visibility for audit and configuration issue resolution.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0021
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmain.tf[0m[0m[2m:[0m[34m19[0m[34m-38[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m  19 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_postgresql_server"[0m [38;5;37m"example"[0m {
+[0m[0m[31m  20 [0m[0m[31m│ [0m[0m  [38;5;245mname[0m                = [38;5;37m"example-psqlserver"
+[0m[0m[31m  21 [0m[0m[31m│ [0m[0m[0m  [38;5;245mlocation[0m            = azurerm_resource_group.example.location
+[0m[0m[31m  22 [0m[0m[31m│ [0m[0m  [38;5;245mresource_group_name[0m = azurerm_resource_group.example.name
+[0m[0m[31m  23 [0m[0m[31m│ [0m[0m
+[0m[0m[31m  24 [0m[0m[31m│ [0m[0m  [38;5;245madministrator_login[0m          = [38;5;37m"psqladmin"
+[0m[0m[31m  25 [0m[0m[31m│ [0m[0m[0m  [38;5;245madministrator_login_password[0m = [38;5;37m"H@Sh1CoR3!"
+[0m[0m[31m  26 [0m[0m[31m│ [0m[0m[0m
+[0m[0m[31m  27 [0m[0m[31m└ [0m[0m  [38;5;245msku_name[0m   = [38;5;37m"GP_Gen5_4"
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0024 [33m(MEDIUM): [0m[0mDatabase server is not configured to log checkpoints.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mPostgresql can generate logs for checkpoints to improve visibility for audit and configuration issue resolution.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0024
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmain.tf[0m[0m[2m:[0m[34m19[0m[34m-38[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m  19 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_postgresql_server"[0m [38;5;37m"example"[0m {
+[0m[0m[31m  20 [0m[0m[31m│ [0m[0m  [38;5;245mname[0m                = [38;5;37m"example-psqlserver"
+[0m[0m[31m  21 [0m[0m[31m│ [0m[0m[0m  [38;5;245mlocation[0m            = azurerm_resource_group.example.location
+[0m[0m[31m  22 [0m[0m[31m│ [0m[0m  [38;5;245mresource_group_name[0m = azurerm_resource_group.example.name
+[0m[0m[31m  23 [0m[0m[31m│ [0m[0m
+[0m[0m[31m  24 [0m[0m[31m│ [0m[0m  [38;5;245madministrator_login[0m          = [38;5;37m"psqladmin"
+[0m[0m[31m  25 [0m[0m[31m│ [0m[0m[0m  [38;5;245madministrator_login_password[0m = [38;5;37m"H@Sh1CoR3!"
+[0m[0m[31m  26 [0m[0m[31m│ [0m[0m[0m
+[0m[0m[31m  27 [0m[0m[31m└ [0m[0m  [38;5;245msku_name[0m   = [38;5;37m"GP_Gen5_4"
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m

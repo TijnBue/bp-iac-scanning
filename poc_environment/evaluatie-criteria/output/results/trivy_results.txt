@@ -1,0 +1,89 @@
+2025-05-12T08:33:10Z	[94mINFO[0m	[misconfig] Misconfiguration scanning is enabled
+2025-05-12T08:33:10Z	[94mINFO[0m	[misconfig] Need to update the checks bundle
+2025-05-12T08:33:10Z	[94mINFO[0m	[misconfig] Downloading the checks bundle...
+
+2025-05-12T08:33:12Z	[94mINFO[0m	[terraform scanner] Scanning root module	file_path="terraform"
+2025-05-12T08:33:12Z	[94mINFO[0m	Detected config files	num=2
+[0m
+[4m[4m[1mReport Summary[0m[4m[0m
+
+[0m[2m┌───────────────────┬───────────┬───────────────────┐[0m
+[2m│[0m [1m     Target      [0m [2m│[0m [1m  Type   [0m [2m│[0m [1mMisconfigurations[0m [2m│[0m
+[2m├───────────────────┼───────────┼───────────────────┤[0m
+[2m│[0m terraform         [2m│[0m terraform [2m│[0m         0         [2m│[0m
+[2m├───────────────────┼───────────┼───────────────────┤[0m
+[2m│[0m terraform/main.tf [2m│[0m terraform [2m│[0m         [91m3[0m         [2m│[0m
+[2m└───────────────────┴───────────┴───────────────────┘[0m
+[0mLegend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+[0m[0m
+[4m[4m[1mterraform/main.tf (terraform)[0m[4m[0m
+
+[0m[0mTests: 3 (SUCCESSES: 0, FAILURES: 3)
+[0m[0mFailures: 3 (UNKNOWN: 0, LOW: 0, MEDIUM: 3, HIGH: 0, CRITICAL: 0)
+
+[0m[0mAVD-AZU-0022 [33m(MEDIUM): [0m[0mDatabase server has public network access enabled.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mDatabase resources should not publicly available. You should limit all access to the minimum that is required for your application to function.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0022
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mterraform/main.tf[0m[2m:[0m[34m28[0m
+[0m[0m   [2mvia [0m[3mterraform/main.tf[2m[3m:21-33 (azurerm_mssql_server.my-sql-server)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[2m  21   [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_mssql_server"[0m [38;5;37m"my-sql-server"[0m {
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[31m  28 [0m[0m[31m[ [0m[0m[0m  [38;5;245mpublic_network_access_enabled[0m = [38;5;166mtrue
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m  33   [0m[0m}
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0026 [33m(MEDIUM): [0m[0mDatabase server does not require a secure TLS version.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mYou should not use outdated/insecure TLS versions for encryption. You should be using TLS v1.2+.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0026
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mterraform/main.tf[0m[0m[2m:[0m[34m21[0m[34m-33[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m  21 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_mssql_server"[0m [38;5;37m"my-sql-server"[0m {
+[0m[0m[31m  22 [0m[0m[31m│ [0m[0m  [38;5;245mname[0m                          = [38;5;37m"[0m[38;5;37m${[0mlocal.resource_prefix[38;5;37m}[0m[38;5;37msqlserver"
+[0m[0m[31m  23 [0m[0m[31m│ [0m[0m[0m  [38;5;245mresource_group_name[0m           = azurerm_resource_group.tests[38;5;245m-[0mresource[38;5;245m-[0mgroup.name
+[0m[0m[31m  24 [0m[0m[31m│ [0m[0m  [38;5;245mlocation[0m                      = azurerm_resource_group.tests[38;5;245m-[0mresource[38;5;245m-[0mgroup.location
+[0m[0m[31m  25 [0m[0m[31m│ [0m[0m  [38;5;245mversion[0m                       = [38;5;37m"12.0"
+[0m[0m[31m  26 [0m[0m[31m│ [0m[0m[0m  [38;5;245madministrator_login[0m           = [38;5;37m"4dm1n157r470r"
+[0m[0m[31m  27 [0m[0m[31m│ [0m[0m[0m  [38;5;245madministrator_login_password[0m  = [38;5;37m"4-v3ry-53cr37-p455w0rd"
+[0m[0m[31m  28 [0m[0m[31m│ [0m[0m[0m  [38;5;245mpublic_network_access_enabled[0m = [38;5;166mtrue
+[0m[0m[31m  29 [0m[0m[31m└ [0m[0m[0m
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0027 [33m(MEDIUM): [0m[0mServer does not have an extended audit policy configured.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mAuditing helps you maintain regulatory compliance, understand database activity, and gain insight into discrepancies and anomalies that could indicate business concerns or suspected security violations.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0027
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mterraform/main.tf[0m[0m[2m:[0m[34m21[0m[34m-33[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m  21 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_mssql_server"[0m [38;5;37m"my-sql-server"[0m {
+[0m[0m[31m  22 [0m[0m[31m│ [0m[0m  [38;5;245mname[0m                          = [38;5;37m"[0m[38;5;37m${[0mlocal.resource_prefix[38;5;37m}[0m[38;5;37msqlserver"
+[0m[0m[31m  23 [0m[0m[31m│ [0m[0m[0m  [38;5;245mresource_group_name[0m           = azurerm_resource_group.tests[38;5;245m-[0mresource[38;5;245m-[0mgroup.name
+[0m[0m[31m  24 [0m[0m[31m│ [0m[0m  [38;5;245mlocation[0m                      = azurerm_resource_group.tests[38;5;245m-[0mresource[38;5;245m-[0mgroup.location
+[0m[0m[31m  25 [0m[0m[31m│ [0m[0m  [38;5;245mversion[0m                       = [38;5;37m"12.0"
+[0m[0m[31m  26 [0m[0m[31m│ [0m[0m[0m  [38;5;245madministrator_login[0m           = [38;5;37m"4dm1n157r470r"
+[0m[0m[31m  27 [0m[0m[31m│ [0m[0m[0m  [38;5;245madministrator_login_password[0m  = [38;5;37m"4-v3ry-53cr37-p455w0rd"
+[0m[0m[31m  28 [0m[0m[31m│ [0m[0m[0m  [38;5;245mpublic_network_access_enabled[0m = [38;5;166mtrue
+[0m[0m[31m  29 [0m[0m[31m└ [0m[0m[0m
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m

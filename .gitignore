@@ -1,0 +1,25 @@
+# Vagrant
+.vagrant/
+
+# Local .terraform directories
+**/.terraform/*
+
+# Lock files
+.terraform.lock.hcl
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Snyk files generated as part of execution
+snyk_report.*
+snyk-result.json
+snyk-error.log
+
+# Ignore the tool version files.
+version_*.txt
+venv
+.vscode
+.idea
+
+poc_environment/datasets/terraform_stage

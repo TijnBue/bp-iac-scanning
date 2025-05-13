@@ -1,0 +1,70 @@
+===================
+Tool Execution Times
+===================
+Checkov: 145 seconds
+KICS: 1115 seconds
+Snyk: 209 seconds
+Trivy: 56 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 154 seconds
+KICS: 1149 seconds
+Snyk: 229 seconds
+Trivy: 58 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 154 seconds
+KICS: 1159 seconds
+Snyk: 237 seconds
+Trivy: 58 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 153 seconds
+KICS: 1152 seconds
+Snyk: 223 seconds
+Trivy: 61 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 155 seconds
+KICS: 1154 seconds
+Snyk: 224 seconds
+Trivy: 60 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 156 seconds
+KICS: 1157 seconds
+Snyk: 254 seconds
+Trivy: 58 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 155 seconds
+KICS: 1185 seconds
+Snyk: 228 seconds
+Trivy: 58 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 152 seconds
+KICS: 1173 seconds
+Snyk: 267 seconds
+Trivy: 58 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 152 seconds
+KICS: 1169 seconds
+Snyk: 237 seconds
+Trivy: 59 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 152 seconds
+KICS: 1158 seconds
+Snyk: 232 seconds
+Trivy: 57 seconds

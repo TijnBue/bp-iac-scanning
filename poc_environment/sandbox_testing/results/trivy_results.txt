@@ -1,0 +1,278 @@
+2025-05-03T15:20:07Z	[94mINFO[0m	[misconfig] Misconfiguration scanning is enabled
+2025-05-03T15:20:07Z	[94mINFO[0m	[misconfig] Need to update the checks bundle
+2025-05-03T15:20:07Z	[94mINFO[0m	[misconfig] Downloading the checks bundle...
+
+2025-05-03T15:20:09Z	[94mINFO[0m	[terraform scanner] Scanning root module	file_path="environments/development"
+2025-05-03T15:20:12Z	[94mINFO[0m	[terraform scanner] Scanning root module	file_path="modules/remote_backend"
+2025-05-03T15:20:12Z	[93mWARN[0m	[terraform parser] Variable values were not found in the environment or variable files. Evaluating may not work correctly.	module="root" variables="container_name, resource_group_location, resource_group_name"
+2025-05-03T15:20:12Z	[94mINFO[0m	Detected config files	num=6
+[0m
+[4m[1m[4mReport Summary[0m[4m[0m
+
+[0m[2m┌────────────────────────────────────┬───────────┬───────────────────┐[0m
+[2m│[0m [1m              Target              [0m [2m│[0m [1m  Type   [0m [2m│[0m [1mMisconfigurations[0m [2m│[0m
+[2m├────────────────────────────────────┼───────────┼───────────────────┤[0m
+[2m│[0m Azure/aks/azurerm/main.tf          [2m│[0m terraform [2m│[0m         [91m2[0m         [2m│[0m
+[2m├────────────────────────────────────┼───────────┼───────────────────┤[0m
+[2m│[0m Azure/aks/azurerm/main_override.tf [2m│[0m terraform [2m│[0m         [91m4[0m         [2m│[0m
+[2m├────────────────────────────────────┼───────────┼───────────────────┤[0m
+[2m│[0m environments/development           [2m│[0m terraform [2m│[0m         0         [2m│[0m
+[2m├────────────────────────────────────┼───────────┼───────────────────┤[0m
+[2m│[0m modules/keyvault/main.tf           [2m│[0m terraform [2m│[0m         [91m2[0m         [2m│[0m
+[2m├────────────────────────────────────┼───────────┼───────────────────┤[0m
+[2m│[0m modules/remote_backend             [2m│[0m terraform [2m│[0m         0         [2m│[0m
+[2m├────────────────────────────────────┼───────────┼───────────────────┤[0m
+[2m│[0m modules/storage_account/main.tf    [2m│[0m terraform [2m│[0m         [91m3[0m         [2m│[0m
+[2m└────────────────────────────────────┴───────────┴───────────────────┘[0m
+[0mLegend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+[0m[0m
+[4m[4m[1mAzure/aks/azurerm/main.tf (terraform)[0m[4m[0m
+
+[0m[0mTests: 2 (SUCCESSES: 0, FAILURES: 2)
+[0m[0mFailures: 2 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 1, CRITICAL: 1)
+
+[0m[0mAVD-AZU-0041 [31m[1m(CRITICAL): [0m[0mCluster does not limit API access to specific IP addresses.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mThe API server is the central way to interact with and manage a cluster. To improve cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0041
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mAzure/aks/azurerm/main.tf[0m[0m[2m:[0m[34m13[0m[34m-660[0m
+[0m[0m   [2mvia [0m[3menvironments/development/main.tf[2m[3m:63-106 (module.akscluster_dev_001)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m  13 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_kubernetes_cluster"[0m [38;5;37m"main"[0m {
+[0m[0m[31m  14 [0m[0m[31m│ [0m[0m  [38;5;245mlocation[0m                            = [38;5;33mvar[0m.location
+[0m[0m[31m  15 [0m[0m[31m│ [0m[0m  [38;5;245mname[0m                                = [38;5;37m"[0m[38;5;37m${[0mlocal.cluster_name[38;5;37m}${[0m[38;5;33mvar[0m.cluster_name_random_suffix [38;5;245m?[0m [38;5;33msubstr[0m([38;5;33mmd5[0m([38;5;33muuid[0m()), [38;5;37m0[0m, [38;5;37m4[0m) [38;5;245m:[0m [38;5;37m""[0m[38;5;37m}[0m[38;5;37m"
+[0m[0m[31m  16 [0m[0m[31m│ [0m[0m[0m  [38;5;245mresource_group_name[0m                 = [38;5;33mvar[0m.resource_group_name
+[0m[0m[31m  17 [0m[0m[31m│ [0m[0m  [38;5;245mazure_policy_enabled[0m                = [38;5;33mvar[0m.azure_policy_enabled
+[0m[0m[31m  18 [0m[0m[31m│ [0m[0m  [38;5;245mcost_analysis_enabled[0m               = [38;5;33mvar[0m.cost_analysis_enabled
+[0m[0m[31m  19 [0m[0m[31m│ [0m[0m  [38;5;245mdisk_encryption_set_id[0m              = [38;5;33mvar[0m.disk_encryption_set_id
+[0m[0m[31m  20 [0m[0m[31m│ [0m[0m  [38;5;245mdns_prefix[0m                          = [38;5;33mvar[0m.prefix
+[0m[0m[31m  21 [0m[0m[31m└ [0m[0m  [38;5;245mdns_prefix_private_cluster[0m          = [38;5;33mvar[0m.dns_prefix_private_cluster
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0042 [31m(HIGH): [0m[0mRBAC is not enabled on cluster
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mUsing Kubernetes role-based access control (RBAC), you can grant users, groups, and service accounts access to only the resources they need.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0042
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mAzure/aks/azurerm/main.tf[0m[2m:[0m[34m31[0m
+[0m[0m   [2mvia [0m[3mAzure/aks/azurerm/main.tf[2m[3m:13-660 (azurerm_kubernetes_cluster.main)
+[0m[0m    [2mvia [0m[3menvironments/development/main.tf[2m[3m:63-106 (module.akscluster_dev_001)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[2m  13   [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_kubernetes_cluster"[0m [38;5;37m"main"[0m {
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[31m  31 [0m[0m[31m[ [0m[0m  [38;5;245mrole_based_access_control_enabled[0m   = [38;5;33mvar[0m.role_based_access_control_enabled
+[0m[0m[2m ...   [0m[0m
+[0m[0m[2m 660   [0m[0m}
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0m
+[4m[1m[4mAzure/aks/azurerm/main_override.tf (terraform)[0m[4m[0m
+
+[0m[0mTests: 4 (SUCCESSES: 0, FAILURES: 4)
+[0m[0mFailures: 4 (UNKNOWN: 0, LOW: 0, MEDIUM: 1, HIGH: 2, CRITICAL: 1)
+
+[0m[0mAVD-AZU-0040 [33m(MEDIUM): [0m[0mCluster does not have logging enabled via OMS Agent.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mEnsure AKS logging to Azure Monitoring is configured for containers to monitor the performance of workloads.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0040
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mAzure/aks/azurerm/main_override.tf[0m[0m[2m:[0m[34m3[0m[34m-6[0m
+[0m[0m   [2mvia [0m[3menvironments/development/main.tf[2m[3m:63-106 (module.akscluster_dev_001)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m   3 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_kubernetes_cluster"[0m [38;5;37m"main"[0m {
+[0m[0m[31m   4 [0m[0m[31m│ [0m[0m  [38;5;245mautomatic_channel_upgrade[0m = [38;5;33mvar[0m.automatic_channel_upgrade
+[0m[0m[31m   5 [0m[0m[31m│ [0m[0m  [38;5;245mnode_os_channel_upgrade[0m   = [38;5;33mvar[0m.node_os_channel_upgrade
+[0m[0m[31m   6 [0m[0m[31m└ [0m[0m}
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0041 [31m[1m(CRITICAL): [0m[0mCluster does not limit API access to specific IP addresses.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mThe API server is the central way to interact with and manage a cluster. To improve cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0041
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mAzure/aks/azurerm/main_override.tf[0m[0m[2m:[0m[34m3[0m[34m-6[0m
+[0m[0m   [2mvia [0m[3menvironments/development/main.tf[3m[2m:63-106 (module.akscluster_dev_001)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m   3 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_kubernetes_cluster"[0m [38;5;37m"main"[0m {
+[0m[0m[31m   4 [0m[0m[31m│ [0m[0m  [38;5;245mautomatic_channel_upgrade[0m = [38;5;33mvar[0m.automatic_channel_upgrade
+[0m[0m[31m   5 [0m[0m[31m│ [0m[0m  [38;5;245mnode_os_channel_upgrade[0m   = [38;5;33mvar[0m.node_os_channel_upgrade
+[0m[0m[31m   6 [0m[0m[31m└ [0m[0m}
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0042 [31m(HIGH): [0m[0mRBAC is not enabled on cluster
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mUsing Kubernetes role-based access control (RBAC), you can grant users, groups, and service accounts access to only the resources they need.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0042
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mAzure/aks/azurerm/main_override.tf[0m[0m[2m:[0m[34m3[0m[34m-6[0m
+[0m[0m   [2mvia [0m[3menvironments/development/main.tf[2m[3m:63-106 (module.akscluster_dev_001)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m   3 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_kubernetes_cluster"[0m [38;5;37m"main"[0m {
+[0m[0m[31m   4 [0m[0m[31m│ [0m[0m  [38;5;245mautomatic_channel_upgrade[0m = [38;5;33mvar[0m.automatic_channel_upgrade
+[0m[0m[31m   5 [0m[0m[31m│ [0m[0m  [38;5;245mnode_os_channel_upgrade[0m   = [38;5;33mvar[0m.node_os_channel_upgrade
+[0m[0m[31m   6 [0m[0m[31m└ [0m[0m}
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0043 [31m(HIGH): [0m[0mKubernetes cluster does not have a network policy set.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mThe Kubernetes object type NetworkPolicy should be defined to have opportunity allow or block traffic to pods, as in a Kubernetes cluster configured with default settings, all pods can discover and communicate with each other without any restrictions.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0043
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mAzure/aks/azurerm/main_override.tf[0m[0m[2m:[0m[34m3[0m[34m-6[0m
+[0m[0m   [2mvia [0m[3menvironments/development/main.tf[2m[3m:63-106 (module.akscluster_dev_001)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m   3 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_kubernetes_cluster"[0m [38;5;37m"main"[0m {
+[0m[0m[31m   4 [0m[0m[31m│ [0m[0m  [38;5;245mautomatic_channel_upgrade[0m = [38;5;33mvar[0m.automatic_channel_upgrade
+[0m[0m[31m   5 [0m[0m[31m│ [0m[0m  [38;5;245mnode_os_channel_upgrade[0m   = [38;5;33mvar[0m.node_os_channel_upgrade
+[0m[0m[31m   6 [0m[0m[31m└ [0m[0m}
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0m
+[4m[1m[4mmodules/keyvault/main.tf (terraform)[0m[4m[0m
+
+[0m[0mTests: 2 (SUCCESSES: 0, FAILURES: 2)
+[0m[0mFailures: 2 (UNKNOWN: 0, LOW: 0, MEDIUM: 1, HIGH: 0, CRITICAL: 1)
+
+[0m[0mAVD-AZU-0013 [31m[1m(CRITICAL): [0m[0mVault network ACL does not block access by default.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mNetwork ACLs allow you to reduce your exposure to risk by limiting what can access your key vault.
+
+The default action of the Network ACL should be set to deny for when IPs are not matched. Azure services can be allowed to bypass.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0013
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmodules/keyvault/main.tf[0m[0m[2m:[0m[34m9[0m[34m-40[0m
+[0m[0m   [2mvia [0m[3menvironments/development/main.tf[2m[3m:207-221 (module.keyvault_dev)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m   9 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_key_vault"[0m [38;5;37m"key_vault"[0m {
+[0m[0m[31m  10 [0m[0m[31m│ [0m[0m  [38;5;245mname[0m                = [38;5;37m"[0m[38;5;37m${[0m[38;5;33mvar[0m.keyvault_name[38;5;37m}[0m[38;5;37m-[0m[38;5;37m${[0mrandom_string.random_string.id[38;5;37m}[0m[38;5;37m"
+[0m[0m[31m  11 [0m[0m[31m│ [0m[0m[0m  [38;5;245mlocation[0m            = [38;5;33mvar[0m.keyvault_location
+[0m[0m[31m  12 [0m[0m[31m│ [0m[0m  [38;5;245mresource_group_name[0m = [38;5;33mvar[0m.resource_group_name
+[0m[0m[31m  13 [0m[0m[31m│ [0m[0m  [38;5;245mtenant_id[0m           = [38;5;33mvar[0m.tenant_id
+[0m[0m[31m  14 [0m[0m[31m│ [0m[0m  [38;5;245msku_name[0m            = [38;5;33mvar[0m.keyvault_sku_name
+[0m[0m[31m  15 [0m[0m[31m│ [0m[0m
+[0m[0m[31m  16 [0m[0m[31m│ [0m[0m  [38;5;245menable_rbac_authorization[0m     = [38;5;33mvar[0m.enable_rbac_authorization
+[0m[0m[31m  17 [0m[0m[31m└ [0m[0m  [38;5;245mpublic_network_access_enabled[0m = [38;5;33mvar[0m.public_network_access_enabled
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0016 [33m(MEDIUM): [0m[0mVault does not have purge protection enabled.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mPurge protection is an optional Key Vault behavior and is not enabled by default.
+
+Purge protection can only be enabled once soft-delete is enabled. It can be turned on via CLI or PowerShell.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0016
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmodules/keyvault/main.tf[0m[0m[2m:[0m[34m9[0m[34m-40[0m
+[0m[0m   [2mvia [0m[3menvironments/development/main.tf[2m[3m:207-221 (module.keyvault_dev)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m   9 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_key_vault"[0m [38;5;37m"key_vault"[0m {
+[0m[0m[31m  10 [0m[0m[31m│ [0m[0m  [38;5;245mname[0m                = [38;5;37m"[0m[38;5;37m${[0m[38;5;33mvar[0m.keyvault_name[38;5;37m}[0m[38;5;37m-[0m[38;5;37m${[0mrandom_string.random_string.id[38;5;37m}[0m[38;5;37m"
+[0m[0m[31m  11 [0m[0m[31m│ [0m[0m[0m  [38;5;245mlocation[0m            = [38;5;33mvar[0m.keyvault_location
+[0m[0m[31m  12 [0m[0m[31m│ [0m[0m  [38;5;245mresource_group_name[0m = [38;5;33mvar[0m.resource_group_name
+[0m[0m[31m  13 [0m[0m[31m│ [0m[0m  [38;5;245mtenant_id[0m           = [38;5;33mvar[0m.tenant_id
+[0m[0m[31m  14 [0m[0m[31m│ [0m[0m  [38;5;245msku_name[0m            = [38;5;33mvar[0m.keyvault_sku_name
+[0m[0m[31m  15 [0m[0m[31m│ [0m[0m
+[0m[0m[31m  16 [0m[0m[31m│ [0m[0m  [38;5;245menable_rbac_authorization[0m     = [38;5;33mvar[0m.enable_rbac_authorization
+[0m[0m[31m  17 [0m[0m[31m└ [0m[0m  [38;5;245mpublic_network_access_enabled[0m = [38;5;33mvar[0m.public_network_access_enabled
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0m
+[4m[4m[1mmodules/storage_account/main.tf (terraform)[0m[4m[0m
+
+[0m[0mTests: 3 (SUCCESSES: 0, FAILURES: 3)
+[0m[0mFailures: 3 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 3, CRITICAL: 0)
+
+[0m[0mAVD-AZU-0007 [31m(HIGH): [0m[0mContainer allows public access.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mStorage container public access should be off. It can be configured for blobs only, containers and blobs or off entirely. The default is off, with no public access.
+Explicitly overriding publicAccess to anything other than off should be avoided.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0007
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmodules/storage_account/main.tf[0m[2m:[0m[34m23[0m
+[0m[0m   [2mvia [0m[3mmodules/storage_account/main.tf[2m[3m:19-24 (azurerm_storage_container.container[1])
+[0m[0m    [2mvia [0m[3menvironments/development/main.tf[2m[3m:243-257 (module.storage_acc_loki_storage)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[2m  19   [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_storage_container"[0m [38;5;37m"container"[0m {
+[0m[0m[2m  20   [0m[0m  [38;5;245mcount[0m                 =[38;5;33m length[0m([38;5;33mvar[0m.container_names)
+[0m[0m[2m  21   [0m[0m  [38;5;245mname[0m                  = [38;5;33mvar[0m.container_names[[38;5;33mcount[0m.index]
+[0m[0m[2m  22   [0m[0m  [38;5;245mstorage_account_name[0m  = azurerm_storage_account.storage_ac.name
+[0m[0m[31m  23 [0m[0m[31m[ [0m[0m  [38;5;245mcontainer_access_type[0m = [38;5;33mvar[0m.container_access_types[[38;5;33mcount[0m.index]
+[0m[0m[2m  24   [0m[0m}
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0007 [31m(HIGH): [0m[0mContainer allows public access.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mStorage container public access should be off. It can be configured for blobs only, containers and blobs or off entirely. The default is off, with no public access.
+Explicitly overriding publicAccess to anything other than off should be avoided.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0007
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmodules/storage_account/main.tf[0m[2m:[0m[34m23[0m
+[0m[0m   [2mvia [0m[3mmodules/storage_account/main.tf[2m[3m:19-24 (azurerm_storage_container.container[2])
+[0m[0m    [2mvia [0m[3menvironments/development/main.tf[2m[3m:243-257 (module.storage_acc_loki_storage)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[2m  19   [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_storage_container"[0m [38;5;37m"container"[0m {
+[0m[0m[2m  20   [0m[0m  [38;5;245mcount[0m                 =[38;5;33m length[0m([38;5;33mvar[0m.container_names)
+[0m[0m[2m  21   [0m[0m  [38;5;245mname[0m                  = [38;5;33mvar[0m.container_names[[38;5;33mcount[0m.index]
+[0m[0m[2m  22   [0m[0m  [38;5;245mstorage_account_name[0m  = azurerm_storage_account.storage_ac.name
+[0m[0m[31m  23 [0m[0m[31m[ [0m[0m  [38;5;245mcontainer_access_type[0m = [38;5;33mvar[0m.container_access_types[[38;5;33mcount[0m.index]
+[0m[0m[2m  24   [0m[0m}
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0007 [31m(HIGH): [0m[0mContainer allows public access.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mStorage container public access should be off. It can be configured for blobs only, containers and blobs or off entirely. The default is off, with no public access.
+Explicitly overriding publicAccess to anything other than off should be avoided.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0007
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmodules/storage_account/main.tf[0m[2m:[0m[34m23[0m
+[0m[0m   [2mvia [0m[3mmodules/storage_account/main.tf[2m[3m:19-24 (azurerm_storage_container.container[0])
+[0m[0m    [2mvia [0m[3menvironments/development/main.tf[2m[3m:243-257 (module.storage_acc_loki_storage)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[2m  19   [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_storage_container"[0m [38;5;37m"container"[0m {
+[0m[0m[2m  20   [0m[0m  [38;5;245mcount[0m                 =[38;5;33m length[0m([38;5;33mvar[0m.container_names)
+[0m[0m[2m  21   [0m[0m  [38;5;245mname[0m                  = [38;5;33mvar[0m.container_names[[38;5;33mcount[0m.index]
+[0m[0m[2m  22   [0m[0m  [38;5;245mstorage_account_name[0m  = azurerm_storage_account.storage_ac.name
+[0m[0m[31m  23 [0m[0m[31m[ [0m[0m  [38;5;245mcontainer_access_type[0m = [38;5;33mvar[0m.container_access_types[[38;5;33mcount[0m.index]
+[0m[0m[2m  24   [0m[0m}
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m

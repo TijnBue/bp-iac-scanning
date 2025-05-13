@@ -1,0 +1,31 @@
+
+[0m[1mSnyk Infrastructure as Code[22m[0m
+
+[?25l[36m⠋[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠙[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠹[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠸[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠼[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠴[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠦[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠧[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠇[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠏[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠋[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠙[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠹[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠸[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠼[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠴[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠦[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠧[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠇[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠏[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠋[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠙[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠹[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠸[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠼[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠴[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠦[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[?25h[32m✔[39m [0mTest completed.[0m
+
+[0m[1mIssues[22m[0m
+  [32m[1mNo vulnerable paths were found![22m[39m
+
+-------------------------------------------------------
+
+[0m[1mTest Summary[22m[0m
+
+  Organization: buetijn
+  Project name: app
+
+[32m[1m✔[22m[39m Files without issues: [0m[1m1[22m[0m
+[31m[1m✗[22m[39m Files with issues: [0m[1m0[22m[0m
+  Ignored issues: [0m[1m0[22m[0m
+  Total issues: [0m[1m0[22m[0m [ [35m0 critical[39m, [31m0 high[39m, [33m0 medium[39m, [0m0 low[0m ]
+
+-------------------------------------------------------
+
+[0m[1mReport Complete[22m[0m
+
+  Your test results are available at: [0m[1mhttps://snyk.io/org/buetijn/projects[22m[0m
+  under the name: [0m[1mapp[22m[0m
+
+
+[1m[31mYou have reached your monthly limit of 200 private tests for your buetijn org.[39m[22m
+[1m[31mTo learn more about our plans and increase your tests limit visit https://snyk.io/plans.[39m[22m
+[?25h

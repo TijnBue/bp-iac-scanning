@@ -1,0 +1,71 @@
+2025-05-11T20:40:26Z	[94mINFO[0m	[misconfig] Misconfiguration scanning is enabled
+2025-05-11T20:40:26Z	[94mINFO[0m	[misconfig] Need to update the checks bundle
+2025-05-11T20:40:26Z	[94mINFO[0m	[misconfig] Downloading the checks bundle...
+
+2025-05-11T20:40:28Z	[94mINFO[0m	[terraform scanner] Scanning root module	file_path="."
+2025-05-11T20:40:28Z	[94mINFO[0m	Detected config files	num=2
+[0m
+[4m[1m[4mReport Summary[0m[4m[0m
+
+[0m[2m┌─────────┬───────────┬───────────────────┐[0m
+[2m│[0m [1mTarget [0m [2m│[0m [1m  Type   [0m [2m│[0m [1mMisconfigurations[0m [2m│[0m
+[2m├─────────┼───────────┼───────────────────┤[0m
+[2m│[0m .       [2m│[0m terraform [2m│[0m         0         [2m│[0m
+[2m├─────────┼───────────┼───────────────────┤[0m
+[2m│[0m main.tf [2m│[0m terraform [2m│[0m         [91m2[0m         [2m│[0m
+[2m└─────────┴───────────┴───────────────────┘[0m
+[0mLegend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+[0m[0m
+[4m[1m[4mmain.tf (terraform)[0m[4m[0m
+
+[0m[0mTests: 2 (SUCCESSES: 0, FAILURES: 2)
+[0m[0mFailures: 2 (UNKNOWN: 0, LOW: 0, MEDIUM: 1, HIGH: 0, CRITICAL: 1)
+
+[0m[0mAVD-AZU-0013 [31m[1m(CRITICAL): [0m[0mVault network ACL does not block access by default.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mNetwork ACLs allow you to reduce your exposure to risk by limiting what can access your key vault.
+
+The default action of the Network ACL should be set to deny for when IPs are not matched. Azure services can be allowed to bypass.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0013
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmain.tf[0m[0m[2m:[0m[34m27[0m[34m-54[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m  27 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_key_vault"[0m [38;5;37m"example"[0m {
+[0m[0m[31m  28 [0m[0m[31m│ [0m[0m  [38;5;245mname[0m                        = [38;5;37m"examplekeyvault"
+[0m[0m[31m  29 [0m[0m[31m│ [0m[0m[0m  [38;5;245mlocation[0m                    = azurerm_resource_group.example.location
+[0m[0m[31m  30 [0m[0m[31m│ [0m[0m  [38;5;245mresource_group_name[0m         = azurerm_resource_group.example.name
+[0m[0m[31m  31 [0m[0m[31m│ [0m[0m  [38;5;245menabled_for_disk_encryption[0m = [38;5;166mtrue
+[0m[0m[31m  32 [0m[0m[31m│ [0m[0m[0m  [38;5;245mtenant_id[0m                   = [38;5;33mdata[0m.azurerm_client_config.current.tenant_id
+[0m[0m[31m  33 [0m[0m[31m│ [0m[0m  [38;5;245msoft_delete_retention_days[0m  = [38;5;37m7
+[0m[0m[31m  34 [0m[0m[31m│ [0m[0m[0m  [38;5;245mpurge_protection_enabled[0m    = [38;5;166mfalse
+[0m[0m[31m  35 [0m[0m[31m└ [0m[0m[0m
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0016 [33m(MEDIUM): [0m[0mVault does not have purge protection enabled.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mPurge protection is an optional Key Vault behavior and is not enabled by default.
+
+Purge protection can only be enabled once soft-delete is enabled. It can be turned on via CLI or PowerShell.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0016
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmain.tf[0m[2m:[0m[34m34[0m
+[0m[0m   [2mvia [0m[3mmain.tf[2m[3m:27-54 (azurerm_key_vault.example)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[2m  27   [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_key_vault"[0m [38;5;37m"example"[0m {
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[31m  34 [0m[0m[31m[ [0m[0m[0m  [38;5;245mpurge_protection_enabled[0m    = [38;5;166mfalse
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m  54   [0m[0m}
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m

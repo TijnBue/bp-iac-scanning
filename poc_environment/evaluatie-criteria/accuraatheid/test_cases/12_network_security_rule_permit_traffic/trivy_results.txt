@@ -1,0 +1,64 @@
+2025-05-11T20:40:53Z	[94mINFO[0m	[misconfig] Misconfiguration scanning is enabled
+2025-05-11T20:40:53Z	[94mINFO[0m	[misconfig] Need to update the checks bundle
+2025-05-11T20:40:53Z	[94mINFO[0m	[misconfig] Downloading the checks bundle...
+
+2025-05-11T20:40:55Z	[94mINFO[0m	[terraform scanner] Scanning root module	file_path="."
+2025-05-11T20:40:55Z	[94mINFO[0m	Detected config files	num=2
+[0m
+[4m[4m[1mReport Summary[0m[4m[0m
+
+[0m[2m┌─────────┬───────────┬───────────────────┐[0m
+[2m│[0m [1mTarget [0m [2m│[0m [1m  Type   [0m [2m│[0m [1mMisconfigurations[0m [2m│[0m
+[2m├─────────┼───────────┼───────────────────┤[0m
+[2m│[0m .       [2m│[0m terraform [2m│[0m         0         [2m│[0m
+[2m├─────────┼───────────┼───────────────────┤[0m
+[2m│[0m main.tf [2m│[0m terraform [2m│[0m         [91m2[0m         [2m│[0m
+[2m└─────────┴───────────┴───────────────────┘[0m
+[0mLegend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+[0m[0m
+[4m[1m[4mmain.tf (terraform)[0m[4m[0m
+
+[0m[0mTests: 2 (SUCCESSES: 0, FAILURES: 2)
+[0m[0mFailures: 2 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 2)
+
+[0m[0mAVD-AZU-0047 [31m[1m(CRITICAL): [0m[0mSecurity group rule allows unrestricted ingress from any IP address.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mOpening up ports to allow connections from the public internet is generally to be avoided. You should restrict access to IP addresses or ranges that are explicitly required where possible.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0047
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmain.tf[0m[2m:[0m[34m33[0m
+[0m[0m   [2mvia [0m[3mmain.tf[2m[3m:25-37 (azurerm_network_security_rule.ssh_open)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[2m  25   [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_network_security_rule"[0m [38;5;37m"ssh_open"[0m {
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[31m  33 [0m[0m[31m[ [0m[0m[0m  [38;5;245msource_address_prefix[0m       = [38;5;37m"0.0.0.0/0"
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m  37   [0m[0m}
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0050 [31m[1m(CRITICAL): [0m[0mSecurity group rule allows unrestricted ingress to SSH port from any IP address.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mSSH access can be configured on either the network security group or in the network security group rule.
+SSH access should not be permitted from the internet (*, 0.0.0.0, /0, internet, any)
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0050
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmain.tf[0m[2m:[0m[34m33[0m
+[0m[0m   [2mvia [0m[3mmain.tf[2m[3m:25-37 (azurerm_network_security_rule.ssh_open)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[2m  25   [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_network_security_rule"[0m [38;5;37m"ssh_open"[0m {
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[31m  33 [0m[0m[31m[ [0m[0m[0m  [38;5;245msource_address_prefix[0m       = [38;5;37m"0.0.0.0/0"
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m  37   [0m[0m}
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m

@@ -1,0 +1,75 @@
+[34mterraform scan results:
+[0m[36m
+Passed checks: 0, Failed checks: 4, Skipped checks: 0
+
+[0m[97mCheck: CKV_AZURE_94: "Ensure that My SQL server enables geo-redundant backups"
+[0m[31m	FAILED for resource: azurerm_mysql_flexible_server.example
+[0m[35m	File: /main.tf:19-27
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-my-sql-server-enables-geo-redundant-backups
+[0m[0m
+		[37m19 | [33mresource "azurerm_mysql_flexible_server" "example" {
+		[37m20 | [33m  name                   = "example-fs"
+		[37m21 | [33m  resource_group_name    = azurerm_resource_group.example.name
+		[37m22 | [33m  location               = azurerm_resource_group.example.location
+		[37m23 | [33m  administrator_login    = "psqladmin"
+		[37m24 | [33m  administrator_password =  "H@Sh1CoR3!"
+		[37m25 | [33m  backup_retention_days  = 7
+		[37m26 | [33m  sku_name               = "GP_Standard_D2ds_v4"
+		[37m27 | [33m}
+
+[97mCheck: CKV_AZURE_94: "Ensure that My SQL server enables geo-redundant backups"
+[0m[31m	FAILED for resource: azurerm_mysql_flexible_server.example_2
+[0m[35m	File: /main.tf:30-38
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-my-sql-server-enables-geo-redundant-backups
+[0m[0m
+		[37m30 | [33mresource "azurerm_mysql_flexible_server" "example_2" {
+		[37m31 | [33m  name                   = "example-fs-2"
+		[37m32 | [33m  resource_group_name    = azurerm_resource_group.example.name
+		[37m33 | [33m  location               = azurerm_resource_group.example.location
+		[37m34 | [33m  administrator_login    = "psqladmin"
+		[37m35 | [33m  administrator_password =  "4-v3ry-53cr37-p455w0rd"
+		[37m36 | [33m  backup_retention_days  = 7
+		[37m37 | [33m  sku_name               = "GP_Standard_D2ds_v4"
+		[37m38 | [33m}
+
+[97mCheck: CKV2_AZURE_56: "Ensure Azure MySQL Flexible Server is configured with private endpoint"
+[0m[31m	FAILED for resource: azurerm_mysql_flexible_server.example
+[0m[35m	File: /main.tf:19-27
+[0m
+		[37m19 | [33mresource "azurerm_mysql_flexible_server" "example" {
+		[37m20 | [33m  name                   = "example-fs"
+		[37m21 | [33m  resource_group_name    = azurerm_resource_group.example.name
+		[37m22 | [33m  location               = azurerm_resource_group.example.location
+		[37m23 | [33m  administrator_login    = "psqladmin"
+		[37m24 | [33m  administrator_password =  "H@Sh1CoR3!"
+		[37m25 | [33m  backup_retention_days  = 7
+		[37m26 | [33m  sku_name               = "GP_Standard_D2ds_v4"
+		[37m27 | [33m}
+
+[97mCheck: CKV2_AZURE_56: "Ensure Azure MySQL Flexible Server is configured with private endpoint"
+[0m[31m	FAILED for resource: azurerm_mysql_flexible_server.example_2
+[0m[35m	File: /main.tf:30-38
+[0m
+		[37m30 | [33mresource "azurerm_mysql_flexible_server" "example_2" {
+		[37m31 | [33m  name                   = "example-fs-2"
+		[37m32 | [33m  resource_group_name    = azurerm_resource_group.example.name
+		[37m33 | [33m  location               = azurerm_resource_group.example.location
+		[37m34 | [33m  administrator_login    = "psqladmin"
+		[37m35 | [33m  administrator_password =  "4-v3ry-53cr37-p455w0rd"
+		[37m36 | [33m  backup_retention_days  = 7
+		[37m37 | [33m  sku_name               = "GP_Standard_D2ds_v4"
+		[37m38 | [33m}
+
+[34msecrets scan results:
+[0m[36m
+Passed checks: 0, Failed checks: 1, Skipped checks: 0
+
+[0m[97mCheck: CKV_SECRET_6: "Base64 High Entropy String"
+[0m[31m	FAILED for resource: bdd195067c12322075a59201b90cff0d38dbaab4
+[0m[35m	File: /main.tf:35-36
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/secrets-policies/secrets-policy-index/git-secrets-6
+[0m[0m
+		[37m35 | [33m  administrator_password =  "4-v3r**********"
+
+[0m[0m[0m
+[0m[0m[0m[0m[0m

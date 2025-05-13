@@ -1,0 +1,116 @@
+[38;2;34;187;51m
+                                                                                                                                                   
+                                                                                                                                                                                                    
+   MLLLLLM             MLLLLLLLLL   LLLLLLL             KLLLLLLLLLLLLLLLL       LLLLLLLLLLLLLLLLLLLLLLL 
+   MMMMMMM           MMMMMMMMMML    MMMMMMMK       LMMMMMMMMMMMMMMMMMMMML   KLMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM         MMMMMMMMML       MMMMMMMK     LMMMMMMMMMMMMMMMMMMMMMML  LMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM      MMMMMMMMMML         MMMMMMMK   LMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM    LMMMMMMMMML           MMMMMMMK  LMMMMMMMMMLLMLLLLLLLLLLLLLL LMMMMMMMLLLLLLLLLLLLLLLLLLLLM 
+   MMMMMMM  MMMMMMMMMLM             MMMMMMMK LMMMMMMMM                    LMMMMMML                      
+   MMMMMMMLMMMMMMMML                MMMMMMMK MMMMMMML                     LMMMMMMMMLLLLLLLLLLLLLMLL     
+   MMMMMMMMMMMMMMMM                 MMMMMMMK MMMMMML                       LMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMMMMMMMMMMMMM               MMMMMMMK MMMMMMM                         LMMMMMMMMMMMMMMMMMMMMMMMML 
+   MMMMMMM KLMMMMMMMMML             MMMMMMMK LMMMMMMM                                          MMMMMMMML
+   MMMMMMM    LMMMMMMMMMM           MMMMMMMK LMMMMMMMMLL                                        MMMMMMML
+   MMMMMMM      LMMMMMMMMMLL        MMMMMMMK  LMMMMMMMMMMMMMMMMMMMMMMMMML LLLLLLLLLLLLLLLLLLLLMMMMMMMMMM
+   MMMMMMM        MMMMMMMMMMML      MMMMMMMK   MMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM          LLMMMMMMMMML    MMMMMMMK     LLMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMM             MMMMMMMMMML  MMMMMMMK         KLMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMLK    
+                                                                                                            
+                                                                                                                                                                                                                                                                                                                        
+
+[0m
+Scanning with Keeping Infrastructure as Code Secure v2.1.7
+
+
+
+
+
+[38;2;91;192;222mName Is Not Snake Case[0m, Severity: [38;2;91;192;222mINFO[0m, Results: 3
+[1mDescription:[0m All names should follow snake case pattern.
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 710
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/1e434b25-8763-4b00-a5ca-ca03b7abbb66
+
+	[38;2;91;192;222m[1]:[0m ../../src/terraform/main.tf:[38;2;34;187;51m36[0m
+
+		035: 
+[38;2;240;173;78m		036: resource "azurerm_sql_database" "my-sql-database" {
+[0m		037:   name                = "${local.resource_prefix}sqldatabase"
+
+
+	[38;2;91;192;222m[2]:[0m ../../src/terraform/main.tf:[38;2;34;187;51m21[0m
+
+		020: 
+[38;2;240;173;78m		021: resource "azurerm_mssql_server" "my-sql-server" {
+[0m		022:   name                          = "${local.resource_prefix}sqlserver"
+
+
+	[38;2;91;192;222m[3]:[0m ../../src/terraform/main.tf:[38;2;34;187;51m16[0m
+
+		015: }
+[38;2;240;173;78m		016: resource "azurerm_resource_group" "tests-resource-group" {
+[0m		017:   name     = "${local.resource_prefix}resourcegroup"
+
+
+[38;2;255;114;19mSQL Database Audit Disabled[0m, Severity: [38;2;255;114;19mMEDIUM[0m, Results: 1
+[1mDescription:[0m Ensure that 'Threat Detection' is enabled for Azure SQL Database
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 778
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/83a229ba-483e-47c6-8db7-dc96969bce5a
+
+	[38;2;255;114;19m[1]:[0m ../../src/terraform/main.tf:[38;2;34;187;51m36[0m
+
+		035: 
+[38;2;240;173;78m		036: resource "azurerm_sql_database" "my-sql-database" {
+[0m		037:   name                = "${local.resource_prefix}sqldatabase"
+
+
+[38;2;255;114;19mMSSQL Server Auditing Disabled[0m, Severity: [38;2;255;114;19mMEDIUM[0m, Results: 1
+[1mDescription:[0m Make sure that for MSSQL Servers, that 'Auditing' is set to 'On'
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 778
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/609839ae-bd81-4375-9910-5bce72ae7b92
+
+	[38;2;255;114;19m[1]:[0m ../../src/terraform/main.tf:[38;2;34;187;51m21[0m
+
+		020: 
+[38;2;240;173;78m		021: resource "azurerm_mssql_server" "my-sql-server" {
+[0m		022:   name                          = "${local.resource_prefix}sqlserver"
+
+
+[38;2;187;33;36mPasswords And Secrets - Generic Password[0m, Severity: [38;2;187;33;36mHIGH[0m, Results: 1
+[1mDescription:[0m Query to find passwords and secrets in infrastructure code.
+[1mPlatform:[0m Common
+[1mCWE:[0m 798
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/common-queries/a88baa34-e2ad-44ea-ad6f-8cac87bc7c71
+
+	[38;2;187;33;36m[1]:[0m ../../src/terraform/main.tf:[38;2;34;187;51m27[0m
+
+		026:   administrator_login           = "4dm1n157r470r"
+[38;2;240;173;78m		027:   administrator_login_password  = <SECRET-MASKED-ON-PURPOSE>
+[0m		028:   public_network_access_enabled = true
+
+
+[38;2;187;33;36mMSSQL Server Public Network Access Enabled[0m, Severity: [38;2;187;33;36mHIGH[0m, Results: 1
+[1mDescription:[0m MSSQL Server public network access should be disabled
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 732
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/ade36cf4-329f-4830-a83d-9db72c800507
+
+	[38;2;187;33;36m[1]:[0m ../../src/terraform/main.tf:[38;2;34;187;51m28[0m
+
+		027:   administrator_login_password  = <SECRET-MASKED-ON-PURPOSE>
+[38;2;240;173;78m		028:   public_network_access_enabled = true
+[0m		029: 
+
+
+
+Results Summary:
+[38;2;255;0;0mCRITICAL[0m: 0
+[38;2;187;33;36mHIGH[0m: 2
+[38;2;255;114;19mMEDIUM[0m: 2
+[38;2;237;213;126mLOW[0m: 0
+[38;2;91;192;222mINFO[0m: 3
+TOTAL: 7
+

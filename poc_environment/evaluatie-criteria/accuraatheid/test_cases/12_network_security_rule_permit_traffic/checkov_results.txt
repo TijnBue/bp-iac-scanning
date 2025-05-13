@@ -1,0 +1,6 @@
+[34mterraform scan results:
+[0m[36m
+Passed checks: 8, Failed checks: 0, Skipped checks: 0
+
+[0m[0m[0m[0m
+[0m[0m[0m[0m[0m

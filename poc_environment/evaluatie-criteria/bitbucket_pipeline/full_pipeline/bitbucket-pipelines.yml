@@ -1,0 +1,24 @@
+image: hashicorp/terraform:latest
+
+pipelines:
+  branches:
+    # Run Terraform init and plan for any push event on any branch
+    "**":
+      - step:
+          name: Terraform Init and Plan
+          script:
+            - terraform init
+            - terraform plan
+
+      - step:
+          name: IaC scan
+          image: iac-scan-image:tag
+          script:
+            - echo "commands for IaC scan"
+    "main":
+      - step:
+          name: Terraform Init and Plan
+          trigger: manual
+          script:
+            - terraform init
+            - terraform apply -auto-approve

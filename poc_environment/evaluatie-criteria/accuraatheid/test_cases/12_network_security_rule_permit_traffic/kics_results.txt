@@ -1,0 +1,63 @@
+[38;2;34;187;51m
+                                                                                                                                                   
+                                                                                                                                                                                                    
+   MLLLLLM             MLLLLLLLLL   LLLLLLL             KLLLLLLLLLLLLLLLL       LLLLLLLLLLLLLLLLLLLLLLL 
+   MMMMMMM           MMMMMMMMMML    MMMMMMMK       LMMMMMMMMMMMMMMMMMMMML   KLMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM         MMMMMMMMML       MMMMMMMK     LMMMMMMMMMMMMMMMMMMMMMML  LMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM      MMMMMMMMMML         MMMMMMMK   LMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM    LMMMMMMMMML           MMMMMMMK  LMMMMMMMMMLLMLLLLLLLLLLLLLL LMMMMMMMLLLLLLLLLLLLLLLLLLLLM 
+   MMMMMMM  MMMMMMMMMLM             MMMMMMMK LMMMMMMMM                    LMMMMMML                      
+   MMMMMMMLMMMMMMMML                MMMMMMMK MMMMMMML                     LMMMMMMMMLLLLLLLLLLLLLMLL     
+   MMMMMMMMMMMMMMMM                 MMMMMMMK MMMMMML                       LMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMMMMMMMMMMMMM               MMMMMMMK MMMMMMM                         LMMMMMMMMMMMMMMMMMMMMMMMML 
+   MMMMMMM KLMMMMMMMMML             MMMMMMMK LMMMMMMM                                          MMMMMMMML
+   MMMMMMM    LMMMMMMMMMM           MMMMMMMK LMMMMMMMMLL                                        MMMMMMML
+   MMMMMMM      LMMMMMMMMMLL        MMMMMMMK  LMMMMMMMMMMMMMMMMMMMMMMMMML LLLLLLLLLLLLLLLLLLLLMMMMMMMMMM
+   MMMMMMM        MMMMMMMMMMML      MMMMMMMK   MMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM          LLMMMMMMMMML    MMMMMMMK     LLMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMM             MMMMMMMMMML  MMMMMMMK         KLMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMLK    
+                                                                                                            
+                                                                                                                                                                                                                                                                                                                        
+
+[0m
+Scanning with Keeping Infrastructure as Code Secure v2.1.7
+
+
+
+
+
+[38;2;255;114;19mSSH Is Exposed To The Internet[0m, Severity: [38;2;255;114;19mMEDIUM[0m, Results: 1
+[1mDescription:[0m Port 22 (SSH) is exposed to the internet
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 668
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/3e3c175e-aadf-4e2b-a464-3fdac5748d24
+
+	[38;2;255;114;19m[1]:[0m ../../src/main.tf:[38;2;34;187;51m32[0m
+
+		031:   source_port_range           = "*"
+[38;2;240;173;78m		032:   destination_port_range      = "22"
+[0m		033:   source_address_prefix       = "0.0.0.0/0"
+
+
+[38;2;187;33;36mSensitive Port Is Exposed To Entire Network[0m, Severity: [38;2;187;33;36mHIGH[0m, Results: 1
+[1mDescription:[0m A sensitive port, such as port 23 or port 110, is open for the whole network in either TCP or UDP protocol
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 200
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/594c198b-4d79-41b8-9b36-fde13348b619
+
+	[38;2;187;33;36m[1]:[0m ../../src/main.tf:[38;2;34;187;51m32[0m
+
+		031:   source_port_range           = "*"
+[38;2;240;173;78m		032:   destination_port_range      = "22"
+[0m		033:   source_address_prefix       = "0.0.0.0/0"
+
+
+
+Results Summary:
+[38;2;255;0;0mCRITICAL[0m: 0
+[38;2;187;33;36mHIGH[0m: 1
+[38;2;255;114;19mMEDIUM[0m: 1
+[38;2;237;213;126mLOW[0m: 0
+[38;2;91;192;222mINFO[0m: 0
+TOTAL: 2
+

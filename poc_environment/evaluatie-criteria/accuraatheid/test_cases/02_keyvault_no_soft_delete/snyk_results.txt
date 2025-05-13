@@ -1,0 +1,52 @@
+
+[0m[1mSnyk Infrastructure as Code[22m[0m
+
+[?25l[36m⠋[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠙[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠹[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠸[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠼[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠴[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠦[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠧[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠇[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠏[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠋[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠙[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠹[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠸[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠼[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠴[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠦[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠧[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠇[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠏[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠋[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠙[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠹[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠸[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[?25h[32m✔[39m [0mTest completed.[0m
+
+[0m[1mIssues[22m[0m
+
+[0m[1mLow Severity Issues: 1[22m[0m
+
+  [0m[Low] [1mKey Vault accidental purge prevention disabled[22m[0m
+  Info:    Key Vault accidental purge prevention disabled. Accidentally purged
+           key material will not recoverable
+  Rule:    [4mhttps://security.snyk.io/rules/cloud/SNYK-CC-TF-175[24m
+  Path:    resource > azurerm_key_vault[example] > purge_protection_enabled
+  File:    main.tf
+  Resolve: Set `purge_protection_enabled` attribute to `true`
+
+[0m[1mMedium Severity Issues: 1[22m[0m
+
+  [33m[Medium] [1mKey Vault soft deletion not set to 90 days[22m[39m
+  Info:    Key Vault soft deletion not set to 90 days. Accidentally deleted
+           vaults and vault items are not recoverable and might lead to data
+           loss
+  Rule:    [4mhttps://security.snyk.io/rules/cloud/SNYK-CC-AZURE-625[24m
+  Path:    resource > azurerm_key_vault[example] > soft_delete_retention_days
+  File:    main.tf
+  Resolve: Set `soft_delete_retention_days` to `90`, or remove the attribute
+           entirely to use 90 days default retention
+
+-------------------------------------------------------
+
+[0m[1mTest Summary[22m[0m
+
+  Organization: buetijn
+  Project name: app
+
+[32m[1m✔[22m[39m Files without issues: [0m[1m0[22m[0m
+[31m[1m✗[22m[39m Files with issues: [0m[1m1[22m[0m
+  Ignored issues: [0m[1m0[22m[0m
+  Total issues: [0m[1m2[22m[0m [ [35m0 critical[39m, [31m0 high[39m, [33m1 medium[39m, [0m1 low[0m ]
+
+-------------------------------------------------------
+
+[0m[1mReport Complete[22m[0m
+
+  Your test results are available at: [0m[1mhttps://snyk.io/org/buetijn/projects[22m[0m
+  under the name: [0m[1mapp[22m[0m
+
+
+[1m[31mYou have reached your monthly limit of 200 private tests for your buetijn org.[39m[22m
+[1m[31mTo learn more about our plans and increase your tests limit visit https://snyk.io/plans.[39m[22m
+[?25h

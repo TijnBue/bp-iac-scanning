@@ -1,0 +1,46 @@
+2025-05-11T20:41:07Z	[94mINFO[0m	[misconfig] Misconfiguration scanning is enabled
+2025-05-11T20:41:07Z	[94mINFO[0m	[misconfig] Need to update the checks bundle
+2025-05-11T20:41:07Z	[94mINFO[0m	[misconfig] Downloading the checks bundle...
+
+2025-05-11T20:41:09Z	[94mINFO[0m	[terraform scanner] Scanning root module	file_path="."
+2025-05-11T20:41:09Z	[94mINFO[0m	Detected config files	num=2
+[0m
+[4m[1m[4mReport Summary[0m[4m[0m
+
+[0m[2m┌─────────┬───────────┬───────────────────┐[0m
+[2m│[0m [1mTarget [0m [2m│[0m [1m  Type   [0m [2m│[0m [1mMisconfigurations[0m [2m│[0m
+[2m├─────────┼───────────┼───────────────────┤[0m
+[2m│[0m .       [2m│[0m terraform [2m│[0m         0         [2m│[0m
+[2m├─────────┼───────────┼───────────────────┤[0m
+[2m│[0m main.tf [2m│[0m terraform [2m│[0m         [91m1[0m         [2m│[0m
+[2m└─────────┴───────────┴───────────────────┘[0m
+[0mLegend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+[0m[0m
+[4m[1m[4mmain.tf (terraform)[0m[4m[0m
+
+[0m[0mTests: 1 (SUCCESSES: 0, FAILURES: 1)
+[0m[0mFailures: 1 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 1, CRITICAL: 0)
+
+[0m[0mAVD-AZU-0039 [31m(HIGH): [0m[0mLinux virtual machine allows password authentication.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mAccess to virtual machines should be authenticated using SSH keys. Removing the option of password authentication enforces more secure methods while removing the risks inherent with passwords.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0039
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmain.tf[0m[2m:[0m[34m80[0m
+[0m[0m   [2mvia [0m[3mmain.tf[2m[3m:79-81 (os_profile_linux_config)
+[0m[0m    [2mvia [0m[3mmain.tf[2m[3m:49-85 (azurerm_virtual_machine.main)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[2m  49   [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_virtual_machine"[0m [38;5;37m"main"[0m {
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[31m  80 [0m[0m[31m[ [0m[0m    [38;5;245mdisable_password_authentication[0m = [38;5;166mfalse
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m  85   [0m[0m}
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m

@@ -1,0 +1,10 @@
+image: checkmarx/kics:v2.1.7
+pipelines:
+  branches:
+    main:
+      - step:
+          name: IaC scan (KICS)
+          script:
+              - kics scan --ignore-on-exit results -p ${PWD} -o ${PWD}
+          artifacts:
+              - results.json

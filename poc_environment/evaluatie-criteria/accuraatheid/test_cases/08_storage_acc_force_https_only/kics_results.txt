@@ -1,0 +1,76 @@
+[38;2;34;187;51m
+                                                                                                                                                   
+                                                                                                                                                                                                    
+   MLLLLLM             MLLLLLLLLL   LLLLLLL             KLLLLLLLLLLLLLLLL       LLLLLLLLLLLLLLLLLLLLLLL 
+   MMMMMMM           MMMMMMMMMML    MMMMMMMK       LMMMMMMMMMMMMMMMMMMMML   KLMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM         MMMMMMMMML       MMMMMMMK     LMMMMMMMMMMMMMMMMMMMMMML  LMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM      MMMMMMMMMML         MMMMMMMK   LMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM    LMMMMMMMMML           MMMMMMMK  LMMMMMMMMMLLMLLLLLLLLLLLLLL LMMMMMMMLLLLLLLLLLLLLLLLLLLLM 
+   MMMMMMM  MMMMMMMMMLM             MMMMMMMK LMMMMMMMM                    LMMMMMML                      
+   MMMMMMMLMMMMMMMML                MMMMMMMK MMMMMMML                     LMMMMMMMMLLLLLLLLLLLLLMLL     
+   MMMMMMMMMMMMMMMM                 MMMMMMMK MMMMMML                       LMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMMMMMMMMMMMMM               MMMMMMMK MMMMMMM                         LMMMMMMMMMMMMMMMMMMMMMMMML 
+   MMMMMMM KLMMMMMMMMML             MMMMMMMK LMMMMMMM                                          MMMMMMMML
+   MMMMMMM    LMMMMMMMMMM           MMMMMMMK LMMMMMMMMLL                                        MMMMMMML
+   MMMMMMM      LMMMMMMMMMLL        MMMMMMMK  LMMMMMMMMMMMMMMMMMMMMMMMMML LLLLLLLLLLLLLLLLLLLLMMMMMMMMMM
+   MMMMMMM        MMMMMMMMMMML      MMMMMMMK   MMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM          LLMMMMMMMMML    MMMMMMMK     LLMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMM             MMMMMMMMMML  MMMMMMMK         KLMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMLK    
+                                                                                                            
+                                                                                                                                                                                                                                                                                                                        
+
+[0m
+Scanning with Keeping Infrastructure as Code Secure v2.1.7
+
+
+
+
+
+[38;2;255;114;19mTrusted Microsoft Services Not Enabled[0m, Severity: [38;2;255;114;19mMEDIUM[0m, Results: 1
+[1mDescription:[0m Trusted Microsoft Services should be enabled for Storage Account access
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 284
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/5400f379-a347-4bdd-a032-446465fdcc6f
+
+	[38;2;255;114;19m[1]:[0m ../../src/main.tf:[38;2;34;187;51m19[0m
+
+		018: 
+[38;2;240;173;78m		019: resource "azurerm_storage_account" "example" {
+[0m		020:   name                     = "storageaccountname"
+
+
+[38;2;255;114;19mStorage Account Not Forcing HTTPS[0m, Severity: [38;2;255;114;19mMEDIUM[0m, Results: 1
+[1mDescription:[0m Storage Accounts should enforce the use of HTTPS
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 319
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/12944ec4-1fa0-47be-8b17-42a034f937c2
+
+	[38;2;255;114;19m[1]:[0m ../../src/main.tf:[38;2;34;187;51m19[0m
+
+		018: 
+[38;2;240;173;78m		019: resource "azurerm_storage_account" "example" {
+[0m		020:   name                     = "storageaccountname"
+
+
+[38;2;255;114;19mDefault Azure Storage Account Network Access Is Too Permissive[0m, Severity: [38;2;255;114;19mMEDIUM[0m, Results: 1
+[1mDescription:[0m Default Azure Storage Account network access should be set to Deny
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 285
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/a5613650-32ec-4975-a305-31af783153ea
+
+	[38;2;255;114;19m[1]:[0m ../../src/main.tf:[38;2;34;187;51m19[0m
+
+		018: 
+[38;2;240;173;78m		019: resource "azurerm_storage_account" "example" {
+[0m		020:   name                     = "storageaccountname"
+
+
+
+Results Summary:
+[38;2;255;0;0mCRITICAL[0m: 0
+[38;2;187;33;36mHIGH[0m: 0
+[38;2;255;114;19mMEDIUM[0m: 3
+[38;2;237;213;126mLOW[0m: 0
+[38;2;91;192;222mINFO[0m: 0
+TOTAL: 3
+

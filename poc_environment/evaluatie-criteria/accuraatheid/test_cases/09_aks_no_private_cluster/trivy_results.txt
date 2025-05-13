@@ -1,0 +1,115 @@
+2025-05-11T20:40:45Z	[94mINFO[0m	[misconfig] Misconfiguration scanning is enabled
+2025-05-11T20:40:45Z	[94mINFO[0m	[misconfig] Need to update the checks bundle
+2025-05-11T20:40:45Z	[94mINFO[0m	[misconfig] Downloading the checks bundle...
+
+2025-05-11T20:40:47Z	[94mINFO[0m	[terraform scanner] Scanning root module	file_path="."
+2025-05-11T20:40:47Z	[94mINFO[0m	Detected config files	num=2
+[0m
+[4m[4m[1mReport Summary[0m[4m[0m
+
+[0m[2m┌─────────┬───────────┬───────────────────┐[0m
+[2m│[0m [1mTarget [0m [2m│[0m [1m  Type   [0m [2m│[0m [1mMisconfigurations[0m [2m│[0m
+[2m├─────────┼───────────┼───────────────────┤[0m
+[2m│[0m .       [2m│[0m terraform [2m│[0m         0         [2m│[0m
+[2m├─────────┼───────────┼───────────────────┤[0m
+[2m│[0m main.tf [2m│[0m terraform [2m│[0m         [91m4[0m         [2m│[0m
+[2m└─────────┴───────────┴───────────────────┘[0m
+[0mLegend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+[0m[0m
+[4m[1m[4mmain.tf (terraform)[0m[4m[0m
+
+[0m[0mTests: 4 (SUCCESSES: 0, FAILURES: 4)
+[0m[0mFailures: 4 (UNKNOWN: 0, LOW: 0, MEDIUM: 1, HIGH: 2, CRITICAL: 1)
+
+[0m[0mAVD-AZU-0040 [33m(MEDIUM): [0m[0mCluster does not have logging enabled via OMS Agent.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mEnsure AKS logging to Azure Monitoring is configured for containers to monitor the performance of workloads.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0040
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmain.tf[0m[0m[2m:[0m[34m19[0m[34m-38[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m  19 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_kubernetes_cluster"[0m [38;5;37m"example"[0m {
+[0m[0m[31m  20 [0m[0m[31m│ [0m[0m  [38;5;245mname[0m                = [38;5;37m"example-aks1"
+[0m[0m[31m  21 [0m[0m[31m│ [0m[0m[0m  [38;5;245mlocation[0m            = azurerm_resource_group.example.location
+[0m[0m[31m  22 [0m[0m[31m│ [0m[0m  [38;5;245mresource_group_name[0m = azurerm_resource_group.example.name
+[0m[0m[31m  23 [0m[0m[31m│ [0m[0m  [38;5;245mdns_prefix[0m          = [38;5;37m"exampleaks1"
+[0m[0m[31m  24 [0m[0m[31m│ [0m[0m[0m
+[0m[0m[31m  25 [0m[0m[31m│ [0m[0m  default_node_pool {
+[0m[0m[31m  26 [0m[0m[31m│ [0m[0m    [38;5;245mname[0m       = [38;5;37m"default"
+[0m[0m[31m  27 [0m[0m[31m└ [0m[0m[0m    [38;5;245mnode_count[0m = [38;5;37m1
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0041 [31m[1m(CRITICAL): [0m[0mCluster does not limit API access to specific IP addresses.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mThe API server is the central way to interact with and manage a cluster. To improve cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0041
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmain.tf[0m[0m[2m:[0m[34m19[0m[34m-38[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m  19 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_kubernetes_cluster"[0m [38;5;37m"example"[0m {
+[0m[0m[31m  20 [0m[0m[31m│ [0m[0m  [38;5;245mname[0m                = [38;5;37m"example-aks1"
+[0m[0m[31m  21 [0m[0m[31m│ [0m[0m[0m  [38;5;245mlocation[0m            = azurerm_resource_group.example.location
+[0m[0m[31m  22 [0m[0m[31m│ [0m[0m  [38;5;245mresource_group_name[0m = azurerm_resource_group.example.name
+[0m[0m[31m  23 [0m[0m[31m│ [0m[0m  [38;5;245mdns_prefix[0m          = [38;5;37m"exampleaks1"
+[0m[0m[31m  24 [0m[0m[31m│ [0m[0m[0m
+[0m[0m[31m  25 [0m[0m[31m│ [0m[0m  default_node_pool {
+[0m[0m[31m  26 [0m[0m[31m│ [0m[0m    [38;5;245mname[0m       = [38;5;37m"default"
+[0m[0m[31m  27 [0m[0m[31m└ [0m[0m[0m    [38;5;245mnode_count[0m = [38;5;37m1
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0042 [31m(HIGH): [0m[0mRBAC is not enabled on cluster
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mUsing Kubernetes role-based access control (RBAC), you can grant users, groups, and service accounts access to only the resources they need.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0042
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmain.tf[0m[0m[2m:[0m[34m19[0m[34m-38[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m  19 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_kubernetes_cluster"[0m [38;5;37m"example"[0m {
+[0m[0m[31m  20 [0m[0m[31m│ [0m[0m  [38;5;245mname[0m                = [38;5;37m"example-aks1"
+[0m[0m[31m  21 [0m[0m[31m│ [0m[0m[0m  [38;5;245mlocation[0m            = azurerm_resource_group.example.location
+[0m[0m[31m  22 [0m[0m[31m│ [0m[0m  [38;5;245mresource_group_name[0m = azurerm_resource_group.example.name
+[0m[0m[31m  23 [0m[0m[31m│ [0m[0m  [38;5;245mdns_prefix[0m          = [38;5;37m"exampleaks1"
+[0m[0m[31m  24 [0m[0m[31m│ [0m[0m[0m
+[0m[0m[31m  25 [0m[0m[31m│ [0m[0m  default_node_pool {
+[0m[0m[31m  26 [0m[0m[31m│ [0m[0m    [38;5;245mname[0m       = [38;5;37m"default"
+[0m[0m[31m  27 [0m[0m[31m└ [0m[0m[0m    [38;5;245mnode_count[0m = [38;5;37m1
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0043 [31m(HIGH): [0m[0mKubernetes cluster does not have a network policy set.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mThe Kubernetes object type NetworkPolicy should be defined to have opportunity allow or block traffic to pods, as in a Kubernetes cluster configured with default settings, all pods can discover and communicate with each other without any restrictions.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0043
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmain.tf[0m[0m[2m:[0m[34m19[0m[34m-38[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m  19 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_kubernetes_cluster"[0m [38;5;37m"example"[0m {
+[0m[0m[31m  20 [0m[0m[31m│ [0m[0m  [38;5;245mname[0m                = [38;5;37m"example-aks1"
+[0m[0m[31m  21 [0m[0m[31m│ [0m[0m[0m  [38;5;245mlocation[0m            = azurerm_resource_group.example.location
+[0m[0m[31m  22 [0m[0m[31m│ [0m[0m  [38;5;245mresource_group_name[0m = azurerm_resource_group.example.name
+[0m[0m[31m  23 [0m[0m[31m│ [0m[0m  [38;5;245mdns_prefix[0m          = [38;5;37m"exampleaks1"
+[0m[0m[31m  24 [0m[0m[31m│ [0m[0m[0m
+[0m[0m[31m  25 [0m[0m[31m│ [0m[0m  default_node_pool {
+[0m[0m[31m  26 [0m[0m[31m│ [0m[0m    [38;5;245mname[0m       = [38;5;37m"default"
+[0m[0m[31m  27 [0m[0m[31m└ [0m[0m[0m    [38;5;245mnode_count[0m = [38;5;37m1
+[0m[0m[2m  ..   [0m[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m

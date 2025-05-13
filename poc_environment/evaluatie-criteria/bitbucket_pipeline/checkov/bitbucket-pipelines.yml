@@ -1,0 +1,11 @@
+# Checkov Pipeline
+image: bridgecrew/checkov:3.2.409
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: IaC scan (checkov)
+          script:
+            - cd terraform_stage/
+            - checkov --download-external-modules true -d .

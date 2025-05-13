@@ -1,0 +1,74 @@
+2025-05-11T20:40:56Z	[94mINFO[0m	[misconfig] Misconfiguration scanning is enabled
+2025-05-11T20:40:56Z	[94mINFO[0m	[misconfig] Need to update the checks bundle
+2025-05-11T20:40:56Z	[94mINFO[0m	[misconfig] Downloading the checks bundle...
+
+2025-05-11T20:40:58Z	[94mINFO[0m	[terraform scanner] Scanning root module	file_path="."
+2025-05-11T20:40:58Z	[94mINFO[0m	Detected config files	num=2
+[0m
+[4m[1m[4mReport Summary[0m[4m[0m
+
+[0m[2m┌─────────┬───────────┬───────────────────┐[0m
+[2m│[0m [1mTarget [0m [2m│[0m [1m  Type   [0m [2m│[0m [1mMisconfigurations[0m [2m│[0m
+[2m├─────────┼───────────┼───────────────────┤[0m
+[2m│[0m .       [2m│[0m terraform [2m│[0m         0         [2m│[0m
+[2m├─────────┼───────────┼───────────────────┤[0m
+[2m│[0m main.tf [2m│[0m terraform [2m│[0m         [91m2[0m         [2m│[0m
+[2m└─────────┴───────────┴───────────────────┘[0m
+[0mLegend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+[0m[0m
+[4m[1m[4mmain.tf (terraform)[0m[4m[0m
+
+[0m[0mTests: 2 (SUCCESSES: 0, FAILURES: 2)
+[0m[0mFailures: 2 (UNKNOWN: 0, LOW: 1, MEDIUM: 1, HIGH: 0, CRITICAL: 0)
+
+[0m[0mAVD-AZU-0044 [33m(MEDIUM): [0m[0mSecurity contact has alert notifications disabled.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mIt is recommended that at least one valid contact is configured for the security center.
+
+Microsoft will notify the security contact directly in the event of a security incident using email and require alerting to be turned on.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0044
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmain.tf[0m[2m:[0m[34m20[0m
+[0m[0m   [2mvia [0m[3mmain.tf[3m[2m:14-22 (azurerm_security_center_contact.example)
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[2m  14   [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_security_center_contact"[0m [38;5;37m"example"[0m {
+[0m[0m[2m  15   [0m[0m  [38;5;245mname[0m = [38;5;37m"Contact"
+[0m[0m[2m  16   [0m[0m[0m  [38;5;245memail[0m = [38;5;37m"contact@example.com"[0m
+[0m[0m[2m  17   [0m[0m[38;5;239m
+[0m[0m[2m  18   [0m[0m  #phone = "+1-555-555-5555"
+[0m[0m[2m  19   [0m[0m
+[0m[0m[31m  20 [0m[0m[31m[ [0m[0m[0m  [38;5;245malert_notifications[0m = [38;5;166mfalse
+[0m[0m[2m  21   [0m[0m[0m  [38;5;245malerts_to_admins[0m    = [38;5;166mfalse
+[0m[0m[2m  22   [0m[0m[0m}
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m[0mAVD-AZU-0046 (LOW): [0m[0mSecurity contact does not have a phone number listed.
+[0m[0m[2m════════════════════════════════════════
+[0m[0m[2mIt is recommended that at least one valid contact is configured for the security center.
+
+Microsoft will notify the security contact directly in the event of a security incident and will look to use a telephone number in cases where a prompt response is required.
+
+[0m[0m
+[2mSee https://avd.aquasec.com/misconfig/avd-azu-0046
+[0m[0m[2m────────────────────────────────────────
+[0m[0m [34mmain.tf[0m[0m[2m:[0m[34m14[0m[34m-22[0m
+[0m[0m[2m────────────────────────────────────────
+[0m[0m[31m  14 [0m[0m[31m┌ [0m[0m[38;5;33mresource[0m [38;5;37m"azurerm_security_center_contact"[0m [38;5;37m"example"[0m {
+[0m[0m[31m  15 [0m[0m[31m│ [0m[0m  [38;5;245mname[0m = [38;5;37m"Contact"
+[0m[0m[31m  16 [0m[0m[31m│ [0m[0m[0m  [38;5;245memail[0m = [38;5;37m"contact@example.com"[0m
+[0m[0m[31m  17 [0m[0m[31m│ [0m[0m[38;5;239m
+[0m[0m[31m  18 [0m[0m[31m│ [0m[0m  #phone = "+1-555-555-5555"
+[0m[0m[31m  19 [0m[0m[31m│ [0m[0m
+[0m[0m[31m  20 [0m[0m[31m│ [0m[0m[0m  [38;5;245malert_notifications[0m = [38;5;166mfalse
+[0m[0m[31m  21 [0m[0m[31m│ [0m[0m[0m  [38;5;245malerts_to_admins[0m    = [38;5;166mfalse
+[0m[0m[31m  22 [0m[0m[31m└ [0m[0m[0m}
+[0m[0m[2m────────────────────────────────────────
+[0m[0m
+
+[0m

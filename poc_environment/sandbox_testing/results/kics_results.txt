@@ -1,0 +1,210 @@
+[38;2;34;187;51m
+                                                                                                                                                   
+                                                                                                                                                                                                    
+   MLLLLLM             MLLLLLLLLL   LLLLLLL             KLLLLLLLLLLLLLLLL       LLLLLLLLLLLLLLLLLLLLLLL 
+   MMMMMMM           MMMMMMMMMML    MMMMMMMK       LMMMMMMMMMMMMMMMMMMMML   KLMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM         MMMMMMMMML       MMMMMMMK     LMMMMMMMMMMMMMMMMMMMMMML  LMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM      MMMMMMMMMML         MMMMMMMK   LMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM    LMMMMMMMMML           MMMMMMMK  LMMMMMMMMMLLMLLLLLLLLLLLLLL LMMMMMMMLLLLLLLLLLLLLLLLLLLLM 
+   MMMMMMM  MMMMMMMMMLM             MMMMMMMK LMMMMMMMM                    LMMMMMML                      
+   MMMMMMMLMMMMMMMML                MMMMMMMK MMMMMMML                     LMMMMMMMMLLLLLLLLLLLLLMLL     
+   MMMMMMMMMMMMMMMM                 MMMMMMMK MMMMMML                       LMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMMMMMMMMMMMMM               MMMMMMMK MMMMMMM                         LMMMMMMMMMMMMMMMMMMMMMMMML 
+   MMMMMMM KLMMMMMMMMML             MMMMMMMK LMMMMMMM                                          MMMMMMMML
+   MMMMMMM    LMMMMMMMMMM           MMMMMMMK LMMMMMMMMLL                                        MMMMMMML
+   MMMMMMM      LMMMMMMMMMLL        MMMMMMMK  LMMMMMMMMMMMMMMMMMMMMMMMMML LLLLLLLLLLLLLLLLLLLLMMMMMMMMMM
+   MMMMMMM        MMMMMMMMMMML      MMMMMMMK   MMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM          LLMMMMMMMMML    MMMMMMMK     LLMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMM             MMMMMMMMMML  MMMMMMMK         KLMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMLK    
+                                                                                                            
+                                                                                                                                                                                                                                                                                                                        
+
+[0m
+Scanning with Keeping Infrastructure as Code Secure v2.1.7
+
+
+
+
+
+[38;2;91;192;222mOutput Without Description[0m, Severity: [38;2;91;192;222mINFO[0m, Results: 4
+[1mDescription:[0m All outputs should contain a valid description.
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 710
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/59312e8a-a64e-41e7-a252-618533dd1ea8
+
+	[38;2;91;192;222m[1]:[0m ../../src/modules/container_registry/output.tf:[38;2;34;187;51m3[0m
+
+		002: 
+[38;2;240;173;78m		003: output "id" {
+[0m		004:     value = azurerm_container_registry.acr.id
+
+
+	[38;2;91;192;222m[2]:[0m ../../src/modules/remote_backend/outputs.tf:[38;2;34;187;51m1[0m
+
+[38;2;240;173;78m		001: output "storage_account_name" {
+[0m		002:     value = azurerm_storage_account.tfstate.name
+		003: }
+
+
+	[38;2;91;192;222m[3]:[0m ../../src/environments/development/main.tf:[38;2;34;187;51m280[0m
+
+		279: 
+[38;2;240;173;78m		280: output "grafana_app_clientsecret" {
+[0m		281:   value     = module.grafana_dev_sso.grafana_app_client_secret
+
+
+	[38;2;91;192;222m[4]:[0m ../../src/modules/keyvault/outputs.tf:[38;2;34;187;51m2[0m
+
+		001: # terraform/modules/keyvault/output.tf
+[38;2;240;173;78m		002: output "kv_resource_id" {
+[0m		003:   value = azurerm_key_vault.key_vault.id
+
+
+[38;2;91;192;222mName Is Not Snake Case[0m, Severity: [38;2;91;192;222mINFO[0m, Results: 3
+[1mDescription:[0m All names should follow snake case pattern.
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 710
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/1e434b25-8763-4b00-a5ca-ca03b7abbb66
+
+	[38;2;91;192;222m[1]:[0m ../../src/modules/automation/main.tf:[38;2;34;187;51m3[0m
+
+		002: 
+[38;2;240;173;78m		003: resource "azurerm_automation_account" "auto-start-stop-aks" {
+[0m		004:   name                = var.automation_account_name
+
+
+	[38;2;91;192;222m[2]:[0m ../../src/environments/development/main.tf:[38;2;34;187;51m236[0m
+
+		235: # Role assignment to allow the "terraform-test" service principle to read the secrets in the Dev Azure Keyvault
+[38;2;240;173;78m		236: resource "azurerm_role_assignment" "id_terraform_" {
+[0m		237:   scope                = module.keyvault_dev.kv_resource_id
+
+
+	[38;2;91;192;222m[3]:[0m ../../src/modules/argocd/main.tf:[38;2;34;187;51m3[0m
+
+		002: 
+[38;2;240;173;78m		003: resource "kubernetes_namespace" "argocd-rg" {
+[0m		004:   metadata {
+
+
+[38;2;255;114;19mVault Auditing Disabled[0m, Severity: [38;2;255;114;19mMEDIUM[0m, Results: 1
+[1mDescription:[0m Ensure that logging for Azure KeyVault is 'Enabled'
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 778
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/38c71c00-c177-4cd7-8d36-cd1007cdb190
+
+	[38;2;255;114;19m[1]:[0m ../../src/modules/keyvault/main.tf:[38;2;34;187;51m9[0m
+
+		008: 
+[38;2;240;173;78m		009: resource "azurerm_key_vault" "key_vault" {
+[0m		010:   name                = "${var.keyvault_name}-${random_string.random_string.id}"
+
+
+[38;2;255;114;19mTrusted Microsoft Services Not Enabled[0m, Severity: [38;2;255;114;19mMEDIUM[0m, Results: 2
+[1mDescription:[0m Trusted Microsoft Services should be enabled for Storage Account access
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 284
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/5400f379-a347-4bdd-a032-446465fdcc6f
+
+	[38;2;255;114;19m[1]:[0m ../../src/modules/storage_account/main.tf:[38;2;34;187;51m10[0m
+
+		009: 
+[38;2;240;173;78m		010: resource "azurerm_storage_account" "storage_ac" {
+[0m		011:   name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+
+
+	[38;2;255;114;19m[2]:[0m ../../src/modules/remote_backend/main.tf:[38;2;34;187;51m11[0m
+
+		010: 
+[38;2;240;173;78m		011: resource "azurerm_storage_account" "tfstate" {
+[0m		012: 
+
+
+[38;2;255;114;19mStorage Account Not Forcing HTTPS[0m, Severity: [38;2;255;114;19mMEDIUM[0m, Results: 2
+[1mDescription:[0m Storage Accounts should enforce the use of HTTPS
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 319
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/12944ec4-1fa0-47be-8b17-42a034f937c2
+
+	[38;2;255;114;19m[1]:[0m ../../src/modules/remote_backend/main.tf:[38;2;34;187;51m11[0m
+
+		010: 
+[38;2;240;173;78m		011: resource "azurerm_storage_account" "tfstate" {
+[0m		012: 
+
+
+	[38;2;255;114;19m[2]:[0m ../../src/modules/storage_account/main.tf:[38;2;34;187;51m10[0m
+
+		009: 
+[38;2;240;173;78m		010: resource "azurerm_storage_account" "storage_ac" {
+[0m		011:   name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+
+
+[38;2;255;114;19mDefault Azure Storage Account Network Access Is Too Permissive[0m, Severity: [38;2;255;114;19mMEDIUM[0m, Results: 2
+[1mDescription:[0m Default Azure Storage Account network access should be set to Deny
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 285
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/a5613650-32ec-4975-a305-31af783153ea
+
+	[38;2;255;114;19m[1]:[0m ../../src/modules/storage_account/main.tf:[38;2;34;187;51m10[0m
+
+		009: 
+[38;2;240;173;78m		010: resource "azurerm_storage_account" "storage_ac" {
+[0m		011:   name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+
+
+	[38;2;255;114;19m[2]:[0m ../../src/modules/remote_backend/main.tf:[38;2;34;187;51m11[0m
+
+		010: 
+[38;2;240;173;78m		011: resource "azurerm_storage_account" "tfstate" {
+[0m		012: 
+
+
+[38;2;187;33;36mStorage Container Is Publicly Accessible[0m, Severity: [38;2;187;33;36mHIGH[0m, Results: 1
+[1mDescription:[0m Anonymous, public read access to a container and its blobs are enabled in Azure Blob Storage
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 285
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/dd5230f8-a577-4bbb-b7ac-f2c2fe7d5299
+
+	[38;2;187;33;36m[1]:[0m ../../src/modules/storage_account/main.tf:[38;2;34;187;51m23[0m
+
+		022:   storage_account_name  = azurerm_storage_account.storage_ac.name
+[38;2;240;173;78m		023:   container_access_type = var.container_access_types[count.index]
+[0m		024: }
+
+
+[38;2;187;33;36mPasswords And Secrets - Generic Private Key[0m, Severity: [38;2;187;33;36mHIGH[0m, Results: 1
+[1mDescription:[0m Query to find passwords and secrets in infrastructure code.
+[1mPlatform:[0m Common
+[1mCWE:[0m 798
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/common-queries/a88baa34-e2ad-44ea-ad6f-8cac87bc7c71
+
+	[38;2;187;33;36m[1]:[0m ../../src/modules/argocd/main.tf:[38;2;34;187;51m120[0m
+
+		119:     url           = var.git_repo_ssh_url
+[38;2;240;173;78m		120:     sshPrivateKey = <SECRET-MASKED-ON-PURPOSE>
+[0m		121:   }
+
+
+[38;2;187;33;36mPasswords And Secrets - Generic Password[0m, Severity: [38;2;187;33;36mHIGH[0m, Results: 1
+[1mDescription:[0m Query to find passwords and secrets in infrastructure code.
+[1mPlatform:[0m Common
+[1mCWE:[0m 798
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/common-queries/a88baa34-e2ad-44ea-ad6f-8cac87bc7c71
+
+	[38;2;187;33;36m[1]:[0m ../../src/environments/development/main.tf:[38;2;34;187;51m295[0m
+
+		294:   key_vault_id           = module.keyvault_dev.kv_resource_id
+[38;2;240;173;78m		295:   administrator_password = <SECRET-MASKED-ON-PURPOSE>
+[0m		296: 
+
+
+
+Results Summary:
+[38;2;255;0;0mCRITICAL[0m: 0
+[38;2;187;33;36mHIGH[0m: 3
+[38;2;255;114;19mMEDIUM[0m: 7
+[38;2;237;213;126mLOW[0m: 0
+[38;2;91;192;222mINFO[0m: 7
+TOTAL: 17
+

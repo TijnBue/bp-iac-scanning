@@ -1,0 +1,171 @@
+[34mterraform scan results:
+[0m[36m
+Passed checks: 1, Failed checks: 5, Skipped checks: 0
+
+[0m[97mCheck: CKV_AZURE_109: "Ensure that key vault allows firewall rules settings"
+[0m[31m	FAILED for resource: azurerm_key_vault.example
+[0m[35m	File: /main.tf:27-54
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/ensure-that-key-vault-allows-firewall-rules-settings
+[0m[0m
+		[37m27 | [33mresource "azurerm_key_vault" "example" {
+		[37m28 | [33m  name                        = "examplekeyvault"
+		[37m29 | [33m  location                    = azurerm_resource_group.example.location
+		[37m30 | [33m  resource_group_name         = azurerm_resource_group.example.name
+		[37m31 | [33m  enabled_for_disk_encryption = true
+		[37m32 | [33m  tenant_id                   = data.azurerm_client_config.current.tenant_id
+		[37m33 | [33m  soft_delete_retention_days  = 7
+		[37m34 | [33m  purge_protection_enabled    = false
+		[37m35 | [33m
+		[37m36 | [33m  sku_name = "standard"
+		[37m37 | [33m
+		[37m38 | [33m  access_policy {
+		[37m39 | [33m    tenant_id = data.azurerm_client_config.current.tenant_id
+		[37m40 | [33m    object_id = data.azurerm_client_config.current.object_id
+		[37m41 | [33m
+		[37m42 | [33m    key_permissions = [
+		[37m43 | [33m      "Get",
+		[37m44 | [33m    ]
+		[37m45 | [33m
+		[37m46 | [33m    secret_permissions = [
+		[37m47 | [33m      "Get",
+		[37m48 | [33m    ]
+		[37m49 | [33m
+		[37m50 | [33m    storage_permissions = [
+		[37m51 | [33m      "Get",
+		[37m52 | [33m    ]
+		[37m53 | [33m  }
+		[37m54 | [33m}
+[97mCheck: CKV_AZURE_42: "Ensure the key vault is recoverable"
+[0m[31m	FAILED for resource: azurerm_key_vault.example
+[0m[35m	File: /main.tf:27-54
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-the-key-vault-is-recoverable
+[0m[0m
+		[37m27 | [33mresource "azurerm_key_vault" "example" {
+		[37m28 | [33m  name                        = "examplekeyvault"
+		[37m29 | [33m  location                    = azurerm_resource_group.example.location
+		[37m30 | [33m  resource_group_name         = azurerm_resource_group.example.name
+		[37m31 | [33m  enabled_for_disk_encryption = true
+		[37m32 | [33m  tenant_id                   = data.azurerm_client_config.current.tenant_id
+		[37m33 | [33m  soft_delete_retention_days  = 7
+		[37m34 | [33m  purge_protection_enabled    = false
+		[37m35 | [33m
+		[37m36 | [33m  sku_name = "standard"
+		[37m37 | [33m
+		[37m38 | [33m  access_policy {
+		[37m39 | [33m    tenant_id = data.azurerm_client_config.current.tenant_id
+		[37m40 | [33m    object_id = data.azurerm_client_config.current.object_id
+		[37m41 | [33m
+		[37m42 | [33m    key_permissions = [
+		[37m43 | [33m      "Get",
+		[37m44 | [33m    ]
+		[37m45 | [33m
+		[37m46 | [33m    secret_permissions = [
+		[37m47 | [33m      "Get",
+		[37m48 | [33m    ]
+		[37m49 | [33m
+		[37m50 | [33m    storage_permissions = [
+		[37m51 | [33m      "Get",
+		[37m52 | [33m    ]
+		[37m53 | [33m  }
+		[37m54 | [33m}
+[97mCheck: CKV_AZURE_189: "Ensure that Azure Key Vault disables public network access"
+[0m[31m	FAILED for resource: azurerm_key_vault.example
+[0m[35m	File: /main.tf:27-54
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/azr-networking-189
+[0m[0m
+		[37m27 | [33mresource "azurerm_key_vault" "example" {
+		[37m28 | [33m  name                        = "examplekeyvault"
+		[37m29 | [33m  location                    = azurerm_resource_group.example.location
+		[37m30 | [33m  resource_group_name         = azurerm_resource_group.example.name
+		[37m31 | [33m  enabled_for_disk_encryption = true
+		[37m32 | [33m  tenant_id                   = data.azurerm_client_config.current.tenant_id
+		[37m33 | [33m  soft_delete_retention_days  = 7
+		[37m34 | [33m  purge_protection_enabled    = false
+		[37m35 | [33m
+		[37m36 | [33m  sku_name = "standard"
+		[37m37 | [33m
+		[37m38 | [33m  access_policy {
+		[37m39 | [33m    tenant_id = data.azurerm_client_config.current.tenant_id
+		[37m40 | [33m    object_id = data.azurerm_client_config.current.object_id
+		[37m41 | [33m
+		[37m42 | [33m    key_permissions = [
+		[37m43 | [33m      "Get",
+		[37m44 | [33m    ]
+		[37m45 | [33m
+		[37m46 | [33m    secret_permissions = [
+		[37m47 | [33m      "Get",
+		[37m48 | [33m    ]
+		[37m49 | [33m
+		[37m50 | [33m    storage_permissions = [
+		[37m51 | [33m      "Get",
+		[37m52 | [33m    ]
+		[37m53 | [33m  }
+		[37m54 | [33m}
+[97mCheck: CKV_AZURE_110: "Ensure that key vault enables purge protection"
+[0m[31m	FAILED for resource: azurerm_key_vault.example
+[0m[35m	File: /main.tf:27-54
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-key-vault-enables-purge-protection
+[0m[0m
+		[37m27 | [33mresource "azurerm_key_vault" "example" {
+		[37m28 | [33m  name                        = "examplekeyvault"
+		[37m29 | [33m  location                    = azurerm_resource_group.example.location
+		[37m30 | [33m  resource_group_name         = azurerm_resource_group.example.name
+		[37m31 | [33m  enabled_for_disk_encryption = true
+		[37m32 | [33m  tenant_id                   = data.azurerm_client_config.current.tenant_id
+		[37m33 | [33m  soft_delete_retention_days  = 7
+		[37m34 | [33m  purge_protection_enabled    = false
+		[37m35 | [33m
+		[37m36 | [33m  sku_name = "standard"
+		[37m37 | [33m
+		[37m38 | [33m  access_policy {
+		[37m39 | [33m    tenant_id = data.azurerm_client_config.current.tenant_id
+		[37m40 | [33m    object_id = data.azurerm_client_config.current.object_id
+		[37m41 | [33m
+		[37m42 | [33m    key_permissions = [
+		[37m43 | [33m      "Get",
+		[37m44 | [33m    ]
+		[37m45 | [33m
+		[37m46 | [33m    secret_permissions = [
+		[37m47 | [33m      "Get",
+		[37m48 | [33m    ]
+		[37m49 | [33m
+		[37m50 | [33m    storage_permissions = [
+		[37m51 | [33m      "Get",
+		[37m52 | [33m    ]
+		[37m53 | [33m  }
+		[37m54 | [33m}
+[97mCheck: CKV2_AZURE_32: "Ensure private endpoint is configured to key vault"
+[0m[31m	FAILED for resource: azurerm_key_vault.example
+[0m[35m	File: /main.tf:27-54
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-2-32
+[0m[0m
+		[37m27 | [33mresource "azurerm_key_vault" "example" {
+		[37m28 | [33m  name                        = "examplekeyvault"
+		[37m29 | [33m  location                    = azurerm_resource_group.example.location
+		[37m30 | [33m  resource_group_name         = azurerm_resource_group.example.name
+		[37m31 | [33m  enabled_for_disk_encryption = true
+		[37m32 | [33m  tenant_id                   = data.azurerm_client_config.current.tenant_id
+		[37m33 | [33m  soft_delete_retention_days  = 7
+		[37m34 | [33m  purge_protection_enabled    = false
+		[37m35 | [33m
+		[37m36 | [33m  sku_name = "standard"
+		[37m37 | [33m
+		[37m38 | [33m  access_policy {
+		[37m39 | [33m    tenant_id = data.azurerm_client_config.current.tenant_id
+		[37m40 | [33m    object_id = data.azurerm_client_config.current.object_id
+		[37m41 | [33m
+		[37m42 | [33m    key_permissions = [
+		[37m43 | [33m      "Get",
+		[37m44 | [33m    ]
+		[37m45 | [33m
+		[37m46 | [33m    secret_permissions = [
+		[37m47 | [33m      "Get",
+		[37m48 | [33m    ]
+		[37m49 | [33m
+		[37m50 | [33m    storage_permissions = [
+		[37m51 | [33m      "Get",
+		[37m52 | [33m    ]
+		[37m53 | [33m  }
+		[37m54 | [33m}
+[0m[0m[0m
+[0m[0m[0m[0m[0m

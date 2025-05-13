@@ -1,0 +1,86 @@
+
+[0m[1mSnyk Infrastructure as Code[22m[0m
+
+[?25l[36m⠋[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠙[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠹[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠸[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠼[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠴[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠦[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠧[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠇[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠏[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠋[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠙[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠹[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠸[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠼[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠴[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠦[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠧[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠇[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠏[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠋[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠙[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠹[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠸[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠼[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠴[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠦[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠧[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠇[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠏[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠋[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠙[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠹[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠸[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠼[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠴[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠦[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠧[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠇[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠏[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠋[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠙[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠹[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠸[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠼[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠴[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠦[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠧[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠇[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠏[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠋[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠙[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[36m⠹[39m [0mSnyk testing Infrastructure as Code configuration issues.[0m[2K[1G[?25h[32m✔[39m [0mTest completed.[0m
+
+[0m[1mIssues[22m[0m
+
+[0m[1mLow Severity Issues: 2[22m[0m
+
+  [0m[Low] [1mGeo replication for Azure Container Images disabled[22m[0m
+  Info:    Geo replication for Azure Container Images disabled. Missing geo
+           replication leads to reduced availability of container images
+  Rule:    [4mhttps://security.snyk.io/rules/cloud/SNYK-CC-AZURE-595[24m
+  Path:    resource > azurerm_container_registry[acr] > georeplications
+  File:    modules/container_registry/main.tf
+  Resolve: Set a `georeplications` block within the resource, including a valid
+           `location` property
+
+  [0m[Low] [1mKey Vault accidental purge prevention disabled[22m[0m
+  Info:    Key Vault accidental purge prevention disabled. Accidentally purged
+           key material will not recoverable
+  Rule:    [4mhttps://security.snyk.io/rules/cloud/SNYK-CC-TF-175[24m
+  Path:    resource > azurerm_key_vault[key_vault] > purge_protection_enabled
+  File:    modules/keyvault/main.tf
+  Resolve: Set `purge_protection_enabled` attribute to `true`
+
+[0m[1mMedium Severity Issues: 3[22m[0m
+
+  [33m[Medium] [1mStorage Account geo-replication disabled[22m[39m
+  Info:    Storage Account geo-replication disabled. Data might be exposed to
+           the risk of loss or unavailability
+  Rule:    [4mhttps://security.snyk.io/rules/cloud/SNYK-CC-AZURE-649[24m
+  Path:    resource > azurerm_storage_account[tfstate] >
+           account_replication_type
+  File:    modules/remote_backend/main.tf
+  Resolve: Set `sku.name` to either `GRS`,`RAGRS`,`GZRS` or `RAGZRS`
+
+  [33m[Medium] [1mStorage Account does not enforce latest TLS[22m[39m
+  Info:    Azure Storage Account does not enforce latest TLS version. Older
+           cipher suites could be vulnerable to hijacking and information
+           disclosure
+  Rule:    [4mhttps://security.snyk.io/rules/cloud/SNYK-CC-TF-149[24m
+  Path:    resource > azurerm_storage_account[tfstate] > min_tls_version
+  File:    modules/remote_backend/main.tf
+  Resolve: Set `min_tls_version` attribute to `TLS1_2`
+
+  [33m[Medium] [1mStorage Account does not enforce latest TLS[22m[39m
+  Info:    Azure Storage Account does not enforce latest TLS version. Older
+           cipher suites could be vulnerable to hijacking and information
+           disclosure
+  Rule:    [4mhttps://security.snyk.io/rules/cloud/SNYK-CC-TF-149[24m
+  Path:    resource > azurerm_storage_account[storage_ac] > min_tls_version
+  File:    modules/storage_account/main.tf
+  Resolve: Set `min_tls_version` attribute to `TLS1_2`
+
+[0m[1mHigh Severity Issues: 1[22m[0m
+
+  [31m[High] [1mStorage container allows public access[22m[39m
+  Info:    Azure Storage Container allows public access. Potentially anyone can
+           access data stored in container or blob
+  Rule:    [4mhttps://security.snyk.io/rules/cloud/SNYK-CC-TF-181[24m
+  Path:    resource > azurerm_storage_container[container] >
+           container_access_type
+  File:    modules/storage_account/main.tf
+  Resolve: Set `container_access_type` attribute to `private`
+
+-------------------------------------------------------
+
+[0m[1mTest Summary[22m[0m
+
+  Organization: tijntijn3
+  Project name: app
+
+[32m[1m✔[22m[39m Files without issues: [0m[1m19[22m[0m
+[31m[1m✗[22m[39m Files with issues: [0m[1m4[22m[0m
+  Ignored issues: [0m[1m0[22m[0m
+  Total issues: [0m[1m6[22m[0m [ [35m0 critical[39m, [31m1 high[39m, [33m3 medium[39m, [0m2 low[0m ]
+
+-------------------------------------------------------
+
+[0m[1mReport Complete[22m[0m
+
+  Your test results are available at: [0m[1mhttps://snyk.io/org/tijntijn3/projects[22m[0m
+  under the name: [0m[1mapp[22m[0m
+
+[?25h

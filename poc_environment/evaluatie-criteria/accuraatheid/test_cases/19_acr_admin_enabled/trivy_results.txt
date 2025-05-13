@@ -1,0 +1,19 @@
+2025-05-11T20:41:13Z	[94mINFO[0m	[misconfig] Misconfiguration scanning is enabled
+2025-05-11T20:41:13Z	[94mINFO[0m	[misconfig] Need to update the checks bundle
+2025-05-11T20:41:13Z	[94mINFO[0m	[misconfig] Downloading the checks bundle...
+
+2025-05-11T20:41:15Z	[94mINFO[0m	[terraform scanner] Scanning root module	file_path="."
+2025-05-11T20:41:15Z	[94mINFO[0m	Detected config files	num=1
+[0m
+[4m[1m[4mReport Summary[0m[4m[0m
+
+[0m[2m┌────────┬───────────┬───────────────────┐[0m
+[2m│[0m [1mTarget[0m [2m│[0m [1m  Type   [0m [2m│[0m [1mMisconfigurations[0m [2m│[0m
+[2m├────────┼───────────┼───────────────────┤[0m
+[2m│[0m .      [2m│[0m terraform [2m│[0m         0         [2m│[0m
+[2m└────────┴───────────┴───────────────────┘[0m
+[0mLegend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+[0m

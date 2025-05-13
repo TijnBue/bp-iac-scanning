@@ -1,0 +1,48 @@
+[34mterraform scan results:
+[0m[36m
+Passed checks: 1, Failed checks: 3, Skipped checks: 0
+
+[0m[97mCheck: CKV_AZURE_22: "Ensure that 'Send email notification for high severity alerts' is set to 'On'"
+[0m[31m	FAILED for resource: azurerm_security_center_contact.example
+[0m[35m	File: /main.tf:14-22
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azr-general-5
+[0m[0m
+		[37m14 | [33mresource "azurerm_security_center_contact" "example" {
+		[37m15 | [33m  name = "Contact"
+		[37m16 | [33m  email = "contact@example.com"
+		[37m17 | [33m
+		[37m18 |   #phone = "+1-555-555-5555"
+		[37m19 | [33m
+		[37m20 | [33m  alert_notifications = false
+		[37m21 | [33m  alerts_to_admins    = false
+		[37m22 | [33m}
+[97mCheck: CKV_AZURE_21: "Ensure that 'Send email notification for high severity alerts' is set to 'On'"
+[0m[31m	FAILED for resource: azurerm_security_center_contact.example
+[0m[35m	File: /main.tf:14-22
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/azr-general-21
+[0m[0m
+		[37m14 | [33mresource "azurerm_security_center_contact" "example" {
+		[37m15 | [33m  name = "Contact"
+		[37m16 | [33m  email = "contact@example.com"
+		[37m17 | [33m
+		[37m18 |   #phone = "+1-555-555-5555"
+		[37m19 | [33m
+		[37m20 | [33m  alert_notifications = false
+		[37m21 | [33m  alerts_to_admins    = false
+		[37m22 | [33m}
+[97mCheck: CKV_AZURE_20: "Ensure that security contact 'Phone number' is set"
+[0m[31m	FAILED for resource: azurerm_security_center_contact.example
+[0m[35m	File: /main.tf:14-22
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azr-general-3
+[0m[0m
+		[37m14 | [33mresource "azurerm_security_center_contact" "example" {
+		[37m15 | [33m  name = "Contact"
+		[37m16 | [33m  email = "contact@example.com"
+		[37m17 | [33m
+		[37m18 |   #phone = "+1-555-555-5555"
+		[37m19 | [33m
+		[37m20 | [33m  alert_notifications = false
+		[37m21 | [33m  alerts_to_admins    = false
+		[37m22 | [33m}
+[0m[0m[0m
+[0m[0m[0m[0m[0m

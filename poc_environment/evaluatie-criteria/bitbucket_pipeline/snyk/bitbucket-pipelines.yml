@@ -1,0 +1,13 @@
+# Snyk pipeline
+
+# Checkov Pipeline
+image: snyk/snyk:alpine
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: IaC scan (checkov)
+          script:
+            - snyk auth $SNYK_TOKEN
+            - snyk iac test terraform_stage

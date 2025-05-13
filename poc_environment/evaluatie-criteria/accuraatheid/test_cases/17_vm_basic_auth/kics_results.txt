@@ -1,0 +1,102 @@
+[38;2;34;187;51m
+                                                                                                                                                   
+                                                                                                                                                                                                    
+   MLLLLLM             MLLLLLLLLL   LLLLLLL             KLLLLLLLLLLLLLLLL       LLLLLLLLLLLLLLLLLLLLLLL 
+   MMMMMMM           MMMMMMMMMML    MMMMMMMK       LMMMMMMMMMMMMMMMMMMMML   KLMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM         MMMMMMMMML       MMMMMMMK     LMMMMMMMMMMMMMMMMMMMMMML  LMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM      MMMMMMMMMML         MMMMMMMK   LMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM    LMMMMMMMMML           MMMMMMMK  LMMMMMMMMMLLMLLLLLLLLLLLLLL LMMMMMMMLLLLLLLLLLLLLLLLLLLLM 
+   MMMMMMM  MMMMMMMMMLM             MMMMMMMK LMMMMMMMM                    LMMMMMML                      
+   MMMMMMMLMMMMMMMML                MMMMMMMK MMMMMMML                     LMMMMMMMMLLLLLLLLLLLLLMLL     
+   MMMMMMMMMMMMMMMM                 MMMMMMMK MMMMMML                       LMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMMMMMMMMMMMMM               MMMMMMMK MMMMMMM                         LMMMMMMMMMMMMMMMMMMMMMMMML 
+   MMMMMMM KLMMMMMMMMML             MMMMMMMK LMMMMMMM                                          MMMMMMMML
+   MMMMMMM    LMMMMMMMMMM           MMMMMMMK LMMMMMMMMLL                                        MMMMMMML
+   MMMMMMM      LMMMMMMMMMLL        MMMMMMMK  LMMMMMMMMMMMMMMMMMMMMMMMMML LLLLLLLLLLLLLLLLLLLLMMMMMMMMMM
+   MMMMMMM        MMMMMMMMMMML      MMMMMMMK   MMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM          LLMMMMMMMMML    MMMMMMMK     LLMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMM             MMMMMMMMMML  MMMMMMMK         KLMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMLK    
+                                                                                                            
+                                                                                                                                                                                                                                                                                                                        
+
+[0m
+Scanning with Keeping Infrastructure as Code Secure v2.1.7
+
+
+
+
+
+[38;2;91;192;222mVariable Without Type[0m, Severity: [38;2;91;192;222mINFO[0m, Results: 1
+[1mDescription:[0m All variables should contain a valid type.
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 710
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/fc5109bf-01fd-49fb-8bde-4492b543c34a
+
+	[38;2;91;192;222m[1]:[0m ../../src/main.tf:[38;2;34;187;51m14[0m
+
+		013: 
+[38;2;240;173;78m		014: variable "prefix" {
+[0m		015:   default = "tfvmex"
+
+
+[38;2;91;192;222mVariable Without Description[0m, Severity: [38;2;91;192;222mINFO[0m, Results: 1
+[1mDescription:[0m All variables should contain a valid description.
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 710
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/2a153952-2544-4687-bcc9-cc8fea814a9b
+
+	[38;2;91;192;222m[1]:[0m ../../src/main.tf:[38;2;34;187;51m14[0m
+
+		013: 
+[38;2;240;173;78m		014: variable "prefix" {
+[0m		015:   default = "tfvmex"
+
+
+[38;2;237;213;126mVirtual Network with DDoS Protection Plan disabled[0m, Severity: [38;2;237;213;126mLOW[0m, Results: 1
+[1mDescription:[0m Virtual Network should have DDoS Protection Plan enabled
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 693
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/b4cc2c52-34a6-4b43-b57c-4bdeb4514a5a
+
+	[38;2;237;213;126m[1]:[0m ../../src/main.tf:[38;2;34;187;51m23[0m
+
+		022: 
+[38;2;240;173;78m		023: resource "azurerm_virtual_network" "main" {
+[0m		024:   name                = "${var.prefix}-network"
+
+
+[38;2;255;114;19mAzure Instance Using Basic Authentication[0m, Severity: [38;2;255;114;19mMEDIUM[0m, Results: 1
+[1mDescription:[0m Azure Instances should use SSH Key instead of basic authentication
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 284
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/dafe30ec-325d-4516-85d1-e8e6776f012c
+
+	[38;2;255;114;19m[1]:[0m ../../src/main.tf:[38;2;34;187;51m49[0m
+
+		048: 
+[38;2;240;173;78m		049: resource "azurerm_virtual_machine" "main" {
+[0m		050:   name                  = "${var.prefix}-vm"
+
+
+[38;2;187;33;36mPasswords And Secrets - Generic Password[0m, Severity: [38;2;187;33;36mHIGH[0m, Results: 1
+[1mDescription:[0m Query to find passwords and secrets in infrastructure code.
+[1mPlatform:[0m Common
+[1mCWE:[0m 798
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/common-queries/a88baa34-e2ad-44ea-ad6f-8cac87bc7c71
+
+	[38;2;187;33;36m[1]:[0m ../../src/main.tf:[38;2;34;187;51m77[0m
+
+		076:     admin_username = "testadmin"
+[38;2;240;173;78m		077:     admin_password = <SECRET-MASKED-ON-PURPOSE>
+[0m		078:   }
+
+
+
+Results Summary:
+[38;2;255;0;0mCRITICAL[0m: 0
+[38;2;187;33;36mHIGH[0m: 1
+[38;2;255;114;19mMEDIUM[0m: 1
+[38;2;237;213;126mLOW[0m: 1
+[38;2;91;192;222mINFO[0m: 2
+TOTAL: 5
+

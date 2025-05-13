@@ -1,0 +1,269 @@
+
+Report Summary
+
+┌────────────────────────────────────┬───────────┬───────────────────┐
+│               Target               │   Type    │ Misconfigurations │
+├────────────────────────────────────┼───────────┼───────────────────┤
+│ Azure/aks/azurerm/main.tf          │ terraform │         2         │
+├────────────────────────────────────┼───────────┼───────────────────┤
+│ Azure/aks/azurerm/main_override.tf │ terraform │         4         │
+├────────────────────────────────────┼───────────┼───────────────────┤
+│ environments/development           │ terraform │         0         │
+├────────────────────────────────────┼───────────┼───────────────────┤
+│ modules/keyvault/main.tf           │ terraform │         2         │
+├────────────────────────────────────┼───────────┼───────────────────┤
+│ modules/remote_backend             │ terraform │         0         │
+├────────────────────────────────────┼───────────┼───────────────────┤
+│ modules/storage_account/main.tf    │ terraform │         3         │
+└────────────────────────────────────┴───────────┴───────────────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+Azure/aks/azurerm/main.tf (terraform)
+=====================================
+Tests: 2 (SUCCESSES: 0, FAILURES: 2)
+Failures: 2 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 1, CRITICAL: 1)
+
+AVD-AZU-0041 (CRITICAL): Cluster does not limit API access to specific IP addresses.
+════════════════════════════════════════
+The API server is the central way to interact with and manage a cluster. To improve cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges.
+
+
+See https://avd.aquasec.com/misconfig/avd-azu-0041
+────────────────────────────────────────
+ Azure/aks/azurerm/main.tf:13-660
+   via environments/development/main.tf:63-106 (module.akscluster_dev_001)
+────────────────────────────────────────
+  13 ┌ resource "azurerm_kubernetes_cluster" "main" {
+  14 │   location                            = var.location
+  15 │   name                                = "${local.cluster_name}${var.cluster_name_random_suffix ? substr(md5(uuid()), 0, 4) : ""}"
+  16 │   resource_group_name                 = var.resource_group_name
+  17 │   azure_policy_enabled                = var.azure_policy_enabled
+  18 │   cost_analysis_enabled               = var.cost_analysis_enabled
+  19 │   disk_encryption_set_id              = var.disk_encryption_set_id
+  20 │   dns_prefix                          = var.prefix
+  21 └   dns_prefix_private_cluster          = var.dns_prefix_private_cluster
+  ..   
+────────────────────────────────────────
+
+
+AVD-AZU-0042 (HIGH): RBAC is not enabled on cluster
+════════════════════════════════════════
+Using Kubernetes role-based access control (RBAC), you can grant users, groups, and service accounts access to only the resources they need.
+
+
+See https://avd.aquasec.com/misconfig/avd-azu-0042
+────────────────────────────────────────
+ Azure/aks/azurerm/main.tf:31
+   via Azure/aks/azurerm/main.tf:13-660 (azurerm_kubernetes_cluster.main)
+    via environments/development/main.tf:63-106 (module.akscluster_dev_001)
+────────────────────────────────────────
+  13   resource "azurerm_kubernetes_cluster" "main" {
+  ..   
+  31 [   role_based_access_control_enabled   = var.role_based_access_control_enabled
+ ...   
+ 660   }
+────────────────────────────────────────
+
+
+
+Azure/aks/azurerm/main_override.tf (terraform)
+==============================================
+Tests: 4 (SUCCESSES: 0, FAILURES: 4)
+Failures: 4 (UNKNOWN: 0, LOW: 0, MEDIUM: 1, HIGH: 2, CRITICAL: 1)
+
+AVD-AZU-0040 (MEDIUM): Cluster does not have logging enabled via OMS Agent.
+════════════════════════════════════════
+Ensure AKS logging to Azure Monitoring is configured for containers to monitor the performance of workloads.
+
+
+See https://avd.aquasec.com/misconfig/avd-azu-0040
+────────────────────────────────────────
+ Azure/aks/azurerm/main_override.tf:3-6
+   via environments/development/main.tf:63-106 (module.akscluster_dev_001)
+────────────────────────────────────────
+   3 ┌ resource "azurerm_kubernetes_cluster" "main" {
+   4 │   automatic_channel_upgrade = var.automatic_channel_upgrade
+   5 │   node_os_channel_upgrade   = var.node_os_channel_upgrade
+   6 └ }
+────────────────────────────────────────
+
+
+AVD-AZU-0041 (CRITICAL): Cluster does not limit API access to specific IP addresses.
+════════════════════════════════════════
+The API server is the central way to interact with and manage a cluster. To improve cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges.
+
+
+See https://avd.aquasec.com/misconfig/avd-azu-0041
+────────────────────────────────────────
+ Azure/aks/azurerm/main_override.tf:3-6
+   via environments/development/main.tf:63-106 (module.akscluster_dev_001)
+────────────────────────────────────────
+   3 ┌ resource "azurerm_kubernetes_cluster" "main" {
+   4 │   automatic_channel_upgrade = var.automatic_channel_upgrade
+   5 │   node_os_channel_upgrade   = var.node_os_channel_upgrade
+   6 └ }
+────────────────────────────────────────
+
+
+AVD-AZU-0042 (HIGH): RBAC is not enabled on cluster
+════════════════════════════════════════
+Using Kubernetes role-based access control (RBAC), you can grant users, groups, and service accounts access to only the resources they need.
+
+
+See https://avd.aquasec.com/misconfig/avd-azu-0042
+────────────────────────────────────────
+ Azure/aks/azurerm/main_override.tf:3-6
+   via environments/development/main.tf:63-106 (module.akscluster_dev_001)
+────────────────────────────────────────
+   3 ┌ resource "azurerm_kubernetes_cluster" "main" {
+   4 │   automatic_channel_upgrade = var.automatic_channel_upgrade
+   5 │   node_os_channel_upgrade   = var.node_os_channel_upgrade
+   6 └ }
+────────────────────────────────────────
+
+
+AVD-AZU-0043 (HIGH): Kubernetes cluster does not have a network policy set.
+════════════════════════════════════════
+The Kubernetes object type NetworkPolicy should be defined to have opportunity allow or block traffic to pods, as in a Kubernetes cluster configured with default settings, all pods can discover and communicate with each other without any restrictions.
+
+
+See https://avd.aquasec.com/misconfig/avd-azu-0043
+────────────────────────────────────────
+ Azure/aks/azurerm/main_override.tf:3-6
+   via environments/development/main.tf:63-106 (module.akscluster_dev_001)
+────────────────────────────────────────
+   3 ┌ resource "azurerm_kubernetes_cluster" "main" {
+   4 │   automatic_channel_upgrade = var.automatic_channel_upgrade
+   5 │   node_os_channel_upgrade   = var.node_os_channel_upgrade
+   6 └ }
+────────────────────────────────────────
+
+
+
+modules/keyvault/main.tf (terraform)
+====================================
+Tests: 2 (SUCCESSES: 0, FAILURES: 2)
+Failures: 2 (UNKNOWN: 0, LOW: 0, MEDIUM: 1, HIGH: 0, CRITICAL: 1)
+
+AVD-AZU-0013 (CRITICAL): Vault network ACL does not block access by default.
+════════════════════════════════════════
+Network ACLs allow you to reduce your exposure to risk by limiting what can access your key vault.
+
+The default action of the Network ACL should be set to deny for when IPs are not matched. Azure services can be allowed to bypass.
+
+
+See https://avd.aquasec.com/misconfig/avd-azu-0013
+────────────────────────────────────────
+ modules/keyvault/main.tf:9-40
+   via environments/development/main.tf:207-221 (module.keyvault_dev)
+────────────────────────────────────────
+   9 ┌ resource "azurerm_key_vault" "key_vault" {
+  10 │   name                = "${var.keyvault_name}-${random_string.random_string.id}"
+  11 │   location            = var.keyvault_location
+  12 │   resource_group_name = var.resource_group_name
+  13 │   tenant_id           = var.tenant_id
+  14 │   sku_name            = var.keyvault_sku_name
+  15 │ 
+  16 │   enable_rbac_authorization     = var.enable_rbac_authorization
+  17 └   public_network_access_enabled = var.public_network_access_enabled
+  ..   
+────────────────────────────────────────
+
+
+AVD-AZU-0016 (MEDIUM): Vault does not have purge protection enabled.
+════════════════════════════════════════
+Purge protection is an optional Key Vault behavior and is not enabled by default.
+
+Purge protection can only be enabled once soft-delete is enabled. It can be turned on via CLI or PowerShell.
+
+
+See https://avd.aquasec.com/misconfig/avd-azu-0016
+────────────────────────────────────────
+ modules/keyvault/main.tf:9-40
+   via environments/development/main.tf:207-221 (module.keyvault_dev)
+────────────────────────────────────────
+   9 ┌ resource "azurerm_key_vault" "key_vault" {
+  10 │   name                = "${var.keyvault_name}-${random_string.random_string.id}"
+  11 │   location            = var.keyvault_location
+  12 │   resource_group_name = var.resource_group_name
+  13 │   tenant_id           = var.tenant_id
+  14 │   sku_name            = var.keyvault_sku_name
+  15 │ 
+  16 │   enable_rbac_authorization     = var.enable_rbac_authorization
+  17 └   public_network_access_enabled = var.public_network_access_enabled
+  ..   
+────────────────────────────────────────
+
+
+
+modules/storage_account/main.tf (terraform)
+===========================================
+Tests: 3 (SUCCESSES: 0, FAILURES: 3)
+Failures: 3 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 3, CRITICAL: 0)
+
+AVD-AZU-0007 (HIGH): Container allows public access.
+════════════════════════════════════════
+Storage container public access should be off. It can be configured for blobs only, containers and blobs or off entirely. The default is off, with no public access.
+Explicitly overriding publicAccess to anything other than off should be avoided.
+
+
+See https://avd.aquasec.com/misconfig/avd-azu-0007
+────────────────────────────────────────
+ modules/storage_account/main.tf:23
+   via modules/storage_account/main.tf:19-24 (azurerm_storage_container.container[2])
+    via environments/development/main.tf:243-257 (module.storage_acc_loki_storage)
+────────────────────────────────────────
+  19   resource "azurerm_storage_container" "container" {
+  20     count                 = length(var.container_names)
+  21     name                  = var.container_names[count.index]
+  22     storage_account_name  = azurerm_storage_account.storage_ac.name
+  23 [   container_access_type = var.container_access_types[count.index]
+  24   }
+────────────────────────────────────────
+
+
+AVD-AZU-0007 (HIGH): Container allows public access.
+════════════════════════════════════════
+Storage container public access should be off. It can be configured for blobs only, containers and blobs or off entirely. The default is off, with no public access.
+Explicitly overriding publicAccess to anything other than off should be avoided.
+
+
+See https://avd.aquasec.com/misconfig/avd-azu-0007
+────────────────────────────────────────
+ modules/storage_account/main.tf:23
+   via modules/storage_account/main.tf:19-24 (azurerm_storage_container.container[0])
+    via environments/development/main.tf:243-257 (module.storage_acc_loki_storage)
+────────────────────────────────────────
+  19   resource "azurerm_storage_container" "container" {
+  20     count                 = length(var.container_names)
+  21     name                  = var.container_names[count.index]
+  22     storage_account_name  = azurerm_storage_account.storage_ac.name
+  23 [   container_access_type = var.container_access_types[count.index]
+  24   }
+────────────────────────────────────────
+
+
+AVD-AZU-0007 (HIGH): Container allows public access.
+════════════════════════════════════════
+Storage container public access should be off. It can be configured for blobs only, containers and blobs or off entirely. The default is off, with no public access.
+Explicitly overriding publicAccess to anything other than off should be avoided.
+
+
+See https://avd.aquasec.com/misconfig/avd-azu-0007
+────────────────────────────────────────
+ modules/storage_account/main.tf:23
+   via modules/storage_account/main.tf:19-24 (azurerm_storage_container.container[1])
+    via environments/development/main.tf:243-257 (module.storage_acc_loki_storage)
+────────────────────────────────────────
+  19   resource "azurerm_storage_container" "container" {
+  20     count                 = length(var.container_names)
+  21     name                  = var.container_names[count.index]
+  22     storage_account_name  = azurerm_storage_account.storage_ac.name
+  23 [   container_access_type = var.container_access_types[count.index]
+  24   }
+────────────────────────────────────────
+
+

@@ -1,0 +1,144 @@
+[34mterraform scan results:
+[0m[36m
+Passed checks: 8, Failed checks: 4, Skipped checks: 0
+
+[0m[97mCheck: CKV_AZURE_1: "Ensure Azure Instance does not use basic authentication(Use SSH Key Instead)"
+[0m[31m	FAILED for resource: azurerm_virtual_machine.main
+[0m[35m	File: /main.tf:49-85
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/bc-azr-networking-1
+[0m[0m
+		[37m49 | [33mresource "azurerm_virtual_machine" "main" {
+		[37m50 | [33m  name                  = "${var.prefix}-vm"
+		[37m51 | [33m  location              = azurerm_resource_group.example.location
+		[37m52 | [33m  resource_group_name   = azurerm_resource_group.example.name
+		[37m53 | [33m  network_interface_ids = [azurerm_network_interface.main.id]
+		[37m54 | [33m  vm_size               = "Standard_DS1_v2"
+		[37m55 | [33m
+		[37m56 |   # Uncomment this line to delete the OS disk automatically when deleting the VM
+		[37m57 |   # delete_os_disk_on_termination = true
+		[37m58 | [33m
+		[37m59 |   # Uncomment this line to delete the data disks automatically when deleting the VM
+		[37m60 |   # delete_data_disks_on_termination = true
+		[37m61 | [33m
+		[37m62 | [33m  storage_image_reference {
+		[37m63 | [33m    publisher = "Canonical"
+		[37m64 | [33m    offer     = "0001-com-ubuntu-server-jammy"
+		[37m65 | [33m    sku       = "22_04-lts"
+		[37m66 | [33m    version   = "latest"
+		[37m67 | [33m  }
+		[37m68 | [33m  storage_os_disk {
+		[37m69 | [33m    name              = "myosdisk1"
+		[37m70 | [33m    caching           = "ReadWrite"
+		[37m71 | [33m    create_option     = "FromImage"
+		[37m72 | [33m    managed_disk_type = "Standard_LRS"
+		[37m73 | [33m  }
+		[37m74 | [33m  os_profile {
+		[37m75 | [33m    computer_name  = "hostname"
+		[37m76 | [33m    admin_username = "testadmin"
+		[37m77 | [33m    admin_password = "Password1234!"
+		[37m78 | [33m  }
+		[37m79 | [33m  os_profile_linux_config {
+		[37m80 | [33m    disable_password_authentication = false
+		[37m81 | [33m  }
+		[37m82 | [33m  tags = {
+		[37m83 | [33m    environment = "staging"
+		[37m84 | [33m  }
+		[37m85 | [33m}
+[97mCheck: CKV2_AZURE_12: "Ensure that virtual machines are backed up using Azure Backup"
+[0m[31m	FAILED for resource: azurerm_virtual_machine.main
+[0m[35m	File: /main.tf:49-85
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-virtual-machines-are-backed-up-using-azure-backup
+[0m[0m
+		[37m49 | [33mresource "azurerm_virtual_machine" "main" {
+		[37m50 | [33m  name                  = "${var.prefix}-vm"
+		[37m51 | [33m  location              = azurerm_resource_group.example.location
+		[37m52 | [33m  resource_group_name   = azurerm_resource_group.example.name
+		[37m53 | [33m  network_interface_ids = [azurerm_network_interface.main.id]
+		[37m54 | [33m  vm_size               = "Standard_DS1_v2"
+		[37m55 | [33m
+		[37m56 |   # Uncomment this line to delete the OS disk automatically when deleting the VM
+		[37m57 |   # delete_os_disk_on_termination = true
+		[37m58 | [33m
+		[37m59 |   # Uncomment this line to delete the data disks automatically when deleting the VM
+		[37m60 |   # delete_data_disks_on_termination = true
+		[37m61 | [33m
+		[37m62 | [33m  storage_image_reference {
+		[37m63 | [33m    publisher = "Canonical"
+		[37m64 | [33m    offer     = "0001-com-ubuntu-server-jammy"
+		[37m65 | [33m    sku       = "22_04-lts"
+		[37m66 | [33m    version   = "latest"
+		[37m67 | [33m  }
+		[37m68 | [33m  storage_os_disk {
+		[37m69 | [33m    name              = "myosdisk1"
+		[37m70 | [33m    caching           = "ReadWrite"
+		[37m71 | [33m    create_option     = "FromImage"
+		[37m72 | [33m    managed_disk_type = "Standard_LRS"
+		[37m73 | [33m  }
+		[37m74 | [33m  os_profile {
+		[37m75 | [33m    computer_name  = "hostname"
+		[37m76 | [33m    admin_username = "testadmin"
+		[37m77 | [33m    admin_password = "Password1234!"
+		[37m78 | [33m  }
+		[37m79 | [33m  os_profile_linux_config {
+		[37m80 | [33m    disable_password_authentication = false
+		[37m81 | [33m  }
+		[37m82 | [33m  tags = {
+		[37m83 | [33m    environment = "staging"
+		[37m84 | [33m  }
+		[37m85 | [33m}
+[97mCheck: CKV2_AZURE_10: "Ensure that Microsoft Antimalware is configured to automatically updates for Virtual Machines"
+[0m[31m	FAILED for resource: azurerm_virtual_machine.main
+[0m[35m	File: /main.tf:49-85
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-microsoft-antimalware-is-configured-to-automatically-updates-for-virtual-machines
+[0m[0m
+		[37m49 | [33mresource "azurerm_virtual_machine" "main" {
+		[37m50 | [33m  name                  = "${var.prefix}-vm"
+		[37m51 | [33m  location              = azurerm_resource_group.example.location
+		[37m52 | [33m  resource_group_name   = azurerm_resource_group.example.name
+		[37m53 | [33m  network_interface_ids = [azurerm_network_interface.main.id]
+		[37m54 | [33m  vm_size               = "Standard_DS1_v2"
+		[37m55 | [33m
+		[37m56 |   # Uncomment this line to delete the OS disk automatically when deleting the VM
+		[37m57 |   # delete_os_disk_on_termination = true
+		[37m58 | [33m
+		[37m59 |   # Uncomment this line to delete the data disks automatically when deleting the VM
+		[37m60 |   # delete_data_disks_on_termination = true
+		[37m61 | [33m
+		[37m62 | [33m  storage_image_reference {
+		[37m63 | [33m    publisher = "Canonical"
+		[37m64 | [33m    offer     = "0001-com-ubuntu-server-jammy"
+		[37m65 | [33m    sku       = "22_04-lts"
+		[37m66 | [33m    version   = "latest"
+		[37m67 | [33m  }
+		[37m68 | [33m  storage_os_disk {
+		[37m69 | [33m    name              = "myosdisk1"
+		[37m70 | [33m    caching           = "ReadWrite"
+		[37m71 | [33m    create_option     = "FromImage"
+		[37m72 | [33m    managed_disk_type = "Standard_LRS"
+		[37m73 | [33m  }
+		[37m74 | [33m  os_profile {
+		[37m75 | [33m    computer_name  = "hostname"
+		[37m76 | [33m    admin_username = "testadmin"
+		[37m77 | [33m    admin_password = "Password1234!"
+		[37m78 | [33m  }
+		[37m79 | [33m  os_profile_linux_config {
+		[37m80 | [33m    disable_password_authentication = false
+		[37m81 | [33m  }
+		[37m82 | [33m  tags = {
+		[37m83 | [33m    environment = "staging"
+		[37m84 | [33m  }
+		[37m85 | [33m}
+[97mCheck: CKV2_AZURE_31: "Ensure VNET subnet is configured with a Network Security Group (NSG)"
+[0m[31m	FAILED for resource: azurerm_subnet.internal
+[0m[35m	File: /main.tf:30-35
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-2-31
+[0m[0m
+		[37m30 | [33mresource "azurerm_subnet" "internal" {
+		[37m31 | [33m  name                 = "internal"
+		[37m32 | [33m  resource_group_name  = azurerm_resource_group.example.name
+		[37m33 | [33m  virtual_network_name = azurerm_virtual_network.main.name
+		[37m34 | [33m  address_prefixes     = ["10.0.2.0/24"]
+		[37m35 | [33m}
+
+[0m[0m[0m
+[0m[0m[0m[0m[0m

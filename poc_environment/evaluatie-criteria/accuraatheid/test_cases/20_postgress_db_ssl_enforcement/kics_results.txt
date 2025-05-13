@@ -1,0 +1,89 @@
+[38;2;34;187;51m
+                                                                                                                                                   
+                                                                                                                                                                                                    
+   MLLLLLM             MLLLLLLLLL   LLLLLLL             KLLLLLLLLLLLLLLLL       LLLLLLLLLLLLLLLLLLLLLLL 
+   MMMMMMM           MMMMMMMMMML    MMMMMMMK       LMMMMMMMMMMMMMMMMMMMML   KLMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM         MMMMMMMMML       MMMMMMMK     LMMMMMMMMMMMMMMMMMMMMMML  LMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM      MMMMMMMMMML         MMMMMMMK   LMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM    LMMMMMMMMML           MMMMMMMK  LMMMMMMMMMLLMLLLLLLLLLLLLLL LMMMMMMMLLLLLLLLLLLLLLLLLLLLM 
+   MMMMMMM  MMMMMMMMMLM             MMMMMMMK LMMMMMMMM                    LMMMMMML                      
+   MMMMMMMLMMMMMMMML                MMMMMMMK MMMMMMML                     LMMMMMMMMLLLLLLLLLLLLLMLL     
+   MMMMMMMMMMMMMMMM                 MMMMMMMK MMMMMML                       LMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMMMMMMMMMMMMM               MMMMMMMK MMMMMMM                         LMMMMMMMMMMMMMMMMMMMMMMMML 
+   MMMMMMM KLMMMMMMMMML             MMMMMMMK LMMMMMMM                                          MMMMMMMML
+   MMMMMMM    LMMMMMMMMMM           MMMMMMMK LMMMMMMMMLL                                        MMMMMMML
+   MMMMMMM      LMMMMMMMMMLL        MMMMMMMK  LMMMMMMMMMMMMMMMMMMMMMMMMML LLLLLLLLLLLLLLLLLLLLMMMMMMMMMM
+   MMMMMMM        MMMMMMMMMMML      MMMMMMMK   MMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM          LLMMMMMMMMML    MMMMMMMK     LLMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMM             MMMMMMMMMML  MMMMMMMK         KLMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMLK    
+                                                                                                            
+                                                                                                                                                                                                                                                                                                                        
+
+[0m
+Scanning with Keeping Infrastructure as Code Secure v2.1.7
+
+
+
+
+
+[38;2;237;213;126mPostgreSQL Server Infrastructure Encryption Disabled[0m, Severity: [38;2;237;213;126mLOW[0m, Results: 1
+[1mDescription:[0m PostgreSQL Server Infrastructure Encryption should be enabled
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 311
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/6425c98b-ca4e-41fe-896a-c78772c131f8
+
+	[38;2;237;213;126m[1]:[0m ../../src/main.tf:[38;2;34;187;51m19[0m
+
+		018: 
+[38;2;240;173;78m		019: resource "azurerm_postgresql_server" "example" {
+[0m		020:   name                = "example-psqlserver"
+
+
+[38;2;255;114;19mSSL Enforce Disabled[0m, Severity: [38;2;255;114;19mMEDIUM[0m, Results: 1
+[1mDescription:[0m Make sure that for PosgreSQL, the 'Enforce SSL connection' is set to 'ENABLED'
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 319
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/0437633b-daa6-4bbc-8526-c0d2443b946e
+
+	[38;2;255;114;19m[1]:[0m ../../src/main.tf:[38;2;34;187;51m36[0m
+
+		035:   public_network_access_enabled    = false
+[38;2;240;173;78m		036:   ssl_enforcement_enabled          = false
+[0m		037:   ssl_minimal_tls_version_enforced = "TLS1_2"
+
+
+[38;2;255;114;19mPostgreSQL Server Threat Detection Policy Disabled[0m, Severity: [38;2;255;114;19mMEDIUM[0m, Results: 1
+[1mDescription:[0m PostgreSQL Server Threat Detection Policy should be enabled
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 665
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/c407c3cf-c409-4b29-b590-db5f4138d332
+
+	[38;2;255;114;19m[1]:[0m ../../src/main.tf:[38;2;34;187;51m19[0m
+
+		018: 
+[38;2;240;173;78m		019: resource "azurerm_postgresql_server" "example" {
+[0m		020:   name                = "example-psqlserver"
+
+
+[38;2;187;33;36mPasswords And Secrets - Generic Password[0m, Severity: [38;2;187;33;36mHIGH[0m, Results: 1
+[1mDescription:[0m Query to find passwords and secrets in infrastructure code.
+[1mPlatform:[0m Common
+[1mCWE:[0m 798
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/common-queries/a88baa34-e2ad-44ea-ad6f-8cac87bc7c71
+
+	[38;2;187;33;36m[1]:[0m ../../src/main.tf:[38;2;34;187;51m25[0m
+
+		024:   administrator_login          = "psqladmin"
+[38;2;240;173;78m		025:   administrator_login_password = <SECRET-MASKED-ON-PURPOSE>
+[0m		026: 
+
+
+
+Results Summary:
+[38;2;255;0;0mCRITICAL[0m: 0
+[38;2;187;33;36mHIGH[0m: 1
+[38;2;255;114;19mMEDIUM[0m: 2
+[38;2;237;213;126mLOW[0m: 1
+[38;2;91;192;222mINFO[0m: 0
+TOTAL: 4
+

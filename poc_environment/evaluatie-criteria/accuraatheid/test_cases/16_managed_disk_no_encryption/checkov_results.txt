@@ -1,0 +1,33 @@
+[34mterraform scan results:
+[0m[36m
+Passed checks: 1, Failed checks: 2, Skipped checks: 0
+
+[0m[97mCheck: CKV_AZURE_251: "Ensure Azure Virtual Machine disks are configured without public network access"
+[0m[31m	FAILED for resource: azurerm_managed_disk.example
+[0m[35m	File: /main.tf:20-27
+[0m
+		[37m20 | [33mresource "azurerm_managed_disk" "example" {
+		[37m21 | [33m  name                 = "example_managed_disk"
+		[37m22 | [33m  location             = azurerm_resource_group.example.location
+		[37m23 | [33m  resource_group_name  = azurerm_resource_group.example.name
+		[37m24 | [33m  storage_account_type = "Standard_LRS"
+		[37m25 | [33m  create_option        = "Empty"
+		[37m26 | [33m  disk_size_gb         = 1
+		[37m27 | [33m}
+
+[97mCheck: CKV_AZURE_93: "Ensure that managed disks use a specific set of disk encryption sets for the customer-managed key encryption"
+[0m[31m	FAILED for resource: azurerm_managed_disk.example
+[0m[35m	File: /main.tf:20-27
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-managed-disks-use-a-specific-set-of-disk-encryption-sets-for-the-customer-managed-key-encryption
+[0m[0m
+		[37m20 | [33mresource "azurerm_managed_disk" "example" {
+		[37m21 | [33m  name                 = "example_managed_disk"
+		[37m22 | [33m  location             = azurerm_resource_group.example.location
+		[37m23 | [33m  resource_group_name  = azurerm_resource_group.example.name
+		[37m24 | [33m  storage_account_type = "Standard_LRS"
+		[37m25 | [33m  create_option        = "Empty"
+		[37m26 | [33m  disk_size_gb         = 1
+		[37m27 | [33m}
+
+[0m[0m[0m
+[0m[0m[0m[0m[0m

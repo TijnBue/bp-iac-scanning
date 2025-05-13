@@ -1,0 +1,109 @@
+[38;2;34;187;51m
+                                                                                                                                                   
+                                                                                                                                                                                                    
+   MLLLLLM             MLLLLLLLLL   LLLLLLL             KLLLLLLLLLLLLLLLL       LLLLLLLLLLLLLLLLLLLLLLL 
+   MMMMMMM           MMMMMMMMMML    MMMMMMMK       LMMMMMMMMMMMMMMMMMMMML   KLMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM         MMMMMMMMML       MMMMMMMK     LMMMMMMMMMMMMMMMMMMMMMML  LMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM      MMMMMMMMMML         MMMMMMMK   LMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM    LMMMMMMMMML           MMMMMMMK  LMMMMMMMMMLLMLLLLLLLLLLLLLL LMMMMMMMLLLLLLLLLLLLLLLLLLLLM 
+   MMMMMMM  MMMMMMMMMLM             MMMMMMMK LMMMMMMMM                    LMMMMMML                      
+   MMMMMMMLMMMMMMMML                MMMMMMMK MMMMMMML                     LMMMMMMMMLLLLLLLLLLLLLMLL     
+   MMMMMMMMMMMMMMMM                 MMMMMMMK MMMMMML                       LMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMMMMMMMMMMMMM               MMMMMMMK MMMMMMM                         LMMMMMMMMMMMMMMMMMMMMMMMML 
+   MMMMMMM KLMMMMMMMMML             MMMMMMMK LMMMMMMM                                          MMMMMMMML
+   MMMMMMM    LMMMMMMMMMM           MMMMMMMK LMMMMMMMMLL                                        MMMMMMML
+   MMMMMMM      LMMMMMMMMMLL        MMMMMMMK  LMMMMMMMMMMMMMMMMMMMMMMMMML LLLLLLLLLLLLLLLLLLLLMMMMMMMMMM
+   MMMMMMM        MMMMMMMMMMML      MMMMMMMK   MMMMMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMM          LLMMMMMMMMML    MMMMMMMK     LLMMMMMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMMMML  
+   MMMMMMM             MMMMMMMMMML  MMMMMMMK         KLMMMMMMMMMMMMMMMMML LMMMMMMMMMMMMMMMMMMMMMMMLK    
+                                                                                                            
+                                                                                                                                                                                                                                                                                                                        
+
+[0m
+Scanning with Keeping Infrastructure as Code Secure v2.1.7
+
+
+
+
+
+[38;2;91;192;222mOutput Without Description[0m, Severity: [38;2;91;192;222mINFO[0m, Results: 2
+[1mDescription:[0m All outputs should contain a valid description.
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 710
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/59312e8a-a64e-41e7-a252-618533dd1ea8
+
+	[38;2;91;192;222m[1]:[0m ../../src/main.tf:[38;2;34;187;51m40[0m
+
+		039: 
+[38;2;240;173;78m		040: output "client_certificate" {
+[0m		041:   value     = azurerm_kubernetes_cluster.example.kube_config[0].client_certificate
+
+
+	[38;2;91;192;222m[2]:[0m ../../src/main.tf:[38;2;34;187;51m45[0m
+
+		044: 
+[38;2;240;173;78m		045: output "kube_config" {
+[0m		046:   value = azurerm_kubernetes_cluster.example.kube_config_raw
+
+
+[38;2;237;213;126mAKS Uses Azure Policies Add-On Disabled[0m, Severity: [38;2;237;213;126mLOW[0m, Results: 1
+[1mDescription:[0m Azure Container Service (AKS) should use Azure Policies Add-On
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 710
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/43789711-161b-4708-b5bb-9d1c626f7492
+
+	[38;2;237;213;126m[1]:[0m ../../src/main.tf:[38;2;34;187;51m19[0m
+
+		018: 
+[38;2;240;173;78m		019: resource "azurerm_kubernetes_cluster" "example" {
+[0m		020:   name                = "example-aks1"
+
+
+[38;2;237;213;126mAKS Network Policy Misconfigured[0m, Severity: [38;2;237;213;126mLOW[0m, Results: 1
+[1mDescription:[0m Azure Kubernetes Service should have the proper network policy configuration to ensure the principle of least privileges, which means that 'network_profile.network_policy' should be defined
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 285
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/f5342045-b935-402d-adf1-8dbbd09c0eef
+
+	[38;2;237;213;126m[1]:[0m ../../src/main.tf:[38;2;34;187;51m19[0m
+
+		018: 
+[38;2;240;173;78m		019: resource "azurerm_kubernetes_cluster" "example" {
+[0m		020:   name                = "example-aks1"
+
+
+[38;2;237;213;126mAKS Disk Encryption Set ID Undefined[0m, Severity: [38;2;237;213;126mLOW[0m, Results: 1
+[1mDescription:[0m Azure Container Service (AKS) should use Disk Encryption Set ID in supported types of disk
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 311
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/b17d8bb8-4c08-4785-867e-cb9e62a622aa
+
+	[38;2;237;213;126m[1]:[0m ../../src/main.tf:[38;2;34;187;51m19[0m
+
+		018: 
+[38;2;240;173;78m		019: resource "azurerm_kubernetes_cluster" "example" {
+[0m		020:   name                = "example-aks1"
+
+
+[38;2;255;114;19mAKS Private Cluster Disabled[0m, Severity: [38;2;255;114;19mMEDIUM[0m, Results: 1
+[1mDescription:[0m Azure Kubernetes Service (AKS) API should not be exposed to the internet
+[1mPlatform:[0m Terraform
+[1mCWE:[0m 732
+[1mLearn more about this vulnerability:[0m https://docs.kics.io/latest/queries/terraform-queries/azure/599318f2-6653-4569-9e21-041d06c63a89
+
+	[38;2;255;114;19m[1]:[0m ../../src/main.tf:[38;2;34;187;51m19[0m
+
+		018: 
+[38;2;240;173;78m		019: resource "azurerm_kubernetes_cluster" "example" {
+[0m		020:   name                = "example-aks1"
+
+
+
+Results Summary:
+[38;2;255;0;0mCRITICAL[0m: 0
+[38;2;187;33;36mHIGH[0m: 0
+[38;2;255;114;19mMEDIUM[0m: 1
+[38;2;237;213;126mLOW[0m: 3
+[38;2;91;192;222mINFO[0m: 2
+TOTAL: 6
+

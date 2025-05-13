@@ -1,0 +1,9 @@
+image: aquasec/trivy:0.62.0
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: IaC scan (Trivy)
+          script:
+            - trivy conf terraform_stage/

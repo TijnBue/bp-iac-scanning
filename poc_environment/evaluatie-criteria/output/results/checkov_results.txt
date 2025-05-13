@@ -1,0 +1,154 @@
+   set up sql server that doesn't have a public access
+SyntaxError: unterminated string literal (detected at line 1) (<unknown>, line 1)[0m[0m[0m
+[0m[0m[0m   set up sql server that doesn't have a public access
+SyntaxError: unterminated string literal (detected at line 1) (<unknown>, line 1)[0m[0m[0m
+[0m[0m[0m[34mterraform scan results:
+[0m[36m
+Passed checks: 2, Failed checks: 7, Skipped checks: 0
+
+[0m[97mCheck: CKV_AZURE_52: "Ensure MSSQL is using the latest version of TLS encryption"
+[0m[31m	FAILED for resource: azurerm_mssql_server.my-sql-server
+[0m[35m	File: /terraform/main.tf:21-33
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-mssql-is-using-the-latest-version-of-tls-encryption
+[0m[0m
+		[37m21 | [33mresource "azurerm_mssql_server" "my-sql-server" {
+		[37m22 | [33m  name                          = "${local.resource_prefix}sqlserver"
+		[37m23 | [33m  resource_group_name           = azurerm_resource_group.tests-resource-group.name
+		[37m24 | [33m  location                      = azurerm_resource_group.tests-resource-group.location
+		[37m25 | [33m  version                       = "12.0"
+		[37m26 | [33m  administrator_login           = "4dm1n157r470r"
+		[37m27 | [33m  administrator_login_password  = "4-v3ry-53cr37-p455w0rd"
+		[37m28 | [33m  public_network_access_enabled = true
+		[37m29 | [33m
+		[37m30 | [33m  tags = {
+		[37m31 | [33m    ResScope = local.test_description
+		[37m32 | [33m  }
+		[37m33 | [33m}
+
+[97mCheck: CKV_AZURE_113: "Ensure that SQL server disables public network access"
+[0m[31m	FAILED for resource: azurerm_mssql_server.my-sql-server
+[0m[35m	File: /terraform/main.tf:21-33
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/ensure-that-sql-server-disables-public-network-access
+[0m[0m
+		[37m21 | [33mresource "azurerm_mssql_server" "my-sql-server" {
+		[37m22 | [33m  name                          = "${local.resource_prefix}sqlserver"
+		[37m23 | [33m  resource_group_name           = azurerm_resource_group.tests-resource-group.name
+		[37m24 | [33m  location                      = azurerm_resource_group.tests-resource-group.location
+		[37m25 | [33m  version                       = "12.0"
+		[37m26 | [33m  administrator_login           = "4dm1n157r470r"
+		[37m27 | [33m  administrator_login_password  = "4-v3ry-53cr37-p455w0rd"
+		[37m28 | [33m  public_network_access_enabled = true
+		[37m29 | [33m
+		[37m30 | [33m  tags = {
+		[37m31 | [33m    ResScope = local.test_description
+		[37m32 | [33m  }
+		[37m33 | [33m}
+
+[97mCheck: CKV2_AZURE_45: "Ensure Microsoft SQL server is configured with private endpoint"
+[0m[31m	FAILED for resource: azurerm_mssql_server.my-sql-server
+[0m[35m	File: /terraform/main.tf:21-33
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-2-45
+[0m[0m
+		[37m21 | [33mresource "azurerm_mssql_server" "my-sql-server" {
+		[37m22 | [33m  name                          = "${local.resource_prefix}sqlserver"
+		[37m23 | [33m  resource_group_name           = azurerm_resource_group.tests-resource-group.name
+		[37m24 | [33m  location                      = azurerm_resource_group.tests-resource-group.location
+		[37m25 | [33m  version                       = "12.0"
+		[37m26 | [33m  administrator_login           = "4dm1n157r470r"
+		[37m27 | [33m  administrator_login_password  = "4-v3ry-53cr37-p455w0rd"
+		[37m28 | [33m  public_network_access_enabled = true
+		[37m29 | [33m
+		[37m30 | [33m  tags = {
+		[37m31 | [33m    ResScope = local.test_description
+		[37m32 | [33m  }
+		[37m33 | [33m}
+
+[97mCheck: CKV2_AZURE_27: "Ensure Azure AD authentication is enabled for Azure SQL (MSSQL)"
+[0m[31m	FAILED for resource: azurerm_mssql_server.my-sql-server
+[0m[35m	File: /terraform/main.tf:21-33
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/azr-general-85
+[0m[0m
+		[37m21 | [33mresource "azurerm_mssql_server" "my-sql-server" {
+		[37m22 | [33m  name                          = "${local.resource_prefix}sqlserver"
+		[37m23 | [33m  resource_group_name           = azurerm_resource_group.tests-resource-group.name
+		[37m24 | [33m  location                      = azurerm_resource_group.tests-resource-group.location
+		[37m25 | [33m  version                       = "12.0"
+		[37m26 | [33m  administrator_login           = "4dm1n157r470r"
+		[37m27 | [33m  administrator_login_password  = "4-v3ry-53cr37-p455w0rd"
+		[37m28 | [33m  public_network_access_enabled = true
+		[37m29 | [33m
+		[37m30 | [33m  tags = {
+		[37m31 | [33m    ResScope = local.test_description
+		[37m32 | [33m  }
+		[37m33 | [33m}
+
+[97mCheck: CKV2_AZURE_2: "Ensure that Vulnerability Assessment (VA) is enabled on a SQL server by setting a Storage Account"
+[0m[31m	FAILED for resource: azurerm_mssql_server.my-sql-server
+[0m[35m	File: /terraform/main.tf:21-33
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-vulnerability-assessment-va-is-enabled-on-a-sql-server-by-setting-a-storage-account
+[0m[0m
+		[37m21 | [33mresource "azurerm_mssql_server" "my-sql-server" {
+		[37m22 | [33m  name                          = "${local.resource_prefix}sqlserver"
+		[37m23 | [33m  resource_group_name           = azurerm_resource_group.tests-resource-group.name
+		[37m24 | [33m  location                      = azurerm_resource_group.tests-resource-group.location
+		[37m25 | [33m  version                       = "12.0"
+		[37m26 | [33m  administrator_login           = "4dm1n157r470r"
+		[37m27 | [33m  administrator_login_password  = "4-v3ry-53cr37-p455w0rd"
+		[37m28 | [33m  public_network_access_enabled = true
+		[37m29 | [33m
+		[37m30 | [33m  tags = {
+		[37m31 | [33m    ResScope = local.test_description
+		[37m32 | [33m  }
+		[37m33 | [33m}
+
+[97mCheck: CKV_AZURE_24: "Ensure that 'Auditing' Retention is 'greater than 90 days' for SQL servers"
+[0m[31m	FAILED for resource: azurerm_mssql_server.my-sql-server
+[0m[35m	File: /terraform/main.tf:21-33
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-logging-policies/bc-azr-logging-3
+[0m[0m
+		[37m21 | [33mresource "azurerm_mssql_server" "my-sql-server" {
+		[37m22 | [33m  name                          = "${local.resource_prefix}sqlserver"
+		[37m23 | [33m  resource_group_name           = azurerm_resource_group.tests-resource-group.name
+		[37m24 | [33m  location                      = azurerm_resource_group.tests-resource-group.location
+		[37m25 | [33m  version                       = "12.0"
+		[37m26 | [33m  administrator_login           = "4dm1n157r470r"
+		[37m27 | [33m  administrator_login_password  = "4-v3ry-53cr37-p455w0rd"
+		[37m28 | [33m  public_network_access_enabled = true
+		[37m29 | [33m
+		[37m30 | [33m  tags = {
+		[37m31 | [33m    ResScope = local.test_description
+		[37m32 | [33m  }
+		[37m33 | [33m}
+
+[97mCheck: CKV_AZURE_23: "Ensure that 'Auditing' is set to 'On' for SQL servers"
+[0m[31m	FAILED for resource: azurerm_mssql_server.my-sql-server
+[0m[35m	File: /terraform/main.tf:21-33
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-logging-policies/bc-azr-logging-2
+[0m[0m
+		[37m21 | [33mresource "azurerm_mssql_server" "my-sql-server" {
+		[37m22 | [33m  name                          = "${local.resource_prefix}sqlserver"
+		[37m23 | [33m  resource_group_name           = azurerm_resource_group.tests-resource-group.name
+		[37m24 | [33m  location                      = azurerm_resource_group.tests-resource-group.location
+		[37m25 | [33m  version                       = "12.0"
+		[37m26 | [33m  administrator_login           = "4dm1n157r470r"
+		[37m27 | [33m  administrator_login_password  = "4-v3ry-53cr37-p455w0rd"
+		[37m28 | [33m  public_network_access_enabled = true
+		[37m29 | [33m
+		[37m30 | [33m  tags = {
+		[37m31 | [33m    ResScope = local.test_description
+		[37m32 | [33m  }
+		[37m33 | [33m}
+
+[34msecrets scan results:
+[0m[36m
+Passed checks: 0, Failed checks: 1, Skipped checks: 0
+
+[0m[97mCheck: CKV_SECRET_6: "Base64 High Entropy String"
+[0m[31m	FAILED for resource: bdd195067c12322075a59201b90cff0d38dbaab4
+[0m[35m	File: /terraform/main.tf:27-28
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/secrets-policies/secrets-policy-index/git-secrets-6
+[0m[0m
+		[37m27 | [33m  administrator_login_password  = "4-v3r**********"
+
+[0m[0m[0m
+[0m[0m[0m[0m[0m

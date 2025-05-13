@@ -1,0 +1,1079 @@
+[34mterraform scan results:
+[0m[36m
+Passed checks: 23, Failed checks: 55, Skipped checks: 0
+
+[0m[97mCheck: CKV_TF_1: "Ensure Terraform module sources use a commit hash"
+[0m[31m	FAILED for resource: akscluster_dev_001
+[0m[35m	File: /environments/development/main.tf:63-106
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-git-url-with-commit-hash-revision
+[0m[0m
+		[37m63  | [33mmodule "akscluster_dev_001" {
+		[37m64  | [33m  source = "Azure/aks/azurerm"
+		[37m65  | [33m
+		[37m66  | [33m  resource_group_name = azurerm_resource_group.rg_development.name
+		[37m67  | [33m  location            = "West Europe"
+		[37m68  | [33m
+		[37m69  | [33m  depends_on = [azurerm_resource_group.rg_development]
+		[37m70  | [33m
+		[37m71  | [33m  prefix       = "aks-dev-westeu"
+		[37m72  | [33m  cluster_name = "aks-dev-001"
+		[37m73  | [33m
+		[37m74  | [33m  node_pools = {
+		[37m75  | [33m    user_pool = {
+		[37m76  | [33m      name       = "userp"
+		[37m77  | [33m      vm_size    = "Standard_D2s_v3"
+		[37m78  | [33m      os_sku     = "Ubuntu"
+		[37m79  | [33m      node_count = 1
+		[37m80  | [33m      mode       = "User"
+		[37m81  | [33m    }
+		[37m82  | [33m  }
+		[37m83  | [33m
+		[37m84  |   # Default system pool configuration
+		[37m85  | [33m  agents_size      = "Standard_D2s_v3"
+		[37m86  | [33m  os_sku           = "Ubuntu"
+		[37m87  | [33m  agents_pool_name = "systemp"
+		[37m88  | [33m  agents_count     = 1
+		[37m89  | [33m
+		[37m90  | [33m  cluster_log_analytics_workspace_name = "aks-dev-log-workspace"
+		[37m91  | [33m
+		[37m92  | [33m  oidc_issuer_enabled               = true
+		[37m93  | [33m  workload_identity_enabled         = true
+		[37m94  | [33m  private_cluster_enabled           = false
+		[37m95  | [33m  rbac_aad                          = false
+		[37m96  | [33m  role_based_access_control_enabled = false
+		[37m97  | [33m
+		[37m98  |   # TOOD: Fix issues when the following parameters are set -  Can't connect to K88 cluster when create ArgoCD namespace
+		[37m99  |   # rbac_aad                          = false
+		[37m100 |   # role_based_access_control_enabled = true
+		[37m101 |   # rbac_aad_admin_group_object_ids = [ azuread_group.development_group.id ]
+		[37m102 | [33m
+		[37m103 | [33m  tags = {
+		[37m104 | [33m    Environment = "development"
+		[37m105 | [33m  }
+		[37m106 | [33m}
+
+[97mCheck: CKV_TF_2: "Ensure Terraform module sources use a tag with a version number"
+[0m[31m	FAILED for resource: akscluster_dev_001
+[0m[35m	File: /environments/development/main.tf:63-106
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-tag
+[0m[0m
+		[37m63  | [33mmodule "akscluster_dev_001" {
+		[37m64  | [33m  source = "Azure/aks/azurerm"
+		[37m65  | [33m
+		[37m66  | [33m  resource_group_name = azurerm_resource_group.rg_development.name
+		[37m67  | [33m  location            = "West Europe"
+		[37m68  | [33m
+		[37m69  | [33m  depends_on = [azurerm_resource_group.rg_development]
+		[37m70  | [33m
+		[37m71  | [33m  prefix       = "aks-dev-westeu"
+		[37m72  | [33m  cluster_name = "aks-dev-001"
+		[37m73  | [33m
+		[37m74  | [33m  node_pools = {
+		[37m75  | [33m    user_pool = {
+		[37m76  | [33m      name       = "userp"
+		[37m77  | [33m      vm_size    = "Standard_D2s_v3"
+		[37m78  | [33m      os_sku     = "Ubuntu"
+		[37m79  | [33m      node_count = 1
+		[37m80  | [33m      mode       = "User"
+		[37m81  | [33m    }
+		[37m82  | [33m  }
+		[37m83  | [33m
+		[37m84  |   # Default system pool configuration
+		[37m85  | [33m  agents_size      = "Standard_D2s_v3"
+		[37m86  | [33m  os_sku           = "Ubuntu"
+		[37m87  | [33m  agents_pool_name = "systemp"
+		[37m88  | [33m  agents_count     = 1
+		[37m89  | [33m
+		[37m90  | [33m  cluster_log_analytics_workspace_name = "aks-dev-log-workspace"
+		[37m91  | [33m
+		[37m92  | [33m  oidc_issuer_enabled               = true
+		[37m93  | [33m  workload_identity_enabled         = true
+		[37m94  | [33m  private_cluster_enabled           = false
+		[37m95  | [33m  rbac_aad                          = false
+		[37m96  | [33m  role_based_access_control_enabled = false
+		[37m97  | [33m
+		[37m98  |   # TOOD: Fix issues when the following parameters are set -  Can't connect to K88 cluster when create ArgoCD namespace
+		[37m99  |   # rbac_aad                          = false
+		[37m100 |   # role_based_access_control_enabled = true
+		[37m101 |   # rbac_aad_admin_group_object_ids = [ azuread_group.development_group.id ]
+		[37m102 | [33m
+		[37m103 | [33m  tags = {
+		[37m104 | [33m    Environment = "development"
+		[37m105 | [33m  }
+		[37m106 | [33m}
+
+[97mCheck: CKV_AZURE_139: "Ensure ACR set to disable public networking"
+[0m[31m	FAILED for resource: module.cr_development_001.azurerm_container_registry.acr
+[0m[35m	File: /modules/container_registry/main.tf:7-17
+[0m[35m	Calling File: /environments/development/main.tf:116-128
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/ensure-azure-acr-is-set-to-disable-public-networking
+[0m[0m
+		[37m7  | [33mresource "azurerm_container_registry" "acr" {
+		[37m8  | [33m  name                = "${var.container_reg_name}${random_pet.random_pet.id}"
+		[37m9  | [33m  resource_group_name = var.resource_group_name
+		[37m10 | [33m  location            = var.container_reg_location
+		[37m11 | [33m  sku                 = var.container_reg_sku_name
+		[37m12 | [33m  admin_enabled       = var.admin_enabled
+		[37m13 | [33m
+		[37m14 | [33m  tags = {
+		[37m15 | [33m    Environment = var.container_reg_tags
+		[37m16 | [33m  }
+		[37m17 | [33m}
+
+[97mCheck: CKV_AZURE_164: "Ensures that ACR uses signed/trusted images"
+[0m[31m	FAILED for resource: module.cr_development_001.azurerm_container_registry.acr
+[0m[35m	File: /modules/container_registry/main.tf:7-17
+[0m[35m	Calling File: /environments/development/main.tf:116-128
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/azr-general-164
+[0m[0m
+		[37m7  | [33mresource "azurerm_container_registry" "acr" {
+		[37m8  | [33m  name                = "${var.container_reg_name}${random_pet.random_pet.id}"
+		[37m9  | [33m  resource_group_name = var.resource_group_name
+		[37m10 | [33m  location            = var.container_reg_location
+		[37m11 | [33m  sku                 = var.container_reg_sku_name
+		[37m12 | [33m  admin_enabled       = var.admin_enabled
+		[37m13 | [33m
+		[37m14 | [33m  tags = {
+		[37m15 | [33m    Environment = var.container_reg_tags
+		[37m16 | [33m  }
+		[37m17 | [33m}
+
+[97mCheck: CKV_AZURE_167: "Ensure a retention policy is set to cleanup untagged manifests."
+[0m[31m	FAILED for resource: module.cr_development_001.azurerm_container_registry.acr
+[0m[35m	File: /modules/container_registry/main.tf:7-17
+[0m[35m	Calling File: /environments/development/main.tf:116-128
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/azr-general-167
+[0m[0m
+		[37m7  | [33mresource "azurerm_container_registry" "acr" {
+		[37m8  | [33m  name                = "${var.container_reg_name}${random_pet.random_pet.id}"
+		[37m9  | [33m  resource_group_name = var.resource_group_name
+		[37m10 | [33m  location            = var.container_reg_location
+		[37m11 | [33m  sku                 = var.container_reg_sku_name
+		[37m12 | [33m  admin_enabled       = var.admin_enabled
+		[37m13 | [33m
+		[37m14 | [33m  tags = {
+		[37m15 | [33m    Environment = var.container_reg_tags
+		[37m16 | [33m  }
+		[37m17 | [33m}
+
+[97mCheck: CKV_AZURE_237: "Ensure dedicated data endpoints are enabled."
+[0m[31m	FAILED for resource: module.cr_development_001.azurerm_container_registry.acr
+[0m[35m	File: /modules/container_registry/main.tf:7-17
+[0m[35m	Calling File: /environments/development/main.tf:116-128
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-237
+[0m[0m
+		[37m7  | [33mresource "azurerm_container_registry" "acr" {
+		[37m8  | [33m  name                = "${var.container_reg_name}${random_pet.random_pet.id}"
+		[37m9  | [33m  resource_group_name = var.resource_group_name
+		[37m10 | [33m  location            = var.container_reg_location
+		[37m11 | [33m  sku                 = var.container_reg_sku_name
+		[37m12 | [33m  admin_enabled       = var.admin_enabled
+		[37m13 | [33m
+		[37m14 | [33m  tags = {
+		[37m15 | [33m    Environment = var.container_reg_tags
+		[37m16 | [33m  }
+		[37m17 | [33m}
+
+[97mCheck: CKV_AZURE_233: "Ensure Azure Container Registry (ACR) is zone redundant"
+[0m[31m	FAILED for resource: module.cr_development_001.azurerm_container_registry.acr
+[0m[35m	File: /modules/container_registry/main.tf:7-17
+[0m[35m	Calling File: /environments/development/main.tf:116-128
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-233
+[0m[0m
+		[37m7  | [33mresource "azurerm_container_registry" "acr" {
+		[37m8  | [33m  name                = "${var.container_reg_name}${random_pet.random_pet.id}"
+		[37m9  | [33m  resource_group_name = var.resource_group_name
+		[37m10 | [33m  location            = var.container_reg_location
+		[37m11 | [33m  sku                 = var.container_reg_sku_name
+		[37m12 | [33m  admin_enabled       = var.admin_enabled
+		[37m13 | [33m
+		[37m14 | [33m  tags = {
+		[37m15 | [33m    Environment = var.container_reg_tags
+		[37m16 | [33m  }
+		[37m17 | [33m}
+
+[97mCheck: CKV_AZURE_165: "Ensure geo-replicated container registries to match multi-region container deployments."
+[0m[31m	FAILED for resource: module.cr_development_001.azurerm_container_registry.acr
+[0m[35m	File: /modules/container_registry/main.tf:7-17
+[0m[35m	Calling File: /environments/development/main.tf:116-128
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/azr-networking-165
+[0m[0m
+		[37m7  | [33mresource "azurerm_container_registry" "acr" {
+		[37m8  | [33m  name                = "${var.container_reg_name}${random_pet.random_pet.id}"
+		[37m9  | [33m  resource_group_name = var.resource_group_name
+		[37m10 | [33m  location            = var.container_reg_location
+		[37m11 | [33m  sku                 = var.container_reg_sku_name
+		[37m12 | [33m  admin_enabled       = var.admin_enabled
+		[37m13 | [33m
+		[37m14 | [33m  tags = {
+		[37m15 | [33m    Environment = var.container_reg_tags
+		[37m16 | [33m  }
+		[37m17 | [33m}
+
+[97mCheck: CKV_AZURE_166: "Ensure container image quarantine, scan, and mark images verified"
+[0m[31m	FAILED for resource: module.cr_development_001.azurerm_container_registry.acr
+[0m[35m	File: /modules/container_registry/main.tf:7-17
+[0m[35m	Calling File: /environments/development/main.tf:116-128
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/azr-general-166
+[0m[0m
+		[37m7  | [33mresource "azurerm_container_registry" "acr" {
+		[37m8  | [33m  name                = "${var.container_reg_name}${random_pet.random_pet.id}"
+		[37m9  | [33m  resource_group_name = var.resource_group_name
+		[37m10 | [33m  location            = var.container_reg_location
+		[37m11 | [33m  sku                 = var.container_reg_sku_name
+		[37m12 | [33m  admin_enabled       = var.admin_enabled
+		[37m13 | [33m
+		[37m14 | [33m  tags = {
+		[37m15 | [33m    Environment = var.container_reg_tags
+		[37m16 | [33m  }
+		[37m17 | [33m}
+
+[97mCheck: CKV_AZURE_109: "Ensure that key vault allows firewall rules settings"
+[0m[31m	FAILED for resource: module.keyvault_dev.azurerm_key_vault.key_vault
+[0m[35m	File: /modules/keyvault/main.tf:9-40
+[0m[35m	Calling File: /environments/development/main.tf:207-221
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/ensure-that-key-vault-allows-firewall-rules-settings
+[0m[0m
+		[37m9  | [33mresource "azurerm_key_vault" "key_vault" {
+		[37m10 | [33m  name                = "${var.keyvault_name}-${random_string.random_string.id}"
+		[37m11 | [33m  location            = var.keyvault_location
+		[37m12 | [33m  resource_group_name = var.resource_group_name
+		[37m13 | [33m  tenant_id           = var.tenant_id
+		[37m14 | [33m  sku_name            = var.keyvault_sku_name
+		[37m15 | [33m
+		[37m16 | [33m  enable_rbac_authorization     = var.enable_rbac_authorization
+		[37m17 | [33m  public_network_access_enabled = var.public_network_access_enabled
+		[37m18 | [33m
+		[37m19 | [33m
+		[37m20 | [33m  tags = {
+		[37m21 | [33m    Environment = var.keyvault_environment_tag
+		[37m22 | [33m  }
+		[37m23 | [33m
+		[37m24 | #   access_policy {
+		[37m25 | #     tenant_id = data.azurerm_client_config.current.tenant_id
+		[37m26 | #     object_id = data.azurerm_client_config.current.object_id
+		[37m27 | [33m
+		[37m28 | #     key_permissions = [
+		[37m29 | #       "Get",
+		[37m30 | #     ]
+		[37m31 | [33m
+		[37m32 | #     secret_permissions = [
+		[37m33 | #       "Get",
+		[37m34 | #     ]
+		[37m35 | [33m
+		[37m36 | #     storage_permissions = [
+		[37m37 | #       "Get",
+		[37m38 | #     ]
+		[37m39 | #   }
+		[37m40 | [33m}
+
+[97mCheck: CKV_AZURE_42: "Ensure the key vault is recoverable"
+[0m[31m	FAILED for resource: module.keyvault_dev.azurerm_key_vault.key_vault
+[0m[35m	File: /modules/keyvault/main.tf:9-40
+[0m[35m	Calling File: /environments/development/main.tf:207-221
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-the-key-vault-is-recoverable
+[0m[0m
+		[37m9  | [33mresource "azurerm_key_vault" "key_vault" {
+		[37m10 | [33m  name                = "${var.keyvault_name}-${random_string.random_string.id}"
+		[37m11 | [33m  location            = var.keyvault_location
+		[37m12 | [33m  resource_group_name = var.resource_group_name
+		[37m13 | [33m  tenant_id           = var.tenant_id
+		[37m14 | [33m  sku_name            = var.keyvault_sku_name
+		[37m15 | [33m
+		[37m16 | [33m  enable_rbac_authorization     = var.enable_rbac_authorization
+		[37m17 | [33m  public_network_access_enabled = var.public_network_access_enabled
+		[37m18 | [33m
+		[37m19 | [33m
+		[37m20 | [33m  tags = {
+		[37m21 | [33m    Environment = var.keyvault_environment_tag
+		[37m22 | [33m  }
+		[37m23 | [33m
+		[37m24 | #   access_policy {
+		[37m25 | #     tenant_id = data.azurerm_client_config.current.tenant_id
+		[37m26 | #     object_id = data.azurerm_client_config.current.object_id
+		[37m27 | [33m
+		[37m28 | #     key_permissions = [
+		[37m29 | #       "Get",
+		[37m30 | #     ]
+		[37m31 | [33m
+		[37m32 | #     secret_permissions = [
+		[37m33 | #       "Get",
+		[37m34 | #     ]
+		[37m35 | [33m
+		[37m36 | #     storage_permissions = [
+		[37m37 | #       "Get",
+		[37m38 | #     ]
+		[37m39 | #   }
+		[37m40 | [33m}
+
+[97mCheck: CKV_AZURE_189: "Ensure that Azure Key Vault disables public network access"
+[0m[31m	FAILED for resource: module.keyvault_dev.azurerm_key_vault.key_vault
+[0m[35m	File: /modules/keyvault/main.tf:9-40
+[0m[35m	Calling File: /environments/development/main.tf:207-221
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/azr-networking-189
+[0m[0m
+		[37m9  | [33mresource "azurerm_key_vault" "key_vault" {
+		[37m10 | [33m  name                = "${var.keyvault_name}-${random_string.random_string.id}"
+		[37m11 | [33m  location            = var.keyvault_location
+		[37m12 | [33m  resource_group_name = var.resource_group_name
+		[37m13 | [33m  tenant_id           = var.tenant_id
+		[37m14 | [33m  sku_name            = var.keyvault_sku_name
+		[37m15 | [33m
+		[37m16 | [33m  enable_rbac_authorization     = var.enable_rbac_authorization
+		[37m17 | [33m  public_network_access_enabled = var.public_network_access_enabled
+		[37m18 | [33m
+		[37m19 | [33m
+		[37m20 | [33m  tags = {
+		[37m21 | [33m    Environment = var.keyvault_environment_tag
+		[37m22 | [33m  }
+		[37m23 | [33m
+		[37m24 | #   access_policy {
+		[37m25 | #     tenant_id = data.azurerm_client_config.current.tenant_id
+		[37m26 | #     object_id = data.azurerm_client_config.current.object_id
+		[37m27 | [33m
+		[37m28 | #     key_permissions = [
+		[37m29 | #       "Get",
+		[37m30 | #     ]
+		[37m31 | [33m
+		[37m32 | #     secret_permissions = [
+		[37m33 | #       "Get",
+		[37m34 | #     ]
+		[37m35 | [33m
+		[37m36 | #     storage_permissions = [
+		[37m37 | #       "Get",
+		[37m38 | #     ]
+		[37m39 | #   }
+		[37m40 | [33m}
+
+[97mCheck: CKV_AZURE_110: "Ensure that key vault enables purge protection"
+[0m[31m	FAILED for resource: module.keyvault_dev.azurerm_key_vault.key_vault
+[0m[35m	File: /modules/keyvault/main.tf:9-40
+[0m[35m	Calling File: /environments/development/main.tf:207-221
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-key-vault-enables-purge-protection
+[0m[0m
+		[37m9  | [33mresource "azurerm_key_vault" "key_vault" {
+		[37m10 | [33m  name                = "${var.keyvault_name}-${random_string.random_string.id}"
+		[37m11 | [33m  location            = var.keyvault_location
+		[37m12 | [33m  resource_group_name = var.resource_group_name
+		[37m13 | [33m  tenant_id           = var.tenant_id
+		[37m14 | [33m  sku_name            = var.keyvault_sku_name
+		[37m15 | [33m
+		[37m16 | [33m  enable_rbac_authorization     = var.enable_rbac_authorization
+		[37m17 | [33m  public_network_access_enabled = var.public_network_access_enabled
+		[37m18 | [33m
+		[37m19 | [33m
+		[37m20 | [33m  tags = {
+		[37m21 | [33m    Environment = var.keyvault_environment_tag
+		[37m22 | [33m  }
+		[37m23 | [33m
+		[37m24 | #   access_policy {
+		[37m25 | #     tenant_id = data.azurerm_client_config.current.tenant_id
+		[37m26 | #     object_id = data.azurerm_client_config.current.object_id
+		[37m27 | [33m
+		[37m28 | #     key_permissions = [
+		[37m29 | #       "Get",
+		[37m30 | #     ]
+		[37m31 | [33m
+		[37m32 | #     secret_permissions = [
+		[37m33 | #       "Get",
+		[37m34 | #     ]
+		[37m35 | [33m
+		[37m36 | #     storage_permissions = [
+		[37m37 | #       "Get",
+		[37m38 | #     ]
+		[37m39 | #   }
+		[37m40 | [33m}
+
+[97mCheck: CKV_AZURE_94: "Ensure that My SQL server enables geo-redundant backups"
+[0m[31m	FAILED for resource: module.mysql_flexible_server_dev_001.azurerm_mysql_flexible_server.mysql_flexible_server
+[0m[35m	File: /modules/mysql_flexible_server/main.tf:8-23
+[0m[35m	Calling File: /environments/development/main.tf:285-314
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-that-my-sql-server-enables-geo-redundant-backups
+[0m[0m
+		[37m8  | [33mresource "azurerm_mysql_flexible_server" "mysql_flexible_server" {
+		[37m9  | [33m  name                = var.mysql_flexible_server_name
+		[37m10 | [33m  resource_group_name = var.resource_group_name
+		[37m11 | [33m  location            = var.resource_group_location
+		[37m12 | [33m
+		[37m13 | [33m  administrator_login    = var.administrator_login
+		[37m14 | [33m  administrator_password = data.azurerm_key_vault_secret.data_keyvault_secret.value
+		[37m15 | [33m
+		[37m16 | [33m  backup_retention_days = var.backup_retention_days
+		[37m17 | [33m
+		[37m18 | [33m  zone = var.zone
+		[37m19 | [33m
+		[37m20 | [33m  create_mode = var.create_mode
+		[37m21 | [33m  sku_name    = var.sku_name
+		[37m22 | [33m  version     = var.mysql_version
+		[37m23 | [33m}
+
+[97mCheck: CKV_AZURE_206: "Ensure that Storage Accounts use replication"
+[0m[31m	FAILED for resource: azurerm_storage_account.tfstate
+[0m[35m	File: /modules/remote_backend/main.tf:11-22
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/azr-general-206
+[0m[0m
+		[37m11 | [33mresource "azurerm_storage_account" "tfstate" {
+		[37m12 | [33m
+		[37m13 | [33m  depends_on = [ 
+		[37m14 | [33m    azurerm_resource_group.tfstate 
+		[37m15 | [33m  ]
+		[37m16 | [33m  name                     = "${random_pet.prefix.id}tfstate"
+		[37m17 | [33m  resource_group_name      = var.resource_group_name
+		[37m18 | [33m  location                 = var.resource_group_location
+		[37m19 | [33m  account_tier             = "Standard"
+		[37m20 | [33m  account_replication_type = "LRS"
+		[37m21 |   # allow_nested_items_to_be_public = false
+		[37m22 | [33m}
+
+[97mCheck: CKV_AZURE_44: "Ensure Storage Account is using the latest version of TLS encryption"
+[0m[31m	FAILED for resource: azurerm_storage_account.tfstate
+[0m[35m	File: /modules/remote_backend/main.tf:11-22
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-storage-policies/bc-azr-storage-2
+[0m[0m
+		[37m11 | [33mresource "azurerm_storage_account" "tfstate" {
+		[37m12 | [33m
+		[37m13 | [33m  depends_on = [ 
+		[37m14 | [33m    azurerm_resource_group.tfstate 
+		[37m15 | [33m  ]
+		[37m16 | [33m  name                     = "${random_pet.prefix.id}tfstate"
+		[37m17 | [33m  resource_group_name      = var.resource_group_name
+		[37m18 | [33m  location                 = var.resource_group_location
+		[37m19 | [33m  account_tier             = "Standard"
+		[37m20 | [33m  account_replication_type = "LRS"
+		[37m21 |   # allow_nested_items_to_be_public = false
+		[37m22 | [33m}
+
+[97mCheck: CKV_AZURE_190: "Ensure that Storage blobs restrict public access"
+[0m[31m	FAILED for resource: azurerm_storage_account.tfstate
+[0m[35m	File: /modules/remote_backend/main.tf:11-22
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/azr-networking-190
+[0m[0m
+		[37m11 | [33mresource "azurerm_storage_account" "tfstate" {
+		[37m12 | [33m
+		[37m13 | [33m  depends_on = [ 
+		[37m14 | [33m    azurerm_resource_group.tfstate 
+		[37m15 | [33m  ]
+		[37m16 | [33m  name                     = "${random_pet.prefix.id}tfstate"
+		[37m17 | [33m  resource_group_name      = var.resource_group_name
+		[37m18 | [33m  location                 = var.resource_group_location
+		[37m19 | [33m  account_tier             = "Standard"
+		[37m20 | [33m  account_replication_type = "LRS"
+		[37m21 |   # allow_nested_items_to_be_public = false
+		[37m22 | [33m}
+
+[97mCheck: CKV_AZURE_33: "Ensure Storage logging is enabled for Queue service for read, write and delete requests"
+[0m[31m	FAILED for resource: azurerm_storage_account.tfstate
+[0m[35m	File: /modules/remote_backend/main.tf:11-22
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-logging-policies/enable-requests-on-storage-logging-for-queue-service
+[0m[0m
+		[37m11 | [33mresource "azurerm_storage_account" "tfstate" {
+		[37m12 | [33m
+		[37m13 | [33m  depends_on = [ 
+		[37m14 | [33m    azurerm_resource_group.tfstate 
+		[37m15 | [33m  ]
+		[37m16 | [33m  name                     = "${random_pet.prefix.id}tfstate"
+		[37m17 | [33m  resource_group_name      = var.resource_group_name
+		[37m18 | [33m  location                 = var.resource_group_location
+		[37m19 | [33m  account_tier             = "Standard"
+		[37m20 | [33m  account_replication_type = "LRS"
+		[37m21 |   # allow_nested_items_to_be_public = false
+		[37m22 | [33m}
+
+[97mCheck: CKV_AZURE_59: "Ensure that Storage accounts disallow public access"
+[0m[31m	FAILED for resource: azurerm_storage_account.tfstate
+[0m[35m	File: /modules/remote_backend/main.tf:11-22
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/ensure-that-storage-accounts-disallow-public-access
+[0m[0m
+		[37m11 | [33mresource "azurerm_storage_account" "tfstate" {
+		[37m12 | [33m
+		[37m13 | [33m  depends_on = [ 
+		[37m14 | [33m    azurerm_resource_group.tfstate 
+		[37m15 | [33m  ]
+		[37m16 | [33m  name                     = "${random_pet.prefix.id}tfstate"
+		[37m17 | [33m  resource_group_name      = var.resource_group_name
+		[37m18 | [33m  location                 = var.resource_group_location
+		[37m19 | [33m  account_tier             = "Standard"
+		[37m20 | [33m  account_replication_type = "LRS"
+		[37m21 |   # allow_nested_items_to_be_public = false
+		[37m22 | [33m}
+
+[97mCheck: CKV_AZURE_206: "Ensure that Storage Accounts use replication"
+[0m[31m	FAILED for resource: module.storage_acc_loki_storage.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m[35m	Calling File: /environments/development/main.tf:243-257
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/azr-general-206
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV_AZURE_44: "Ensure Storage Account is using the latest version of TLS encryption"
+[0m[31m	FAILED for resource: module.storage_acc_loki_storage.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m[35m	Calling File: /environments/development/main.tf:243-257
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-storage-policies/bc-azr-storage-2
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV_AZURE_190: "Ensure that Storage blobs restrict public access"
+[0m[31m	FAILED for resource: module.storage_acc_loki_storage.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m[35m	Calling File: /environments/development/main.tf:243-257
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/azr-networking-190
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV_AZURE_33: "Ensure Storage logging is enabled for Queue service for read, write and delete requests"
+[0m[31m	FAILED for resource: module.storage_acc_loki_storage.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m[35m	Calling File: /environments/development/main.tf:243-257
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-logging-policies/enable-requests-on-storage-logging-for-queue-service
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV_AZURE_59: "Ensure that Storage accounts disallow public access"
+[0m[31m	FAILED for resource: module.storage_acc_loki_storage.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m[35m	Calling File: /environments/development/main.tf:243-257
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/ensure-that-storage-accounts-disallow-public-access
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV_AZURE_206: "Ensure that Storage Accounts use replication"
+[0m[31m	FAILED for resource: module.storage_acc_remote_backend_new.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m[35m	Calling File: /environments/development/main.tf:25-39
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/azr-general-206
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV_AZURE_44: "Ensure Storage Account is using the latest version of TLS encryption"
+[0m[31m	FAILED for resource: module.storage_acc_remote_backend_new.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m[35m	Calling File: /environments/development/main.tf:25-39
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-storage-policies/bc-azr-storage-2
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV_AZURE_190: "Ensure that Storage blobs restrict public access"
+[0m[31m	FAILED for resource: module.storage_acc_remote_backend_new.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m[35m	Calling File: /environments/development/main.tf:25-39
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/azr-networking-190
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV_AZURE_33: "Ensure Storage logging is enabled for Queue service for read, write and delete requests"
+[0m[31m	FAILED for resource: module.storage_acc_remote_backend_new.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m[35m	Calling File: /environments/development/main.tf:25-39
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-logging-policies/enable-requests-on-storage-logging-for-queue-service
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV_AZURE_59: "Ensure that Storage accounts disallow public access"
+[0m[31m	FAILED for resource: module.storage_acc_remote_backend_new.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m[35m	Calling File: /environments/development/main.tf:25-39
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/ensure-that-storage-accounts-disallow-public-access
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV2_AZURE_41: "Ensure storage account is configured with SAS expiration policy"
+[0m[31m	FAILED for resource: azurerm_storage_account.tfstate
+[0m[35m	File: /modules/remote_backend/main.tf:11-22
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-iam-policies/bc-azure-2-41
+[0m[0m
+		[37m11 | [33mresource "azurerm_storage_account" "tfstate" {
+		[37m12 | [33m
+		[37m13 | [33m  depends_on = [ 
+		[37m14 | [33m    azurerm_resource_group.tfstate 
+		[37m15 | [33m  ]
+		[37m16 | [33m  name                     = "${random_pet.prefix.id}tfstate"
+		[37m17 | [33m  resource_group_name      = var.resource_group_name
+		[37m18 | [33m  location                 = var.resource_group_location
+		[37m19 | [33m  account_tier             = "Standard"
+		[37m20 | [33m  account_replication_type = "LRS"
+		[37m21 |   # allow_nested_items_to_be_public = false
+		[37m22 | [33m}
+
+[97mCheck: CKV2_AZURE_41: "Ensure storage account is configured with SAS expiration policy"
+[0m[31m	FAILED for resource: module.storage_acc_loki_storage.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-iam-policies/bc-azure-2-41
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV2_AZURE_41: "Ensure storage account is configured with SAS expiration policy"
+[0m[31m	FAILED for resource: module.storage_acc_remote_backend_new.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-iam-policies/bc-azure-2-41
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV2_AZURE_40: "Ensure storage account is not configured with Shared Key authorization"
+[0m[31m	FAILED for resource: azurerm_storage_account.tfstate
+[0m[35m	File: /modules/remote_backend/main.tf:11-22
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-iam-policies/bc-azure-2-40
+[0m[0m
+		[37m11 | [33mresource "azurerm_storage_account" "tfstate" {
+		[37m12 | [33m
+		[37m13 | [33m  depends_on = [ 
+		[37m14 | [33m    azurerm_resource_group.tfstate 
+		[37m15 | [33m  ]
+		[37m16 | [33m  name                     = "${random_pet.prefix.id}tfstate"
+		[37m17 | [33m  resource_group_name      = var.resource_group_name
+		[37m18 | [33m  location                 = var.resource_group_location
+		[37m19 | [33m  account_tier             = "Standard"
+		[37m20 | [33m  account_replication_type = "LRS"
+		[37m21 |   # allow_nested_items_to_be_public = false
+		[37m22 | [33m}
+
+[97mCheck: CKV2_AZURE_40: "Ensure storage account is not configured with Shared Key authorization"
+[0m[31m	FAILED for resource: module.storage_acc_loki_storage.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-iam-policies/bc-azure-2-40
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV2_AZURE_40: "Ensure storage account is not configured with Shared Key authorization"
+[0m[31m	FAILED for resource: module.storage_acc_remote_backend_new.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-iam-policies/bc-azure-2-40
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV2_AZURE_32: "Ensure private endpoint is configured to key vault"
+[0m[31m	FAILED for resource: module.keyvault_dev.azurerm_key_vault.key_vault
+[0m[35m	File: /modules/keyvault/main.tf:9-40
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-2-32
+[0m[0m
+		[37m9  | [33mresource "azurerm_key_vault" "key_vault" {
+		[37m10 | [33m  name                = "${var.keyvault_name}-${random_string.random_string.id}"
+		[37m11 | [33m  location            = var.keyvault_location
+		[37m12 | [33m  resource_group_name = var.resource_group_name
+		[37m13 | [33m  tenant_id           = var.tenant_id
+		[37m14 | [33m  sku_name            = var.keyvault_sku_name
+		[37m15 | [33m
+		[37m16 | [33m  enable_rbac_authorization     = var.enable_rbac_authorization
+		[37m17 | [33m  public_network_access_enabled = var.public_network_access_enabled
+		[37m18 | [33m
+		[37m19 | [33m
+		[37m20 | [33m  tags = {
+		[37m21 | [33m    Environment = var.keyvault_environment_tag
+		[37m22 | [33m  }
+		[37m23 | [33m
+		[37m24 | #   access_policy {
+		[37m25 | #     tenant_id = data.azurerm_client_config.current.tenant_id
+		[37m26 | #     object_id = data.azurerm_client_config.current.object_id
+		[37m27 | [33m
+		[37m28 | #     key_permissions = [
+		[37m29 | #       "Get",
+		[37m30 | #     ]
+		[37m31 | [33m
+		[37m32 | #     secret_permissions = [
+		[37m33 | #       "Get",
+		[37m34 | #     ]
+		[37m35 | [33m
+		[37m36 | #     storage_permissions = [
+		[37m37 | #       "Get",
+		[37m38 | #     ]
+		[37m39 | #   }
+		[37m40 | [33m}
+
+[97mCheck: CKV2_AZURE_56: "Ensure Azure MySQL Flexible Server is configured with private endpoint"
+[0m[31m	FAILED for resource: module.mysql_flexible_server_dev_001.azurerm_mysql_flexible_server.mysql_flexible_server
+[0m[35m	File: /modules/mysql_flexible_server/main.tf:8-23
+[0m
+		[37m8  | [33mresource "azurerm_mysql_flexible_server" "mysql_flexible_server" {
+		[37m9  | [33m  name                = var.mysql_flexible_server_name
+		[37m10 | [33m  resource_group_name = var.resource_group_name
+		[37m11 | [33m  location            = var.resource_group_location
+		[37m12 | [33m
+		[37m13 | [33m  administrator_login    = var.administrator_login
+		[37m14 | [33m  administrator_password = data.azurerm_key_vault_secret.data_keyvault_secret.value
+		[37m15 | [33m
+		[37m16 | [33m  backup_retention_days = var.backup_retention_days
+		[37m17 | [33m
+		[37m18 | [33m  zone = var.zone
+		[37m19 | [33m
+		[37m20 | [33m  create_mode = var.create_mode
+		[37m21 | [33m  sku_name    = var.sku_name
+		[37m22 | [33m  version     = var.mysql_version
+		[37m23 | [33m}
+
+[97mCheck: CKV2_AZURE_33: "Ensure storage account is configured with private endpoint"
+[0m[31m	FAILED for resource: azurerm_storage_account.tfstate
+[0m[35m	File: /modules/remote_backend/main.tf:11-22
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-2-33
+[0m[0m
+		[37m11 | [33mresource "azurerm_storage_account" "tfstate" {
+		[37m12 | [33m
+		[37m13 | [33m  depends_on = [ 
+		[37m14 | [33m    azurerm_resource_group.tfstate 
+		[37m15 | [33m  ]
+		[37m16 | [33m  name                     = "${random_pet.prefix.id}tfstate"
+		[37m17 | [33m  resource_group_name      = var.resource_group_name
+		[37m18 | [33m  location                 = var.resource_group_location
+		[37m19 | [33m  account_tier             = "Standard"
+		[37m20 | [33m  account_replication_type = "LRS"
+		[37m21 |   # allow_nested_items_to_be_public = false
+		[37m22 | [33m}
+
+[97mCheck: CKV2_AZURE_33: "Ensure storage account is configured with private endpoint"
+[0m[31m	FAILED for resource: module.storage_acc_loki_storage.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-2-33
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV2_AZURE_33: "Ensure storage account is configured with private endpoint"
+[0m[31m	FAILED for resource: module.storage_acc_remote_backend_new.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-2-33
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV2_AZURE_38: "Ensure soft-delete is enabled on Azure storage account"
+[0m[31m	FAILED for resource: azurerm_storage_account.tfstate
+[0m[35m	File: /modules/remote_backend/main.tf:11-22
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-2-38
+[0m[0m
+		[37m11 | [33mresource "azurerm_storage_account" "tfstate" {
+		[37m12 | [33m
+		[37m13 | [33m  depends_on = [ 
+		[37m14 | [33m    azurerm_resource_group.tfstate 
+		[37m15 | [33m  ]
+		[37m16 | [33m  name                     = "${random_pet.prefix.id}tfstate"
+		[37m17 | [33m  resource_group_name      = var.resource_group_name
+		[37m18 | [33m  location                 = var.resource_group_location
+		[37m19 | [33m  account_tier             = "Standard"
+		[37m20 | [33m  account_replication_type = "LRS"
+		[37m21 |   # allow_nested_items_to_be_public = false
+		[37m22 | [33m}
+
+[97mCheck: CKV2_AZURE_38: "Ensure soft-delete is enabled on Azure storage account"
+[0m[31m	FAILED for resource: module.storage_acc_loki_storage.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-2-38
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV2_AZURE_38: "Ensure soft-delete is enabled on Azure storage account"
+[0m[31m	FAILED for resource: module.storage_acc_remote_backend_new.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-2-38
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV2_AZURE_47: "Ensure storage account is configured without blob anonymous access"
+[0m[31m	FAILED for resource: azurerm_storage_account.tfstate
+[0m[35m	File: /modules/remote_backend/main.tf:11-22
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-iam-policies/bc-azure-2-47
+[0m[0m
+		[37m11 | [33mresource "azurerm_storage_account" "tfstate" {
+		[37m12 | [33m
+		[37m13 | [33m  depends_on = [ 
+		[37m14 | [33m    azurerm_resource_group.tfstate 
+		[37m15 | [33m  ]
+		[37m16 | [33m  name                     = "${random_pet.prefix.id}tfstate"
+		[37m17 | [33m  resource_group_name      = var.resource_group_name
+		[37m18 | [33m  location                 = var.resource_group_location
+		[37m19 | [33m  account_tier             = "Standard"
+		[37m20 | [33m  account_replication_type = "LRS"
+		[37m21 |   # allow_nested_items_to_be_public = false
+		[37m22 | [33m}
+
+[97mCheck: CKV2_AZURE_47: "Ensure storage account is configured without blob anonymous access"
+[0m[31m	FAILED for resource: module.storage_acc_loki_storage.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-iam-policies/bc-azure-2-47
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV2_AZURE_47: "Ensure storage account is configured without blob anonymous access"
+[0m[31m	FAILED for resource: module.storage_acc_remote_backend_new.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-iam-policies/bc-azure-2-47
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV2_AZURE_21: "Ensure Storage logging is enabled for Blob service for read requests"
+[0m[31m	FAILED for resource: azurerm_storage_container.container
+[0m[35m	File: /modules/remote_backend/main.tf:24-28
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-logging-policies/ensure-storage-logging-is-enabled-for-blob-service-for-read-requests
+[0m[0m
+		[37m24 | [33mresource "azurerm_storage_container" "container" {
+		[37m25 | [33m  name                  = var.container_name
+		[37m26 | [33m  storage_account_name  = azurerm_storage_account.tfstate.name
+		[37m27 | [33m  container_access_type = "private"
+		[37m28 | [33m}
+
+[97mCheck: CKV2_AZURE_21: "Ensure Storage logging is enabled for Blob service for read requests"
+[0m[31m	FAILED for resource: module.storage_acc_loki_storage.azurerm_storage_container.container[0]
+[0m[35m	File: /modules/storage_account/main.tf:19-24
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-logging-policies/ensure-storage-logging-is-enabled-for-blob-service-for-read-requests
+[0m[0m
+		[37m19 | [33mresource "azurerm_storage_container" "container" {
+		[37m20 | [33m  count                 = length(var.container_names)
+		[37m21 | [33m  name                  = var.container_names[count.index]
+		[37m22 | [33m  storage_account_name  = azurerm_storage_account.storage_ac.name
+		[37m23 | [33m  container_access_type = var.container_access_types[count.index]
+		[37m24 | [33m}
+
+[97mCheck: CKV2_AZURE_21: "Ensure Storage logging is enabled for Blob service for read requests"
+[0m[31m	FAILED for resource: module.storage_acc_remote_backend_new.azurerm_storage_container.container[0]
+[0m[35m	File: /modules/storage_account/main.tf:19-24
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-logging-policies/ensure-storage-logging-is-enabled-for-blob-service-for-read-requests
+[0m[0m
+		[37m19 | [33mresource "azurerm_storage_container" "container" {
+		[37m20 | [33m  count                 = length(var.container_names)
+		[37m21 | [33m  name                  = var.container_names[count.index]
+		[37m22 | [33m  storage_account_name  = azurerm_storage_account.storage_ac.name
+		[37m23 | [33m  container_access_type = var.container_access_types[count.index]
+		[37m24 | [33m}
+
+[97mCheck: CKV2_AZURE_21: "Ensure Storage logging is enabled for Blob service for read requests"
+[0m[31m	FAILED for resource: module.storage_acc_loki_storage.azurerm_storage_container.container[1]
+[0m[35m	File: /modules/storage_account/main.tf:19-24
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-logging-policies/ensure-storage-logging-is-enabled-for-blob-service-for-read-requests
+[0m[0m
+		[37m19 | [33mresource "azurerm_storage_container" "container" {
+		[37m20 | [33m  count                 = length(var.container_names)
+		[37m21 | [33m  name                  = var.container_names[count.index]
+		[37m22 | [33m  storage_account_name  = azurerm_storage_account.storage_ac.name
+		[37m23 | [33m  container_access_type = var.container_access_types[count.index]
+		[37m24 | [33m}
+
+[97mCheck: CKV2_AZURE_21: "Ensure Storage logging is enabled for Blob service for read requests"
+[0m[31m	FAILED for resource: module.storage_acc_loki_storage.azurerm_storage_container.container[2]
+[0m[35m	File: /modules/storage_account/main.tf:19-24
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-logging-policies/ensure-storage-logging-is-enabled-for-blob-service-for-read-requests
+[0m[0m
+		[37m19 | [33mresource "azurerm_storage_container" "container" {
+		[37m20 | [33m  count                 = length(var.container_names)
+		[37m21 | [33m  name                  = var.container_names[count.index]
+		[37m22 | [33m  storage_account_name  = azurerm_storage_account.storage_ac.name
+		[37m23 | [33m  container_access_type = var.container_access_types[count.index]
+		[37m24 | [33m}
+
+[97mCheck: CKV2_AZURE_1: "Ensure storage for critical data are encrypted with Customer Managed Key"
+[0m[31m	FAILED for resource: azurerm_storage_account.tfstate
+[0m[35m	File: /modules/remote_backend/main.tf:11-22
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-storage-for-critical-data-are-encrypted-with-customer-managed-key
+[0m[0m
+		[37m11 | [33mresource "azurerm_storage_account" "tfstate" {
+		[37m12 | [33m
+		[37m13 | [33m  depends_on = [ 
+		[37m14 | [33m    azurerm_resource_group.tfstate 
+		[37m15 | [33m  ]
+		[37m16 | [33m  name                     = "${random_pet.prefix.id}tfstate"
+		[37m17 | [33m  resource_group_name      = var.resource_group_name
+		[37m18 | [33m  location                 = var.resource_group_location
+		[37m19 | [33m  account_tier             = "Standard"
+		[37m20 | [33m  account_replication_type = "LRS"
+		[37m21 |   # allow_nested_items_to_be_public = false
+		[37m22 | [33m}
+
+[97mCheck: CKV2_AZURE_1: "Ensure storage for critical data are encrypted with Customer Managed Key"
+[0m[31m	FAILED for resource: module.storage_acc_loki_storage.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-storage-for-critical-data-are-encrypted-with-customer-managed-key
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV2_AZURE_1: "Ensure storage for critical data are encrypted with Customer Managed Key"
+[0m[31m	FAILED for resource: module.storage_acc_remote_backend_new.azurerm_storage_account.storage_ac
+[0m[35m	File: /modules/storage_account/main.tf:10-17
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-storage-for-critical-data-are-encrypted-with-customer-managed-key
+[0m[0m
+		[37m10 | [33mresource "azurerm_storage_account" "storage_ac" {
+		[37m11 | [33m  name                     = "${var.storage_account_name}${random_pet.random_pet.id}"
+		[37m12 | [33m  resource_group_name      = var.resource_group_name
+		[37m13 | [33m  location                 = var.resource_group_location
+		[37m14 | [33m  account_tier             = var.storage_account_tier
+		[37m15 | [33m  account_replication_type = var.account_replication_type
+		[37m16 | [33m  access_tier              = var.access_tier
+		[37m17 | [33m}
+
+[97mCheck: CKV2_AZURE_24: "Ensure Azure automation account does NOT have overly permissive network access"
+[0m[31m	FAILED for resource: module.automation_acc_start_stop_aks_dev.azurerm_automation_account.auto-start-stop-aks
+[0m[35m	File: /modules/automation/main.tf:3-12
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-2-24
+[0m[0m
+		[37m3  | [33mresource "azurerm_automation_account" "auto-start-stop-aks" {
+		[37m4  | [33m  name                = var.automation_account_name
+		[37m5  | [33m  location            = var.automation_acc_location
+		[37m6  | [33m  resource_group_name = var.resource_group_name
+		[37m7  | [33m  sku_name            = var.sku_name
+		[37m8  | [33m
+		[37m9  | [33m  identity {
+		[37m10 | [33m    type = var.identity_type
+		[37m11 | [33m  }
+		[37m12 | [33m}
+
+[34msecrets scan results:
+[0m[36m
+Passed checks: 0, Failed checks: 2, Skipped checks: 0
+
+[0m[97mCheck: CKV_SECRET_6: "Base64 High Entropy String"
+[0m[31m	FAILED for resource: f05271efdcc49d63ae1cbd74809a8e4f71d1248c
+[0m[35m	File: /environments/development/main.tf:295-296
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/secrets-policies/secrets-policy-index/git-secrets-6
+[0m[0m
+		[37m295 | [33m  administrator_password = "sqldb**********" # Should be the name of the Secret in the keyvault
+
+[97mCheck: CKV_SECRET_6: "Base64 High Entropy String"
+[0m[31m	FAILED for resource: 00cbd046d5de9bb4f409481924e36b85208da4aa
+[0m[35m	File: /environments/development/main.tf:312-313
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/secrets-policies/secrets-policy-index/git-secrets-6
+[0m[0m
+		[37m312 | [33m  kubernetes_secret_namespace = "flee**********"
+
+[0m[0m[0m
+[0m[0m[0m[0m[0m

@@ -1,0 +1,146 @@
+[34mterraform scan results:
+[0m[36m
+Passed checks: 5, Failed checks: 10, Skipped checks: 0
+
+[0m[97mCheck: CKV_AZURE_44: "Ensure Storage Account is using the latest version of TLS encryption"
+[0m[31m	FAILED for resource: azurerm_storage_account.example
+[0m[35m	File: /main.tf:19-27
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-storage-policies/bc-azr-storage-2
+[0m[0m
+		[37m19 | [33mresource "azurerm_storage_account" "example" {
+		[37m20 | [33m  name                     = "storageaccountname"
+		[37m21 | [33m  resource_group_name      = azurerm_resource_group.example.name
+		[37m22 | [33m  location                 = azurerm_resource_group.example.location
+		[37m23 | [33m  account_tier             = "Standard"
+		[37m24 | [33m  account_replication_type = "GRS"
+		[37m25 | [33m
+		[37m26 | [33m  public_network_access_enabled = true
+		[37m27 | [33m}
+[97mCheck: CKV_AZURE_190: "Ensure that Storage blobs restrict public access"
+[0m[31m	FAILED for resource: azurerm_storage_account.example
+[0m[35m	File: /main.tf:19-27
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/azr-networking-190
+[0m[0m
+		[37m19 | [33mresource "azurerm_storage_account" "example" {
+		[37m20 | [33m  name                     = "storageaccountname"
+		[37m21 | [33m  resource_group_name      = azurerm_resource_group.example.name
+		[37m22 | [33m  location                 = azurerm_resource_group.example.location
+		[37m23 | [33m  account_tier             = "Standard"
+		[37m24 | [33m  account_replication_type = "GRS"
+		[37m25 | [33m
+		[37m26 | [33m  public_network_access_enabled = true
+		[37m27 | [33m}
+[97mCheck: CKV_AZURE_33: "Ensure Storage logging is enabled for Queue service for read, write and delete requests"
+[0m[31m	FAILED for resource: azurerm_storage_account.example
+[0m[35m	File: /main.tf:19-27
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-logging-policies/enable-requests-on-storage-logging-for-queue-service
+[0m[0m
+		[37m19 | [33mresource "azurerm_storage_account" "example" {
+		[37m20 | [33m  name                     = "storageaccountname"
+		[37m21 | [33m  resource_group_name      = azurerm_resource_group.example.name
+		[37m22 | [33m  location                 = azurerm_resource_group.example.location
+		[37m23 | [33m  account_tier             = "Standard"
+		[37m24 | [33m  account_replication_type = "GRS"
+		[37m25 | [33m
+		[37m26 | [33m  public_network_access_enabled = true
+		[37m27 | [33m}
+[97mCheck: CKV_AZURE_59: "Ensure that Storage accounts disallow public access"
+[0m[31m	FAILED for resource: azurerm_storage_account.example
+[0m[35m	File: /main.tf:19-27
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-networking-policies/ensure-that-storage-accounts-disallow-public-access
+[0m[0m
+		[37m19 | [33mresource "azurerm_storage_account" "example" {
+		[37m20 | [33m  name                     = "storageaccountname"
+		[37m21 | [33m  resource_group_name      = azurerm_resource_group.example.name
+		[37m22 | [33m  location                 = azurerm_resource_group.example.location
+		[37m23 | [33m  account_tier             = "Standard"
+		[37m24 | [33m  account_replication_type = "GRS"
+		[37m25 | [33m
+		[37m26 | [33m  public_network_access_enabled = true
+		[37m27 | [33m}
+[97mCheck: CKV2_AZURE_41: "Ensure storage account is configured with SAS expiration policy"
+[0m[31m	FAILED for resource: azurerm_storage_account.example
+[0m[35m	File: /main.tf:19-27
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-iam-policies/bc-azure-2-41
+[0m[0m
+		[37m19 | [33mresource "azurerm_storage_account" "example" {
+		[37m20 | [33m  name                     = "storageaccountname"
+		[37m21 | [33m  resource_group_name      = azurerm_resource_group.example.name
+		[37m22 | [33m  location                 = azurerm_resource_group.example.location
+		[37m23 | [33m  account_tier             = "Standard"
+		[37m24 | [33m  account_replication_type = "GRS"
+		[37m25 | [33m
+		[37m26 | [33m  public_network_access_enabled = true
+		[37m27 | [33m}
+[97mCheck: CKV2_AZURE_40: "Ensure storage account is not configured with Shared Key authorization"
+[0m[31m	FAILED for resource: azurerm_storage_account.example
+[0m[35m	File: /main.tf:19-27
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-iam-policies/bc-azure-2-40
+[0m[0m
+		[37m19 | [33mresource "azurerm_storage_account" "example" {
+		[37m20 | [33m  name                     = "storageaccountname"
+		[37m21 | [33m  resource_group_name      = azurerm_resource_group.example.name
+		[37m22 | [33m  location                 = azurerm_resource_group.example.location
+		[37m23 | [33m  account_tier             = "Standard"
+		[37m24 | [33m  account_replication_type = "GRS"
+		[37m25 | [33m
+		[37m26 | [33m  public_network_access_enabled = true
+		[37m27 | [33m}
+[97mCheck: CKV2_AZURE_33: "Ensure storage account is configured with private endpoint"
+[0m[31m	FAILED for resource: azurerm_storage_account.example
+[0m[35m	File: /main.tf:19-27
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-2-33
+[0m[0m
+		[37m19 | [33mresource "azurerm_storage_account" "example" {
+		[37m20 | [33m  name                     = "storageaccountname"
+		[37m21 | [33m  resource_group_name      = azurerm_resource_group.example.name
+		[37m22 | [33m  location                 = azurerm_resource_group.example.location
+		[37m23 | [33m  account_tier             = "Standard"
+		[37m24 | [33m  account_replication_type = "GRS"
+		[37m25 | [33m
+		[37m26 | [33m  public_network_access_enabled = true
+		[37m27 | [33m}
+[97mCheck: CKV2_AZURE_38: "Ensure soft-delete is enabled on Azure storage account"
+[0m[31m	FAILED for resource: azurerm_storage_account.example
+[0m[35m	File: /main.tf:19-27
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/bc-azure-2-38
+[0m[0m
+		[37m19 | [33mresource "azurerm_storage_account" "example" {
+		[37m20 | [33m  name                     = "storageaccountname"
+		[37m21 | [33m  resource_group_name      = azurerm_resource_group.example.name
+		[37m22 | [33m  location                 = azurerm_resource_group.example.location
+		[37m23 | [33m  account_tier             = "Standard"
+		[37m24 | [33m  account_replication_type = "GRS"
+		[37m25 | [33m
+		[37m26 | [33m  public_network_access_enabled = true
+		[37m27 | [33m}
+[97mCheck: CKV2_AZURE_47: "Ensure storage account is configured without blob anonymous access"
+[0m[31m	FAILED for resource: azurerm_storage_account.example
+[0m[35m	File: /main.tf:19-27
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-iam-policies/bc-azure-2-47
+[0m[0m
+		[37m19 | [33mresource "azurerm_storage_account" "example" {
+		[37m20 | [33m  name                     = "storageaccountname"
+		[37m21 | [33m  resource_group_name      = azurerm_resource_group.example.name
+		[37m22 | [33m  location                 = azurerm_resource_group.example.location
+		[37m23 | [33m  account_tier             = "Standard"
+		[37m24 | [33m  account_replication_type = "GRS"
+		[37m25 | [33m
+		[37m26 | [33m  public_network_access_enabled = true
+		[37m27 | [33m}
+[97mCheck: CKV2_AZURE_1: "Ensure storage for critical data are encrypted with Customer Managed Key"
+[0m[31m	FAILED for resource: azurerm_storage_account.example
+[0m[35m	File: /main.tf:19-27
+[0m	Guide: [1m[4m[34mhttps://docs.prismacloud.io/en/enterprise-edition/policy-reference/azure-policies/azure-general-policies/ensure-storage-for-critical-data-are-encrypted-with-customer-managed-key
+[0m[0m
+		[37m19 | [33mresource "azurerm_storage_account" "example" {
+		[37m20 | [33m  name                     = "storageaccountname"
+		[37m21 | [33m  resource_group_name      = azurerm_resource_group.example.name
+		[37m22 | [33m  location                 = azurerm_resource_group.example.location
+		[37m23 | [33m  account_tier             = "Standard"
+		[37m24 | [33m  account_replication_type = "GRS"
+		[37m25 | [33m
+		[37m26 | [33m  public_network_access_enabled = true
+		[37m27 | [33m}
+[0m[0m[0m
+[0m[0m[0m[0m[0m
