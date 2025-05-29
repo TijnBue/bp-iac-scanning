@@ -10,7 +10,7 @@ Uitleg over de testcase's is te vinden in [testcases.md](./test_cases/testcases.
 ## Uitvoering
 
 ```bash
-./accuracy_script.sh <run_all>/<run_checkov>/<run_kics>/<run_snyk>/<run/trivy>
+vagrant@poc:/vagrant/evaluatie-criteria/accuraatheid$ ./accuracy_script.sh <run_all>/<run_checkov>/<run_kics>/<run_snyk>/<run/trivy>
 ```
 
 ## Resultaten
