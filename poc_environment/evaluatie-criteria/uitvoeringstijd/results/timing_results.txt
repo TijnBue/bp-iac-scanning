@@ -1,0 +1,141 @@
+Tool Execution Times
+===================
+Checkov: 7 seconds
+KICS: 62 seconds
+Snyk: 13 seconds
+Trivy: 6 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 6 seconds
+KICS: 58 seconds
+Snyk: 15 seconds
+Trivy: 6 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 6 seconds
+KICS: 60 seconds
+Snyk: 14 seconds
+Trivy: 5 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 6 seconds
+KICS: 58 seconds
+Snyk: 15 seconds
+Trivy: 5 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 6 seconds
+KICS: 60 seconds
+Snyk: 13 seconds
+Trivy: 6 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 6 seconds
+KICS: 60 seconds
+Snyk: 13 seconds
+Trivy: 5 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 7 seconds
+KICS: 60 seconds
+Snyk: 13 seconds
+Trivy: 6 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 7 seconds
+KICS: 60 seconds
+Snyk: 13 seconds
+Trivy: 5 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 6 seconds
+KICS: 63 seconds
+Snyk: 14 seconds
+Trivy: 5 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 6 seconds
+KICS: 63 seconds
+Snyk: 13 seconds
+Trivy: 5 seconds
+===================
+Tool Execution Times for small Terraform project
+===================
+Checkov: 6 seconds
+KICS: 61 seconds
+Snyk: 12 seconds
+Trivy: 3 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 7 seconds
+KICS: 63 seconds
+Snyk: 11 seconds
+Trivy: 4 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 8 seconds
+KICS: 62 seconds
+Snyk: 12 seconds
+Trivy: 3 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 8 seconds
+KICS: 58 seconds
+Snyk: 12 seconds
+Trivy: 3 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 7 seconds
+KICS: 61 seconds
+Snyk: 14 seconds
+Trivy: 2 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 6 seconds
+KICS: 63 seconds
+Snyk: 12 seconds
+Trivy: 3 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 7 seconds
+KICS: 62 seconds
+Snyk: 12 seconds
+Trivy: 2 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 8 seconds
+KICS: 63 seconds
+Snyk: 14 seconds
+Trivy: 3 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 7 seconds
+KICS: 65 seconds
+Snyk: 12 seconds
+Trivy: 3 seconds
+===================
+Tool Execution Times
+===================
+Checkov: 7 seconds
+KICS: 60 seconds
+Snyk: 12 seconds
+Trivy: 3 seconds
+
+

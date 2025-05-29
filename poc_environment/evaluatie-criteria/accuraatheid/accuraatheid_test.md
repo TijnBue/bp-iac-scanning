@@ -4,35 +4,37 @@ De bedoeling van deze test is om de tools een aantal testcases te laten scannen,
 
 ## Testcases
 
-1. Plain text wachtwoord voor database
-2. function app http only
-3. Publiek toegankelijk storage account
-4. Keyvault no purge protection
-5. AKS no private cluster
-6. Network security rule that allows ssh traffic from anywhere
-7. No security alert for admin
-8. Storage account logging
-9. func app not enforcing latest tls version
-10. cluster rbac disabled
-11. storage account force https on false
-12. Public function app
-13. ACR public access
-14. Ensure container image quarantine, scan, and mark images verified
-15. Ensure AKS logging to Azure Monitoring is Configured
-16. Azure managed disk not encrypted
-17. Azure Instances should use SSH Key instead of basic authentication
-18. Virtual Network DDOS plan enabled
-19. Azure Container Registry with Admin Account Enabled
-20. Postgress database without minimal SSL version
+Voor het uitvoeren van deze test, werden er 20 Terraform testcase opgezet die bewust kwetsbaarheden en misconfiguraties bevatten.
+Uitleg over de testcase's is te vinden in [testcases.md](./test_cases/testcases.md), alsook de Terraform code in de map [test_cases/](./test_cases/)
 
-Ensure Terraform module sources use a commit hash
-
-## Workflows
+## Uitvoering
 
 ```bash
-./accuracy_script.sh run_all /vagrant/own-test/evaluatie-criteria/accuraatheid/test_cases/
-
+./accuracy_script.sh <run_all>/<run_checkov>/<run_kics>/<run_snyk>/<run/trivy>
 ```
+
+## Resultaten
+
+Na het uitvoeren van het Bash script worden de resultaten van elke tool opgeslagen in de map van de testcase.
+Bijvoorbeeld:
+
+```bash
+test_cases/
+└── 01_password_secrets/
+    ├── checkov_results.txt
+    ├── kics_results.txt
+    ├── main.tf
+    ├── snyk_results.txt
+    └── trivy_results.txt
+```
+
+### Verwerkte resultaten
+
+Deze tabel geeft een overzicht van de accuraatheid van de IaC scanning tools op basis van 20 testgevallen.
+
+- Een `V` geeft aan dat de tool de misconfiguratie correct detecteerde.
+- Een `X` betekent dat de tools de misconfiguratie niet detecteerde
+- Superscripts (zoals X 1.) verwijzen naar opmerkingen over de betreffende detectie, bijvoorbeeld afwijkende meldingen, gedeeltelijke detectie. Deze toelichtingen worden verder uitgelegd onderaan de tabel.
 
 | Test Case                          | Checkov | KICS  | Snyk | Trivy |
 | ---------------------------------- | :-----: | :---: | :--: | :---: |
@@ -47,7 +49,7 @@ Ensure Terraform module sources use a commit hash
 | 9_aks_no_private_cluster           |    V    |   V   | V 3. | V 3.  |
 | 10_aks_cluster_rbac_disabled       |    X    |   x   |  x   |   V   |
 | 11_aks_logging                     |    V    |   X   |  X   |   V   |
-| 12_network_sec_rule_permit_traffic |    X    | V 4.  | V 5. | V 6.  |
+| 12_network_sec_rule_permit_traffic |    X    | V 4.  | V 4. | V 4.  |
 | 13_no_security_contact_enabled     |    V    |   V   |  V   |   V   |
 | 14_acr_container_image_quarantine  |    V    |   X   |  V   |   X   |
 | 15_acr_public                      |    V    |   X   |  X   |   X   |
@@ -59,16 +61,19 @@ Ensure Terraform module sources use a commit hash
 |                                    |         |       |      |       |
 | TOTAL                              |  15/20  | 11/20 | 9/20 | 8/20  |
 
-- If pwd is ""4-v3ry-53cr37-p455w0rd"" - then "Base64 High Entropy String" - https://docs.prismacloud.io/en/enterprise-edition/policy-reference/secrets-policies/secrets-policy-index/git-secrets-6
+#### Toelichting opvallende resultaten
 
-1. Detects strings with a "high Entropy" is a concept used to assign a numerical score to how unpredictable a password is or the likelihood of highly random data in a string of characters
-   \*\* d
-
-2. Does detect storage account not forcing https
-   - KICS doesn't support this resource??
-3. Says more that the API server allows public acces
-4. Specifically about the port (Sensitive Port Is Exposed To Entire Network)
-5. Says that networking security rule allows public access
-6. Saids that security group rule allows unrestricted ingress form any ip and ingress to ssh port from any address
-
-storage acc tls
+1. Beperkte detectie van plaintext wachtwoorden door Checkov
+   - Testcase 1, twee plain text secrets, namelijk ``H@Sh1CoR3!` en `4-v3ry-53cr37-p455w0rd`. Opvallend is dat Checkov maar één wachtwoord detecteert.
+2. Beperkingen van KICS bij Azure Function Apps
+   - Opvallend aan deze testcase is dat KICS op alle testcases die gebruikmaken van Azure Function Apps geen misconfiguraties detecteren.
+     Specifiek voor testcase 3, is KICS niet in staat om de een Azure Function app te detecteren die geen HTTPS forceert.
+     Dit kan te verklaren zijn vanwege het gebrek aan Terraform regels voor Azure Function Apps
+3. Verschillende interpretaties van AKS-beveiliging tussen tools
+   - Vervolgens is er bij testcase nr. 9 een verschil te zien tussen de tools Checkov en KICS enerzijds, en Snyk en Trivy anderzijds.
+     De eerste twee tools detecteren succesvol dat het aanbevolen is om gebruik te maken van een private Azure Kubernetes Cluster.
+     De andere twee tools raden daarentegen aan om een reeks geautoriseerde IP-adressen te configureren, om zo de API-toegang tot het AKS-cluster beter te beveiligen.
+4. Verschillen in detectie van publieke netwerktoegang
+   - Tot slot, werd er ook opvallende verschillen opgemerkt tussen de tools bij testcase 12.
+     Deze testcase maakt gebruik van de Terraform resource `azurerm_network_security_rule` voor een netwerk regel te configureren.
+     De regel laat SSH connecties van elk bron toe, wat niet bepaald veilig is.

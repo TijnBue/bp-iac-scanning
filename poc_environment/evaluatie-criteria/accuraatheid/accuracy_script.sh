@@ -29,7 +29,6 @@ fi
 function run_checkov {
   echo Now running Checkov on all testcases
   docker pull bridgecrew/checkov:$checkov_version
-  docker run -t -v $PWD:/tf bridgecrew/checkov:$checkov_version --version > versions/version_checkov.txt
 
   find . -name "main.tf" -exec dirname {} \; | grep -v "\.terraform" | while read -r test_case; do
     echo $test_case
@@ -44,7 +43,6 @@ function run_checkov {
 function run_kics {
   echo Now running KICS on all testcases
   docker pull checkmarx/kics:$kics_version
-  docker run -t -v $PWD:/tf checkmarx/kics:$kics_version version | awk '{print $NF}' > versions/version_kics.txt
 
   find . -name "main.tf" -exec dirname {} \; | grep -v "\.terraform" | while read -r test_case; do
     echo $test_case 
@@ -65,7 +63,6 @@ function run_snyk {
   fi
 
   docker pull snyk/snyk:$snyk_version 
-  docker run --rm -t --env SNYK_TOKEN -v $PWD:/app snyk/snyk:$snyk_version 'snyk version' > versions/version_snyk.txt
 
   find . -name "main.tf" -exec dirname {} \; | grep -v "\.terraform" | while read -r test_case; do
     echo $test_case
@@ -80,7 +77,6 @@ function run_snyk {
 function run_trivy {
   echo Now running Trivy on all testcases
   docker pull aquasec/trivy:$trivy_version
-  docker run -t -v $PWD:/myapp aquasec/trivy:$trivy_version --version > versions/version_trivy.txt
 
   find . -name "main.tf" -exec dirname {} \; | grep -v "\.terraform" | while read -r test_case; do
     echo $test_case
